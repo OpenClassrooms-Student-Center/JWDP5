@@ -4,7 +4,11 @@ const Camera = require('../models/Camera');
 exports.getAllCameras = (req, res, next) => {
   Camera.find().then(
     (cameras) => {
-      res.status(200).json(cameras);
+      const mappedCameras = cameras.map((camera) => {
+        camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
+        return camera;
+      });
+      res.status(200).json(mappedCameras);
     }
   ).catch(
     (error) => {
@@ -19,6 +23,7 @@ exports.getOneCamera = (req, res, next) => {
       if (!camera) {
         return res.status(404).send(new Error('Camera not found!'));
       }
+      camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
       res.status(200).json(camera);
     }
   ).catch(
@@ -47,6 +52,7 @@ exports.orderCameras = (req, res, next) => {
     const queryPromise = new Promise((resolve, reject) => {
       Camera.findById(productId).then(
         (camera) => {
+          camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
           resolve(camera);
         }
       ).catch(
@@ -62,13 +68,13 @@ exports.orderCameras = (req, res, next) => {
       const orderId = uuid();
       return res.status(201).json({
         contact: req.body.contact,
-        cameras: cameras,
+        products: cameras,
         orderId: orderId
       })
     }
   ).catch(
     (error) => {
-      return res.status(500).json(error);
+      return res.status(500).json(new Error('There was a problem with your order!'));
     }
   );
 };
