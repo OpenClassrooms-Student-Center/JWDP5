@@ -4,7 +4,11 @@ const Furniture = require('../models/Furniture');
 exports.getAllFurniture = (req, res, next) => {
   Furniture.find().then(
     (furniture) => {
-      res.status(200).json(furniture);
+      const mappedFurniture = furniture.map((item) => {
+        item.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + item.imageUrl;
+        return item;
+      });
+      res.status(200).json(mappedFurniture);
     }
   ).catch(
     (error) => {
@@ -19,6 +23,7 @@ exports.getOneFurniture = (req, res, next) => {
       if (!furniture) {
         return res.status(404).send(new Error('Furniture not found!'));
       }
+      furniture.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + furniture.imageUrl;
       res.status(200).json(furniture);
     }
   ).catch(
@@ -47,6 +52,7 @@ exports.orderFurniture = (req, res, next) => {
     const queryPromise = new Promise((resolve, reject) => {
       Furniture.findById(productId).then(
         (furniture) => {
+          furniture.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + furniture.imageUrl;
           resolve(furniture);
         }
       ).catch(
