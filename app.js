@@ -1,10 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
+
+const cameraRoutes = require('./routes/camera');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://will:nAcmfCoHGDgzrCHG@cluster0-pme76.mongodb.net/test?retryWrites=true')
+mongoose.connect(
+  'mongodb+srv://will:nAcmfCoHGDgzrCHG@cluster0-pme76.mongodb.net/test?retryWrites=true',
+  { useNewUrlParser: true })
   .then(() => {
     console.log('Successfully connected to MongoDB Atlas!');
   })
@@ -20,6 +25,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('images', express.static(path.join(__dirname, 'images')));
+
 app.use(bodyParser.json());
+
+app.use('/api/cameras', cameraRoutes);
 
 module.exports = app;
