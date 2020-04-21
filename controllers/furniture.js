@@ -11,8 +11,8 @@ exports.getAllFurniture = (req, res, next) => {
       res.status(200).json(mappedFurniture);
     }
   ).catch(
-    (error) => {
-      res.status(400).send(error);
+    () => {
+      res.status(500).send(new Error('Database error!'));
     }
   );
 };
@@ -27,8 +27,8 @@ exports.getOneFurniture = (req, res, next) => {
       res.status(200).json(furniture);
     }
   ).catch(
-    (error) => {
-      res.status(500).send(error);
+    () => {
+      res.status(500).send(new Error('Database error!'));
     }
   )
 };
@@ -47,17 +47,29 @@ exports.getOneFurniture = (req, res, next) => {
  *
  */
 exports.orderFurniture = (req, res, next) => {
+  if (!req.body.contact ||
+    !req.body.contact.firstName ||
+    !req.body.contact.lastName ||
+    !req.body.contact.address ||
+    !req.body.contact.city ||
+    !req.body.contact.email ||
+    !req.body.products) {
+    return res.status(400).send(new Error('Bad request!'));
+  }
   let queries = [];
   for (let productId of req.body.products) {
     const queryPromise = new Promise((resolve, reject) => {
       Furniture.findById(productId).then(
         (furniture) => {
+          if (!furniture) {
+            reject('Camera not found: ' + productId);
+          }
           furniture.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + furniture.imageUrl;
           resolve(furniture);
         }
       ).catch(
-        (error) => {
-          reject(error);
+        () => {
+          reject('Database error!');
         }
       )
     });
@@ -74,7 +86,7 @@ exports.orderFurniture = (req, res, next) => {
     }
   ).catch(
     (error) => {
-      return res.status(500).json(error);
+      return res.status(500).json(new Error(error));
     }
   );
 };

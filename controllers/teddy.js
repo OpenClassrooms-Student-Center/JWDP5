@@ -11,8 +11,8 @@ exports.getAllTeddies = (req, res, next) => {
       res.status(200).json(mappedTeddies);
     }
   ).catch(
-    (error) => {
-      res.status(400).send(error);
+    () => {
+      res.status(500).send(new Error('Database error!'));
     }
   );
 };
@@ -27,8 +27,8 @@ exports.getOneTeddy = (req, res, next) => {
       res.status(200).json(teddy);
     }
   ).catch(
-    (error) => {
-      res.status(500).send(error);
+    () => {
+      res.status(500).send(new Error('Database error!'));
     }
   )
 };
@@ -47,17 +47,29 @@ exports.getOneTeddy = (req, res, next) => {
  *
  */
 exports.orderTeddies = (req, res, next) => {
+  if (!req.body.contact ||
+    !req.body.contact.firstName ||
+    !req.body.contact.lastName ||
+    !req.body.contact.address ||
+    !req.body.contact.city ||
+    !req.body.contact.email ||
+    !req.body.products) {
+    return res.status(400).send(new Error('Bad request!'));
+  }
   let queries = [];
   for (let productId of req.body.products) {
     const queryPromise = new Promise((resolve, reject) => {
       Teddy.findById(productId).then(
         (teddy) => {
+          if (!teddy) {
+            reject('Camera not found: ' + productId);
+          }
           teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
           resolve(teddy);
         }
       ).catch(
-        (error) => {
-          reject(error);
+        () => {
+          reject('Database error!');
         }
       )
     });
@@ -74,7 +86,7 @@ exports.orderTeddies = (req, res, next) => {
     }
   ).catch(
     (error) => {
-      return res.status(500).json(error);
+      return res.status(500).json(new Error(error));
     }
   );
 };
