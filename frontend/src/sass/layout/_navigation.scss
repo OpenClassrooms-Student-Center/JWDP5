@@ -1,0 +1,58 @@
+/* NAVIGATION */
+.nav {
+  justify-content: space-around;
+  padding: 1.5rem 0;
+  z-index: 9999;
+  font-family: 'Fredoka One', cursive;
+
+  background-color: $color-header-bg;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4), 0 4px 4px rgba(255, 255, 255, 0.3);
+  @media screen and (max-width: $breakpoint-large) {
+    justify-content: space-between;
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+  @media screen and (max-width: $breakpoint-medium) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  &__logo,
+  &__lists a {
+    color: $color-base-bg;
+  }
+  &__logo {
+    font-size: 2.5rem;
+  }
+  &__lists {
+    &__item {
+      display: inline-block;
+      margin-top: 0.2rem;
+      margin-left: 3rem;
+      &--left {
+        position: relative;
+
+        padding-left: 2.5rem;
+
+        font-size: 2rem;
+        color: $color-base-bg;
+
+        background-image: url(./images/add-to-cart.svg);
+        background-size: 2.1rem auto;
+        background-position: left center;
+        background-repeat: no-repeat;
+      }
+      &--quantity {
+        position: absolute;
+        width: 2rem;
+        top: -0.5rem;
+        right: -2.5rem;
+        font-family: 'Vollkorn', serif;
+        text-align: center;
+        font-size: 1.5rem;
+        color: $color-btn-bg;
+        background-color: $color-modal-bg;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+}

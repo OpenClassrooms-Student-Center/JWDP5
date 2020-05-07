@@ -1,0 +1,20 @@
+/* TYPOGRAPHY */
+h2,
+h3 {
+  font-family: 'Fredoka One', cursive;
+}
+
+p {
+  color: $color-list-test;
+}
+
+a {
+  text-decoration: none;
+  transition: $duration;
+}
+
+a:hover,
+a:focus {
+  opacity: 0.8;
+  text-decoration: solid;
+}

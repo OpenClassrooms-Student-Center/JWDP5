@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr" itemscope itemtype="https://schema.org/Article">
+  <!-- A list of everything that *could* go in the <head> of your document <https://github.com/joshbuchea/HEAD> -->
+  <head>
+    <!--
+			Set the character encoding for this document, so that
+			all characters within the UTF-8 space (such as emoji)
+			are rendered correctly.
+		-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Set the document's title -->
+    <title>Valider le panier – Orinoco</title>
+
+    <!-- Name of web application (only should be used if the website is used as an app) -->
+    <meta name="application-name" content="Oricono" />
+
+    <!-- Theme Color for Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#5a008c" />
+
+    <!-- Short description of the document (limit to 150 characters) -->
+    <!-- This content *may* be used as a part of search engine results. -->
+    <meta
+      name="description"
+      content="Une sélection de produits vintage pour photographe."
+    />
+
+    <!-- Control the behavior of search engine crawling and indexing -->
+    <meta name="robots" content="index,follow" />
+    <!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow" />
+    <!-- Google Specific -->
+    <!-- schemaorg using microdata for SEO <schema.org> -->
+    <link
+      rel="author"
+      href="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/index.html"
+    />
+    <link
+      rel="publisher"
+      href="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/panier.html"
+    />
+    <meta itemprop="name" content="oricono" />
+    <meta
+      itemprop="description"
+      content="Une sélection de produits vintage pour photographe."
+    />
+    <meta
+      itemprop="image"
+      content="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/assets/images/mockups.jpg"
+    />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@orinoco" />
+    <meta
+      name="twitter:title"
+      content="Valider le panier  – Orinoco"
+    />
+    <meta
+      name="twitter:url"
+      content="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/panier.html"
+    />
+    <meta
+      name="twitter:description"
+      content="Une sélection de produits vintage pour photographe."
+    />
+    <meta name="twitter:creator" content="@lachouetteagence" />
+    <!-- Twitter Summary card images must be at least 200x200px -->
+    <meta
+      name="twitter:image"
+      content="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/assets/images/mockups.jpg"
+    />
+    <meta name="twitter:image:alt" content="Orinoco - identité en image" />
+
+    <!-- Open Graph data -->
+    <meta
+      property="og:title"
+      content="Valider le panier – Orinoco"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/panier.html"
+    />
+    <meta
+      property="og:image"
+      content="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/assets/images/mockups.jpg"
+    />
+    <meta property="og:image:alt" content="Orinoco - identité en image" />
+    <meta
+      property="og:description"
+      content="Une sélection de produits pour photographe."
+    />
+    <meta property="og:site_name" content="Oricono" />
+    <meta property="og:local" content="fr_FR" />
+    <!-- <meta property="fb:admins" content="Facebook numeric ID" /> -->
+
+    <!-- Helps prevent duplicate content issues -->
+    <link
+      rel="canonical"
+      href="https://ocr-dw.s3.eu-west-3.amazonaws.com/oricono/panier.html"
+    />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- Apple Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="./icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="./icons/icon-96x96.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="128x128"
+      href="./icons/icon-128x128.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./icons/icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./icons/icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="./icons/icon-192x192.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="384x384"
+      href="./icons/icon-384x384.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="./icons/icon-512x512.png"
+    />
+
+    <!-- Links to a JSON file that specifies "installation" credentials for the web		applications -->
+    <link rel="manifest" href="./manifest.json" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Vollkorn:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Style Sheets-->
+  <link href="app.bundle.css?29715e0bcbad8bda2982" rel="stylesheet"></head>
+  <body>
+    <noscript
+      >Pour utiliser l'application, s'il vous plaît activez les paramètres dans
+      votre navigateur.</noscript
+    >
+    <div class="container">
+      <nav class="nav">
+  <a class="nav__logo" href="./index.html">oricono</a>
+  <ul class="nav__lists">
+    <li class="nav__lists__item">
+      <a class="nav__lists__item--left" href="./panier.html"
+        ><span class="nav__lists__item--quantity js-quantityBasket"></span
+        >panier</a
+      >
+    </li>
+    <li class="nav__lists__item">
+      <a class="nav__lists__item--right js-userConnect" href="#"></a>
+    </li>
+  </ul>
+</nav>
+
+      <header class="header header__image--bg2">
+        <div class="header__banner">
+          <h1 class="header__banner--title">
+            Valider le panier
+          </h1>
+          <p class="header__banner--subtitle">
+            Une sélection de produits pour photographe.
+          </p>
+        </div>
+      </header>
+      <main class="content">
+        <article class="articles">
+          <header class="articles__header">
+            <h2 class="articles__header--title">Passer commande</h2>
+          </header>
+          <article class="articles__list">
+            <table class="table">
+              <caption class="table__caption js-totalPay"></caption>
+              <thead class="table__head">
+                <tr class="table__head--title">
+                  <th>Produit</th>
+                  <th>Prix</th>
+                  <th>Lentille</th>
+                  <th>Quantité</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody class="table__body">
+                <!-- Made dynamic JS -->
+                <tr class="table__body--content js-allBasket"></tr>
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+            <form class="form" method="post" action="">
+              <div class="form__info">
+                <legend class="form__info--legend">Vos coordonnées :</legend>
+                <label for="familyName">Nom de famille<span>*</span> :</label>
+                <input
+                  id="familyName"
+                  class="js-familyName"
+                  name="familyName"
+                  type="text"
+                  inputmode="text"
+                  autocomplete="family-name"
+                  placeholder="e.g(Dupont)"
+                  pattern="[a-zA-Zâäàéèùêëîïôöçñ]{3,}"
+                  required
+                />
+                <label for="givenName">Prénom<span>*</span> :</label>
+                <input
+                  id="givenName"
+                  class="js-givenName"
+                  name="givenName"
+                  type="text"
+                  inputmode="text"
+                  autocomplete="given-name"
+                  placeholder="e.g(Alain)"
+                  pattern="[a-zA-Zâäàéèùêëîïôöçñ]{3,}"
+                  required
+                />
+                <label for="email">E-mail<span>*</span> :</label>
+                <input
+                  id="email"
+                  class="js-email"
+                  name="email"
+                  type="email"
+                  inputmode="email"
+                  autocomplete="email"
+                  placeholder="e.g(name@domaine.fr)"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  required
+                />
+                <label for="tel">Téléphone (optionnel) :</label>
+                <input
+                  id="tel"
+                  class="js-tel"
+                  name="tel"
+                  type="tel"
+                  inputmode="tel"
+                  autocomplete="tel-national"
+                  placeholder="e.g(06-88-88-88-88)"
+                  pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
+                />
+              </div>
+              <div class="form__address">
+                <legend class="form__address--legend">
+                  Adresse de livraison :
+                </legend>
+                <label for="address-line1">Adresse<span>*</span> :</label>
+                <input
+                  id="address-line1"
+                  class="js-addressLine1"
+                  name="address-line1"
+                  type="text"
+                  inputmode="text"
+                  autocomplete="address-line1"
+                  placeholder="e.g(20 rue Henry Durant)"
+                  required
+                />
+                <label for="postal-code">Code postal (optionnel) :</label>
+                <input
+                  id="postal-code"
+                  class="js-postalCode"
+                  name="postal-code"
+                  type="number"
+                  inputmode="numeric"
+                  autocomplete="postal-code"
+                  placeholder="e.g(69007)"
+                  pattern="[0-9]{5}"
+                  placeholder="e.g(69007)"
+                />
+                <label for="address-level1">Ville<span>*</span> :</label>
+                <input
+                  id="address-level1"
+                  class="js-addressLevel1"
+                  name="address-level1"
+                  type="text"
+                  inputmode="text"
+                  autocomplete="address-level1"
+                  pattern="[a-zA-Zâäàéèùêëîïôöçñ]{3,}"
+                  placeholder="e.g(Lyon)"
+                  required
+                />
+                <label for="country-name">Pays (optionnel) :</label>
+                <input
+                  id="country-name"
+                  class="js-countryName"
+                  name="country-name"
+                  type="text"
+                  inputmode="text"
+                  autocomplete="country-name"
+                  pattern="[a-zA-Z]{6}"
+                  placeholder="e.g(France)"
+                />
+                <p><span>*</span> : Champs obligatoires</p>
+              </div>
+              <div class="form__button">
+                <button
+                  class="btn js-submitForm"
+                  type="button"
+                  aria-label="Valider vos informations et cliquer sur confirmer"
+                >
+                  confirmer
+                </button>
+                <button
+                  class="btn js-resetForm"
+                  type="reset"
+                  aria-label="Supprimer vos informations du formulaire"
+                >
+                  supprimer
+                </button>
+              </div>
+            </form>
+          </article>
+          <footer class="articles__footer">
+            <p class="articles__footer--info">
+              Toute l'équipe d'Orinoco vous remercie de votre visite.
+            </p>
+          </footer>
+        </article>
+      </main>
+      <footer class="footer">
+  <p class="footer__copyright">
+    Copyright © 2019 - <span class="js-currentYear"></span> | Orinoco
+  </p>
+</footer>
+
+    </div>
+
+    <!-- Google Analytics -->
+
+    <!-- Google Analytics END -->
+
+    <!-- Script JavaScript-->
+  <script src="polyfill.bundle.js?29715e0bcbad8bda2982"></script><script src="app.bundle.js?29715e0bcbad8bda2982"></script></body>
+</html>

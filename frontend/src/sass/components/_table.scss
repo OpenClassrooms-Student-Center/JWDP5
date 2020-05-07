@@ -1,0 +1,47 @@
+/* COMPONENT TABLE */
+.table {
+  //display: flex;
+  //flex-flow: row wrap;
+  margin: 3rem auto;
+  width: 90%;
+  &__caption {
+    margin-bottom: 1rem;
+    width: 100%;
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5rem;
+  }
+  &__head,
+  &__body {
+    &--title,
+    &--content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      border-left: solid 0.1rem $color-header-bg;
+      & th,
+      & td {
+        padding: 1.3rem;
+        //flex: 1 2 150px;
+        width: calc(100% / 5);
+        text-align: center;
+        border-right: solid 0.1rem $color-header-bg;
+        border-bottom: solid 0.1rem $color-header-bg;
+      }
+    }
+    &--title {
+      font-family: 'Fredoka One', cursive;
+      color: $color-base-bg;
+      background-color: $color-btn-bg;
+      border-top: solid 0.1rem $color-header-bg;
+    }
+    &--content {
+      // background-color: $color-modal-bg;
+    }
+  }
+  &__head {
+    //background-color: $color-modal-bg;
+  }
+  &__content {
+  }
+}

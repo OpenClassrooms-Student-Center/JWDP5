@@ -1,0 +1,25 @@
+/* COMPONENTS BUTTON */
+.btn {
+  padding: 1.5rem 4rem;
+  width: 100%;
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem;
+  color: $color-base-bg;
+  background-color: $color-btn-bg;
+  border: 0.1rem solid $color-btn-bg;
+  // border-radius: 8rem;
+  cursor: pointer;
+  transform: $transform;
+  transition: all $duration ease-in-out;
+  &:hover {
+    border: 0.1rem outset $color-btn-bg;
+    transform: $transform-hover;
+  }
+  @media screen and (min-width: $breakpoint-small) {
+    width: 20rem;
+    min-width: 20rem;
+  }
+  &:hover {
+    background-color: $color-btn-bg-hover;
+  }
+}

@@ -1,0 +1,12 @@
+.footer {
+  position: sticky;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+  padding: 1.5rem 3rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -10;
+  color: $color-header-bg;
+}

@@ -1,0 +1,27 @@
+/* BASE REMEDY */
+/* <https://github.com/jensimmons/cssremedy/blob/master/css/remedy.css> */
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/* <https://drafts.csswg.org/css-inline-3/#line-sizing-property> */
+html {
+  line-sizing: normal;
+}
+
+img {
+  display: block;
+  vertical-align: middle;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+button:focus,
+select:focus,
+input:focus {
+  outline: 0;
+}

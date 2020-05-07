@@ -1,0 +1,190 @@
+/* COMPONENT CARDS */
+
+// all Articles By Category => Cameras vintage
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    width: 90%;
+    background-color: $color-modal-bg;
+    box-shadow: $box-shadow-hover;
+    @media screen and (min-width: $breakpoint-medium) {
+      box-shadow: $box-shadow;
+      transform: $transform;
+      transition: all $duration ease-in-out;
+      &:hover {
+        box-shadow: $box-shadow-hover;
+        transform: $transform-hover;
+      }
+    }
+    @media screen and (min-width: $breakpoint-medium) {
+      margin: 4rem 0;
+      width: 100%;
+    }
+    @media screen and (min-width: $breakpoint-large) {
+      flex-direction: row;
+      &:nth-child(2n + 0) {
+        flex-direction: row-reverse;
+        padding-left: 3rem;
+      }
+    }
+    &__thumb,
+    &__body,
+    &__form {
+      display: block;
+      margin: 3rem;
+      height: auto;
+    }
+    &__thumb {
+      max-width: 100%;
+
+      @media screen and (min-width: $breakpoint-medium) {
+        max-width: 100%;
+      }
+      @media screen and (min-width: $breakpoint-large) {
+        width: 450px;
+        height: 300px;
+        overflow: hidden;
+      }
+      &--img {
+        max-width: 100%;
+        @media screen and (min-width: $breakpoint-large) {
+          cursor: zoom-in;
+          transform: translateY(-20px) scale(1);
+          transition: all $duration ease-in-out;
+          &:hover {
+            transform: translateY(-28px) scale(1.2);
+          }
+        }
+      }
+    }
+    &__body {
+      margin-top: -2rem;
+      @media screen and (min-width: $breakpoint-large) {
+        margin-top: 2.5rem;
+        margin-left: 0;
+        height: 35rem;
+      }
+      &--title {
+        padding-bottom: 1rem;
+        font-size: 2.5rem;
+      }
+      &--name,
+      &--lenses,
+      &--description,
+      &--price {
+        margin-bottom: 0.5rem;
+      }
+    }
+    &--button {
+      position: relative;
+      margin-top: 3.5rem;
+      margin-bottom: 2rem;
+      max-width: 100%;
+      & .btn {
+        //display: block;
+        //	position: absolute;
+        bottom: 0;
+        @media screen and (min-width: $breakpoint-large) {
+        }
+      }
+    }
+  }
+}
+
+// Select Article By Category => Cameras vintage
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  &__thumb,
+  &__body {
+    display: block;
+    margin: 3rem;
+    width: 100%;
+    height: auto;
+  }
+  &__thumb {
+    max-width: 100%;
+    overflow: hidden;
+    background-color: $color-modal-bg;
+    background-color: $color-modal-bg;
+    box-shadow: $box-shadow-hover;
+    @media screen and (min-width: $breakpoint-medium) {
+      min-height: 300px;
+      cursor: zoom-in;
+      box-shadow: $box-shadow;
+      transform: $transform;
+      transition: all $duration ease-in-out;
+      &:hover {
+        box-shadow: $box-shadow-hover;
+        transform: $transform-hover;
+      }
+    }
+    &--img {
+      display: none;
+      max-width: 100%;
+      @media screen and (min-width: $breakpoint-medium) {
+        min-width: 350px;
+      }
+    }
+  }
+  &__body {
+    position: relative;
+    margin-top: 0;
+    margin-left: 3rem;
+    @media screen and (min-width: $breakpoint-large) {
+      margin-top: 2rem;
+      margin-left: 4rem;
+    }
+    &--title {
+      padding-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    &--name,
+    &--lenses,
+    &--description,
+    &--price {
+      margin-bottom: 0.5rem;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0 4rem;
+    margin-left: 0;
+    margin-bottom: 4rem;
+    width: 100%;
+    &__select {
+      padding-left: 1rem;
+      max-width: 200px;
+      @media screen and (min-width: $breakpoint-small) {
+        width: 20rem;
+        min-width: 20rem;
+      }
+    }
+    &__result {
+      &--option,
+      &--message {
+        display: none;
+      }
+    }
+    &--button {
+      margin-bottom: 1rem;
+      & .btn {
+        margin-top: 1.5rem;
+        margin-right: 1.5rem;
+        &.is-active {
+          display: none;
+        }
+        @media screen and (min-width: $breakpoint-large) {
+          bottom: 1rem;
+        }
+      }
+    }
+  }
+}

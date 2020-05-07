@@ -1,20 +1,56 @@
 {
-  "name": "orinoco-backend",
+  "name": "orinoco",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"start:api":  "node server",
+    "build:dev": "webpack --config webpack.config.js --mode development",
+    "start:dev": "webpack-dev-server --config webpack.config.js --mode production",
+    "build:prod": "webpack --config webpack.config.js --mode production",
+    "start:prod": "webpack-dev-server --config webpack.config.js --mode development",
+    "sass:watch": "sass --watch src/sass/app.scss dist/app.bundle.css",
+    "eslint": "eslint . --ext .js --ignore-path .gitignore",
+    "eslint:fix": "eslint . --ext .js --fix --ignore-path .gitignore",
+    "test:mocha": "mocha"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joellesenne/oricono.git"
+  },
+  "author": "Joël Lesenne <https://joellesenne.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joellesenne/oricono/issues"
+  },
   "dependencies": {
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^3.0.8",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.8",
     "mongoose-unique-validator": "^2.0.2",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "autoprefixer": "^9.7.6",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "css-loader": "^3.5.3",
+    "cssnano": "^4.1.10",
+    "ejs-loader": "^0.3.6",
+    "eslint": "^6.8.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.2.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "mocha": "^7.1.1",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }

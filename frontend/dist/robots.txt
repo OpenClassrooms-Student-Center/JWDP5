@@ -1,0 +1,6 @@
+# http://tools.seobook.com/robots-txt/
+
+User-agent: *
+Disallow: /static/
+
+sitemap: https://ocr-dw.s3.eu-west-3.amazonaws.com/la-chouette-agence/manifest.json

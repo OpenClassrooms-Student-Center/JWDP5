@@ -1,0 +1,32 @@
+/* COMPONENT MODAL */
+.modal {
+  margin: 2rem auto;
+  width: 90%;
+  padding: 3rem;
+  background-color: $color-modal-bg;
+  box-shadow: $box-shadow-hover;
+  @media screen and (min-width: $breakpoint-medium) {
+    box-shadow: $box-shadow;
+    transform: $transform;
+    transition: all $duration ease-in-out;
+    &:hover {
+      box-shadow: $box-shadow-hover;
+      transform: $transform-hover;
+    }
+  }
+  @media screen and (min-width: $breakpoint-large) {
+    width: 60%;
+  }
+  &__title {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  & p {
+    margin: 0 2rem 1rem;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  &__button {
+    margin: 6rem 0 2rem;
+  }
+}

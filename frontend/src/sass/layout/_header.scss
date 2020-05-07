@@ -1,0 +1,45 @@
+/* LAYOUT HEADER */
+.header {
+  justify-content: center;
+  align-items: center;
+  height: 45rem;
+  background-color: $color-modal-bg;
+  &__image--bg1 {
+    background-image: url(./images/alexander-andrews-lMpoDibrEmY-unsplash.jpg);
+  }
+  &__image--bg2 {
+    background-image: url(./images/jakob-owens-LCiZmVUaEf0-unsplash.jpg);
+  }
+  &__image--bg3 {
+    background-image: url(./images/lucas-favre-4x-67z_TaGo-unsplash.jpg);
+  }
+  &__image--bg4 {
+    background-image: url(./images/kenny-luo-9HYYzOaqW-U-unsplash.jpg);
+  }
+  &__image--bg1,
+  &__image--bg2,
+  &__image--bg3,
+  &__image--bg4 {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  &__banner {
+    padding: 0 3rem;
+    &--title {
+      font-size: 4.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: $color-btn-bg;
+
+      text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+    }
+    &--subtitle {
+      font-size: 3rem;
+      line-height: 1;
+      letter-spacing: -1px;
+      color: $color-base-bg;
+      overflow-y: hidden;
+    }
+  }
+}

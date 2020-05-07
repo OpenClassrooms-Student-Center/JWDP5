@@ -1,0 +1,50 @@
+/* COMPONENT FORM */
+.form {
+  margin: 6rem auto;
+  padding: 3rem;
+  width: 90%;
+  background-color: $color-modal-bg;
+  box-shadow: $box-shadow-hover;
+  @media screen and (min-width: $breakpoint-medium) {
+    box-shadow: $box-shadow;
+    transform: $transform;
+    transition: all $duration ease-in-out;
+    &:hover {
+      box-shadow: $box-shadow-hover;
+      transform: $transform-hover;
+    }
+  }
+  @media screen and (min-width: $breakpoint-large) {
+    width: 60%;
+  }
+  &__info,
+  &__address {
+    margin-bottom: 4rem;
+    &--legend {
+      margin-bottom: 1rem;
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.5rem;
+      line-height: 1.5;
+    }
+    & label {
+      font-size: 2rem;
+      line-height: 1.5;
+    }
+    & input {
+      margin-bottom: 2rem;
+      padding: 2rem;
+      width: 100%;
+      height: 3%;
+      background-color: $color-article-bg;
+      border: 1px inset $color-article-bg;
+      transition: all $duration ease-in-out;
+      &:hover {
+        border: 1px solid $color-header-bg;
+      }
+    }
+  }
+  &__button .btn {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+}

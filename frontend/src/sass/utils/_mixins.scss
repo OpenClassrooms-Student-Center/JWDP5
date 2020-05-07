@@ -1,0 +1,11 @@
+// MIXINS
+// More info : https://www.sitepoint.com/sass-mixins-kickstart-project/
+@mixin breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  } @else {
+    @warn "Couldn't find a breakpoint named `#{$name}`.";
+  }
+}
