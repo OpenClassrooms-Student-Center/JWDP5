@@ -1,0 +1,4 @@
+---------------------------------------------------------------------
+
+    const afficherArticle = `<div class="row"><div class="col-lg-4 col-md-6 mb-4 produits"><div class="card h-100"><a href="produit.html#${produit._id}"><img class="card-img-top" src="${produit.imageURL}"></a><div class="card-body"><h3 class="card-title">${produit.name}</h3><h4>Prix : ${produit.price} €</h4><p  class="card-text">${produit.description}</p><div class="d-flex justify-content-around align-items-end"><button  type="button" id ="ajouter" class="ajouter btn btn-outline-secondary"><i class="fas fa-cart-plus"></i></button><button type="button" class="btn btn-outline-info ml-auto mr-auto">Voir le produit</button><button  type="button" id="retirer" class="retirer btn btn-outline-secondary"><i class="fas fa-minus-square"></i></button></div></div></div></div></div>`;
+    
