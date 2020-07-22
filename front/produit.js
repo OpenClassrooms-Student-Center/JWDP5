@@ -17,6 +17,7 @@ fetch('https://oc-p5-api.herokuapp.com/api/cameras', {
 
         const myDiv = document.createElement('div');            
         myDiv.className = "article col-lg-4 col-md-6 mb-4";        //Div englobant l'ensemble du produit
+        
                                                                     
         const card = document.createElement('div');         
         card.className = "card h-100"

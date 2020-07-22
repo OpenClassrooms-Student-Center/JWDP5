@@ -21,15 +21,16 @@ adress('http://localhost:3000/api/cameras' + '/' + elementId).then(element => { 
 
     // Construction de la page du produit
 
-    const pageProduitOurs = document.getElementById('page-produit__ours--1');
-    const nom = document.getElementById('ours__nom');
+    const pageProduitCameras = document.getElementById('article__camera-1');
+    const nom = document.getElementById('camera-name');
     const prix = document.getElementById('prix');
     const description = document.getElementById('description');
 
     const image = document.createElement('img');
+    image.className = 'img-fluid';
     image.src = element.imageUrl;
     image.innerHTML = ` alt="${element.name}" src="${element.imageUrl}" `;
-    pageProduitOurs.append(image);
+    pageProduitCameras.append(image);
 
     prix.innerHTML = element.price / 100 + "€";
     nom.innerHTML = element.name;
