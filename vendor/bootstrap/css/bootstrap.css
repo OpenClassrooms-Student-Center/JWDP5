@@ -36,6 +36,7 @@
 }
 
 
+
 *,
 *::before,
 *::after {
@@ -78,7 +79,7 @@ h1, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
-h2 {
+#carouselExampleIndicators h2 {
     font-family: 'Galada', cursive;
     color: #ffffff;
     text-shadow: 2px 2px 2px black;
@@ -367,11 +368,11 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
 }
 
 h2, .h2 {
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 
 h3, .h3 {
@@ -10290,5 +10291,13 @@ a.text-dark:hover, a.text-dark:focus {
   h2{
     font-size: 1.3rem;
   }
+  h1{
+    font-size: 1.6rem;
+  }
+}
+
+h1{
+  font-family: 'Sonsie One', cursive;
+  text-shadow: 0 1px 2px black;
 }
 /*# sourceMappingURL=bootstrap.css.map */

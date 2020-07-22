@@ -4,7 +4,7 @@ if (!localStorage.getItem('panier')) {  // Création du panier (appliqué sur ch
 }
 
 // Fonction fetch avec url pour effectuer une requête GET afin de récupérer les données précises
-fetch('http://localhost:3000/api/cameras', {
+fetch('https://oc-p5-api.herokuapp.com/api/cameras', {
     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
 })
 
@@ -16,7 +16,7 @@ fetch('http://localhost:3000/api/cameras', {
     response.forEach(element => {                        //Création contenu HTML pour chaque Produit
 
         const myDiv = document.createElement('div');            
-        myDiv.className = "col-lg-4 col-md-6 mb-4";        //Div englobant l'ensemble du produit
+        myDiv.className = "article col-lg-4 col-md-6 mb-4";        //Div englobant l'ensemble du produit
                                                                     
         const card = document.createElement('div');         
         card.className = "card h-100"
@@ -75,6 +75,30 @@ fetch('http://localhost:3000/api/cameras', {
         btn.append(lien);
 
         allProduits.append(myDiv);
+
+        // On écoute l'événement click 
+        btnAjout.addEventListener('click',function(event){ 
+          nombreArticlePanier ++;     // on ajouter 1 au panier au clique 
+          affichagePanier.innerHTML =  nombreArticlePanier;   // on affiche le nombre d'articles du panier apres l'ajout
+          if (nombreArticlePanier > 1){
+          articlepluriel.innerHTML = 'Articles';
+          }
+          else{
+          articlepluriel.innerHTML = 'Article';
+          };
+          });
+
+          // On écoute l'événement click 
+          btnRetirer.addEventListener('click',function(event){ 
+            nombreArticlePanier --;     // on ajouter 1 au panier au clique 
+            affichagePanier.innerHTML =  nombreArticlePanier;   // on affiche le nombre d'articles du panier apres l'ajout
+            if (nombreArticlePanier > 1){
+            articlepluriel.innerHTML = 'Articles';
+          }
+          else{
+          articlepluriel.innerHTML = 'Article';
+          };
+          });
     });
 });
 
@@ -83,33 +107,6 @@ let nombreArticlePanier =  0;            // variable pour connaître le nombre d
 let affichagePanier = document.getElementById('affichagePanier'); // variable pour afficher le nombre d'artile(s)
 affichagePanier.innerHTML =  nombreArticlePanier ; 
 
-let ajoutPanier = document.getElementsByClassName('ajouter'); // variable associer au bouton + pour l'ajout au panier 
-
-let retirerPanier = document.getElementsByClassName('retirer'); // variable associer au bouton - pour retirer du panier 
 
 let articlepluriel = document.getElementById('articlepluriel');           // variable pour passer Article au pluriel quand il y as plus d'un article
 articlepluriel.innerHTML = 'Article';
-
-// On écoute l'événement click 
-ajoutPanier.addEventListener('click',function(event){ 
-  nombreArticlePanier ++;     // on ajouter 1 au panier au clique 
-  affichagePanier.innerHTML =  nombreArticlePanier;   // on affiche le nombre d'articles du panier apres l'ajout
-  if (nombreArticlePanier > 1){
-  articlepluriel.innerHTML = 'Articles';
-}
-else{
-articlepluriel.innerHTML = 'Article';
-};
-});
-
-// On écoute l'événement click 
-retirerPanier.addEventListener('click',function(event){ 
-  nombreArticlePanier --;     // on ajouter 1 au panier au clique 
-  affichagePanier.innerHTML = nombreArticlePanier;   // on affiche le nombre d'articles du panier apres l'ajout
-  if (nombreArticlePanier > 1){
-  articlepluriel.innerHTML = 'Articles';
-}
-else{
-articlepluriel.innerHTML = 'Article';
-};
-});
