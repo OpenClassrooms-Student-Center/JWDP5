@@ -16,12 +16,12 @@ async function adress(url) {  // fonction async/await. Le mot clef async devant 
 
 
 
-adress('http://localhost:3000/api/cameras' + '/' + elementId).then(element => { // element désigne chaque teddy
+adress('https://oc-p5-api.herokuapp.com/api/cameras' + '/' + elementId).then(element => { // element désigne chaque teddy
     console.log(element)
 
     // Construction de la page du produit
 
-    const pageProduitCameras = document.getElementById('article__camera-1');
+    const pageProduitCameras = document.getElementById('article__camera');
     const nom = document.getElementById('camera-name');
     const prix = document.getElementById('prix');
     const description = document.getElementById('description');
@@ -34,17 +34,17 @@ adress('http://localhost:3000/api/cameras' + '/' + elementId).then(element => { 
 
     prix.innerHTML = element.price / 100 + "€";
     nom.innerHTML = element.name;
-    description.innerHTML = "<strong>Description : </strong>" + "<br>" + element.description + "<br> <br>" + element.description + " " + element.description + "<br> <br>" + element.description;
+    description.innerHTML = "<strong>Description : </strong>" + "<br> <br>" + element.description + "<br>" + element.description + " " + element.description + "<br>";
 
-    const chooselenses = document.getElementById('chooselenses');  // selection couleur
+    const chooselenses = document.getElementById('chooselenses');  // selection lentilles
     console.log(element);
 
-    for (let i = 0; i < element.lenses.length; i++) {     // Boucle pour les couleurs disponibles par article
-        const couleur = element.lenses[i];
+    for (let i = 0; i < element.lenses.length; i++) {     // Boucle pour les lentilles disponibles par article
+        const lentilles = element.lenses[i];
         const mylenses = document.createElement('option');
         chooselenses.append(mylenses);
-        mylenses.textContent = couleur;
-        mylenses.value = couleur;
+        mylenses.textContent = lentilles;
+        mylenses.value = lentilles;
     }
 
 

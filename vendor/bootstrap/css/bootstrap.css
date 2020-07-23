@@ -79,11 +79,7 @@ h1, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
-#carouselExampleIndicators h2 {
-    font-family: 'Galada', cursive;
-    color: #ffffff;
-    text-shadow: 2px 2px 2px black;
-}
+
 
 p {
   margin-top: 0;
@@ -10295,9 +10291,33 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 1.6rem;
   }
 }
-
+#carouselExampleIndicators h2 {
+    font-family: 'Galada', cursive;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px black;
+}
+.panier h2{
+  margin-bottom: 1rem;
+}
 h1{
   font-family: 'Sonsie One', cursive;
   text-shadow: 0 1px 2px black;
 }
+
+#description strong {
+  font-size: 1.2rem ;
+}
+
+#productsContainer a {
+  text-decoration: none;
+}
+
+#productsContainer button a:hover{
+  color: white;
+}
+
+.card-body{
+  background-color: #eeeeee;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

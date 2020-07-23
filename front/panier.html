@@ -61,114 +61,116 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container mt-4 pt-5">
+  <main class="mt-5 pt-5 mb-1" >
 
-    <div class="row">
 
-      <!-- .col-lg-2 /Nav des types d'appareil -->
-      <div class="col-lg-2">
+    <div class="container mb-4 border rounded ">
 
-        <h2 class="my-4">Appareils vintages</h2>
-        <div class="list-group ">
-          <a href="#" class="p-0 list-group-item">Connexion</a>
-          <a href="#" class=" p-0 list-group-item">Créér un compte</a>
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="table-responsive ">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col"> </th>
+                  <th scope="col">Article</th>
+                  <th scope="col">Lentille</th>
+                  <th scope="col" class="text-center">Quantité</th>
+                  <th scope="col" class="text-right">Prix</th>
+                  <th scope="col"> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="md-d-flex">
+                  <td><img src="../images/vcam_1.jpg" width="100"/> </td>
+                  <td>Nom</td>
+                  <td>lentilles 25mm</td>
+                  <td class="text-center"> + 5 - </td>
+                  <td class="text-right">124,90 €</td>
+                  <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                </tr>
+                <tr>
+                  <td><img src="../images/vcam_2.jpg" width="100" /> </td>
+                  <td>Nom</td>
+                  <td>lentilles 25mm</td>
+                  <td class="text-center"> + 1 - </td>
+                  <td class="text-right">33,90 €</td>
+                  <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                </tr>
+                <tr>
+                  <td><img src="../images/vcam_3.jpg" width="100" /> </td>
+                  <td>Nom</td>
+                  <td>lentilles 25mm</td>
+                  <td class="text-center"> + 2 - </td>
+                  <td class="text-right">70,00 €</td>
+                  <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Sous-Total</td>
+                  <td class="text-right">255,90 €</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Livraison</td>
+                  <td class="text-right">6,90 €</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><strong>Total</strong></td>
+                  <td class="text-right"><strong>346,90 €</strong></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-      <!-- /.col-lg-2 -->
-
-      <!-- Carousel col-lg-9 -->
-      <div id="carouselExampleIndicators" class="carousel col-lg-9 slide my-4 carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active d-block">
-            <img class="d-block img-fluid" src="../images/Appareil-photo-compact.png" alt="First slide">
-            <div class="carousel-caption d-none d-block ">
-              <h2>Découvrez notre collection</h2>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block img-fluid" src="../images/Appareil-photo-vintage-2.png" alt="Second slide">
-            <div class="carousel-caption d-none d-block">
-              <h2>Pour les proffesionnelles</h2>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block img-fluid" src="../images/Appareils-photos-vintage.png" alt="Third slide">
-            <div class="carousel-caption d-none d-block">
-              <h2>Ou les collectionneurs</h2>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Précédent</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Suivant</span>
-        </a>
-      </div>
-      <!-- Carousel /.col-lg-9 -->
-
-
-      <!-- .col-lg-9 /Liste de tout les produits de la page-->
-      <main>
-        <div class="page-produit__ours">
-
-          <div class="bloc1">
-            <div id="page-produit__ours--1">
-            </div>
-            <div id="page-produit__ours--2">
-              <div id="details-page">
-                <p id="ours__nom"></p>
-                <p id="prix"></P>
-                <form action="#" id="form-color">
-                  <div>
-                    <div class="selection">
-                      <label for="choosecolor">Choisissez votre couleur : </label>
-                      <select name="colors" id="chooseColor">
-                      </select>
-                    </div>
-                    <div id="panier"></div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="bloc2">
-            <div>
-              <p id="description"></p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-lg-9">
-          <div id="article__camera-1"></div>
-          <div class="card mt-4">
-            <img id="imgURL" class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-            <div class="card-body">
-              <h3 id="name" class="card-title">Name</h3>
-              <p id="description" class="card-text">Description :Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur
-                praesentium animi perspiciatis molestias iure, ducimus!</p>
-              <h4 id="price">Price</h4>
-              <button type="button" class="col-6 col-md-4 col-lg-3 pull-right float-right btn btn-primary m-2">Ajouter au
-                panier</button>
-            </div>
-          </div>
-          <!-- /.card -->
-        </div>
-      </main>
-      <!-- /.col-lg-9 -->
-
+      </div>  
     </div>
-    <!-- /.row -->
 
-  </div>
+    <section class="container">
+      <div class="row mb-3">
+        <form class="col-lg-12 border rounded pt-3">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email *</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Addresse *</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="124 Avenue Victor Hugo">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Addresse 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartement, studio ...">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">Ville *</label>
+              <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Code Postale *</label>
+              <input type="text" class="form-control" id="inputZip">
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary mb-3">Valider la commande</button>
+          </div>
+        </form>
+      </div >
+    </section>
+
+  </main>
   <!-- /.container -->
 
   <!-- Footer -->
