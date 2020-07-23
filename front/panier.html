@@ -63,79 +63,57 @@
   <!-- Page Content -->
   <main class="mt-5 pt-5 mb-1" >
 
-
+    <!--Container-->
     <div class="container mb-4 border rounded ">
 
-      <div class="row">
-        <div class="col-lg-12 col-sm-12">
-          <div class="table-responsive ">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col"> </th>
-                  <th scope="col">Article</th>
-                  <th scope="col">Lentille</th>
-                  <th scope="col" class="text-center">Quantité</th>
-                  <th scope="col" class="text-right">Prix</th>
-                  <th scope="col"> </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="md-d-flex">
-                  <td><img src="../images/vcam_1.jpg" width="100"/> </td>
-                  <td>Nom</td>
-                  <td>lentilles 25mm</td>
-                  <td class="text-center"> + 5 - </td>
-                  <td class="text-right">124,90 €</td>
-                  <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                </tr>
-                <tr>
-                  <td><img src="../images/vcam_2.jpg" width="100" /> </td>
-                  <td>Nom</td>
-                  <td>lentilles 25mm</td>
-                  <td class="text-center"> + 1 - </td>
-                  <td class="text-right">33,90 €</td>
-                  <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                </tr>
-                <tr>
-                  <td><img src="../images/vcam_3.jpg" width="100" /> </td>
-                  <td>Nom</td>
-                  <td>lentilles 25mm</td>
-                  <td class="text-center"> + 2 - </td>
-                  <td class="text-right">70,00 €</td>
-                  <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>Sous-Total</td>
-                  <td class="text-right">255,90 €</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>Livraison</td>
-                  <td class="text-right">6,90 €</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><strong>Total</strong></td>
-                  <td class="text-right"><strong>346,90 €</strong></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+      <div class="row panier">
+
+        <!-- col-lg-9 -->
+        <div class="col-lg-9 mt-3 mb-3">
+
+          <h2 class="text-center">MON PANIER</h2><hr>
+
+          <div class=" cartes d-flex">
+            <p class="col-lg-6"><img class="img-fluid" src="../images/vcam_1.jpg" width="100%"/> </p>
+            <div class="infosArticle col-lg-6 d-flex flex-column justify-content-around">
+              <p >Zurss 50S</p>
+              <p >lentille : 35mm 1.4</p>
+              <p > + 5 - </p>
+              <p class="font-weight-bold"> Sous-Total &emsp; 124,90 €</p>
+              <p class="d-flex align-items-center"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button> </p>
+            </div>
+          </div><hr>
+
+          
+
+        </div>
+        <!-- /col-lg-9 -->
+
+        <!-- col-lg-2 -->
+        <div id="totalAPayer" class=" col-lg-2 d-flex m-auto p-1 flex-column border rounded">
+          <div class="text-right d-flex justify-content-around">
+            <p>Sous-Total</p>
+            <p>255,90 €</p>
+          </div>
+          <div class="text-right d-flex justify-content-around">
+            <p>Livraison </p>
+            <p>6,90 €</p>
+          </div>
+          <div class="text-right d-flex justify-content-around font-weight-bold">
+            <p> Total </p>
+            <p>346,90 €</p>
           </div>
         </div>
-      </div>  
-    </div>
+        <!-- /col-lg-2 -->
 
+
+      </div>
+
+    </div>  
+    <!--/Container-->
+
+
+    <!--Container-->
     <section class="container">
       <div class="row mb-3">
         <form class="col-lg-12 border rounded pt-3">
@@ -169,9 +147,11 @@
         </form>
       </div >
     </section>
+    <!--/Container-->
+
 
   </main>
-  <!-- /.container -->
+  <!-- pageContent -->
 
   <!-- Footer -->
   <footer class="py-4 bg-dark ">

@@ -10291,6 +10291,16 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 1.6rem;
   }
 }
+
+@media (max-width: 434px){
+  .cartes{
+    display: flex;
+    flex-direction: column;
+  }
+  .cartes img{
+    width: 100%;
+  }
+}
 #carouselExampleIndicators h2 {
     font-family: 'Galada', cursive;
     color: #ffffff;
