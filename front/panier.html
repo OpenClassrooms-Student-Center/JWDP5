@@ -61,91 +61,99 @@
   </nav>
 
   <!-- Page Content -->
-  <main class="mt-5 pt-5 mb-1" >
+  <main class="mt-5 pt-5 mb-1 panier" >
 
     <!--Container-->
-    <div class="container mb-4 border rounded ">
-
-      <div class="row panier">
-
-        <!-- col-lg-9 -->
-        <div class="col-lg-9 mt-3 mb-3">
-
-          <h2 class="text-center">MON PANIER</h2><hr>
-
-          <div class=" cartes d-flex">
-            <p class="col-lg-6"><img class="img-fluid" src="../images/vcam_1.jpg" width="100%"/> </p>
-            <div class="infosArticle col-lg-6 d-flex flex-column justify-content-around">
-              <p >Zurss 50S</p>
-              <p >lentille : 35mm 1.4</p>
-              <p > + 5 - </p>
-              <p class="font-weight-bold"> Sous-Total &emsp; 124,90 €</p>
-              <p class="d-flex align-items-center"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button> </p>
-            </div>
-          </div><hr>
-
-          
-
+    <div id="productsContainer" class="container mb-4 border rounded">
+      
+      <div class="etatPanier"></div><hr> <!--Tite h2-->
+       
+      <!--row class Panier-->
+      <div class="row soldeEtArticle">
+        
+        <div id="corpsPanier">
         </div>
-        <!-- /col-lg-9 -->
 
-        <!-- col-lg-2 -->
-        <div id="totalAPayer" class=" col-lg-2 d-flex m-auto p-1 flex-column border rounded">
-          <div class="text-right d-flex justify-content-around">
-            <p>Sous-Total</p>
-            <p>255,90 €</p>
+        <div id="prixTotal" class="prixTotal font-weight-bold col-lg-2 d-flex p-1 justify-content-end  flex-column  ">
+          <!--Somme total à payer-->
+          <div class=" mb-5 ">
+
+            <div class="text-right d-flex justify-content-between">
+              <h5>Sous-Total</h5>
+              <p id="prixSousTotal"></p>
+            </div>
+            <hr>
+
+            <div class="text-right d-flex justify-content-between">
+              <p>Livraison </p>
+              <p>9.99 €</p>
+            </div>
+            <hr>
+
+            <div class="text-right d-flex justify-content-between">
+              <h5> Total </h5>
+              <p id="Total"></p>
+            </div>
+
           </div>
-          <div class="text-right d-flex justify-content-around">
-            <p>Livraison </p>
-            <p>6,90 €</p>
-          </div>
-          <div class="text-right d-flex justify-content-around font-weight-bold">
-            <p> Total </p>
-            <p>346,90 €</p>
-          </div>
+
         </div>
         <!-- /col-lg-2 -->
-
+        
+        
 
       </div>
+      <!--/row class Panier-->
 
     </div>  
     <!--/Container-->
 
 
     <!--Container-->
-    <section class="container">
-      <div class="row mb-3">
+    <section class="container formulaire">
+
+      <div class="row mb-3">           <!--Formulaire de commande-->
+
         <form class="col-lg-12 border rounded pt-3">
+
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Email *</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              <label for="name">Nom *</label>
+              <input name="lastname" id="nom" type="text" class="form-control" id="lastname" placeholder="Votre nom" required="required">
             </div>
           </div>
+          
           <div class="form-group">
-            <label for="inputAddress">Addresse *</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="124 Avenue Victor Hugo">
+            <label for="firstname">Prénom *</label>
+            <input name="firstname" id="prenom" type="text" class="form-control" id="firstname" placeholder="Votre Prénom" required="required">
           </div>
+
           <div class="form-group">
-            <label for="inputAddress2">Addresse 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartement, studio ...">
+            <label for="email">Email *</label>
+            <input type="email" name="email" id="email" class="form-control" id="email" placeholder="orinoco@gmail.com" required="required">
           </div>
+
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputCity">Ville *</label>
-              <input type="text" class="form-control" id="inputCity">
+              <label for="adresse">Addresse *</label>
+              <input type="text" name="adresse" id="adresse" class="form-control" id="adresse" placeholder="278 Rue Simone Veil" required="required">
             </div>
             <div class="form-group col-md-2">
-              <label for="inputZip">Code Postale *</label>
-              <input type="text" class="form-control" id="inputZip">
+              <label for="city">Ville *</label>
+              <input type="text" name="city" id="ville" class="form-control" id="city" placeholder="votre ville ..." required="required">
             </div>
           </div>
+
           <div class="d-flex justify-content-end">
-          <button type="submit" class="btn btn-primary mb-3">Valider la commande</button>
+            <button type="submit" id="valider"  onclick="achat()" class="btn btn-primary mb-3">
+              Valider la commande
+            </button>
           </div>
+
         </form>
+
       </div >
+
     </section>
     <!--/Container-->
 
@@ -164,8 +172,8 @@
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="produit-unique.js"></script>
-  <script src="script.js"></script>
+  <script src="panier.js"></script>
+  <script src="articlepluriel.js"></script>
 
 </body>
 

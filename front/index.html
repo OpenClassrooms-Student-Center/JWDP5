@@ -5,8 +5,8 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Venez découvrir notre collection d'appareils photos vintage.">
+  <meta name="author" content="Nathan trijaud">
 
   <title>Page d'accueil orinoco - Appareils photos vintage</title>
 
@@ -51,7 +51,7 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../front/panier.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&ensp;<span id="articlepluriel"></span> <span id="affichagePanier" ></span></a>
+            <a class="nav-link " href="../front/panier.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&ensp;<span class="totalQté" id="articlepluriel"></span> <span id="affichagePanier" ></span></a>
           </li>
         </ul>
       </div>
@@ -71,6 +71,7 @@
           <a href="#" class=" list-group-item">Mon compte</a>
           <a href="#" class=" list-group-item">Inscription</a>
         </div>
+
       </div>
       <!-- /.col-lg-2 -->
 
@@ -116,13 +117,14 @@
 
 
     <!-- .row -->
-    <div class="row">
+    <main class="row">
+      
       <!-- .col-lg-9 /Liste de tout les produits de la page-->
-      <main class="d-flex flex-wrap" id="productsContainer">
-      </main>
+      <div class="d-flex flex-wrap" id="productsContainer">
+      </div>
       <!-- /.col-lg-9 -->
 
-    </div>
+    </main>
     <!-- /.row -->
 
   </div>
@@ -139,8 +141,9 @@
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js" ></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js" ></script>
-  <script src="produit.js"></script>
   <script src="script.js"></script>
+  <script src="articlepluriel.js"></script>
+
 
 </body>
 

@@ -10330,4 +10330,8 @@ h1{
   background-color: #eeeeee;
 }
 
+#confirmation h2 i{
+  color: rgb(2, 192, 2);
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

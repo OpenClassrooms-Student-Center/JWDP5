@@ -53,7 +53,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../front/panier.html"><i class="fa fa-shopping-cart"
-                aria-hidden="true"></i>&ensp;<span id="articlepluriel"></span> <span id="affichagePanier"></span></a>
+                aria-hidden="true"></i>&ensp;<span class="totalQté" id="articlepluriel"></span> <span id="affichagePanier"></span></a>
           </li>
         </ul>
       </div>
@@ -94,35 +94,13 @@
                       <select name="lenses" id="chooselenses">
                       </select>
                     </div><hr>
-                    <div id="panier" class="d-flex align-items-center"></div>
+                    <div id="panier" class="d-flex align-items-center"></div> <!-- Bouton d'ajout de larticle au panier généré JS-->
                   </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
-    <!--     <div class="col-lg-9">
-          <div id="article__camera-1"></div>
-          <div class="card mt-4">
-            <img id="imgURL" class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-            <div class="card-body">
-              <h3 id="name" class="card-title">Name</h3>
-              <p id="description" class="card-text">Description :Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
-                Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi
-                pariatur
-                praesentium animi perspiciatis molestias iure, ducimus!</p>
-              <h4 id="price">Price</h4>
-              <button type="button" class="col-6 col-md-4 col-lg-3 pull-right float-right btn btn-primary m-2">Ajouter
-                au
-                panier</button>
-            </div>
-          </div>                
-
-
-          
-        </div> -->
-      <!-- /.col-lg-9 -->
 
     </div>
     <!-- /.row -->
@@ -142,7 +120,7 @@
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="produit-unique.js"></script>
-  <script src="script.js"></script>
+  <script src="articlepluriel.js" ></script>
 
 </body>
 
