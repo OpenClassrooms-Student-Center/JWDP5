@@ -55,7 +55,7 @@ fetch('http://localhost:3000/api/cameras', {              // Fonction fetch pour
         myDivEnfantB.append(btn);
 
         lien.appendChild(link);  
-        lien.href = "../front/produit.html?id=" + element._id;  // lien menant vers la page du produit grâce à son _id
+        lien.href = "front/produit.html?id=" + element._id;  // lien menant vers la page du produit grâce à son _id
         btn.append(lien);
 
         allProduits.append(myDiv);

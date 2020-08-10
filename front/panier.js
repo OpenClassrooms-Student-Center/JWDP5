@@ -256,7 +256,7 @@ if (!panierAjout.length) {      // Si panier vide :
                 localStorage.setItem("orderId", JSON.stringify(data.orderId));      //Enregistrement des infos dans localStorage pour la page confirmation de commande
                 localStorage.setItem("firstName", JSON.stringify(data.contact.firstName));
                 localStorage.setItem("lastName", JSON.stringify(data.contact.lastName));
-                window.location.href = "./confirmation-de-commande.html";       // Window.location utilisé pour charger la page confirmation 
+                window.location.href = "confirmation-de-commande.html";       // Window.location utilisé pour charger la page confirmation 
                 console.log(data)
                 alert('Validation de votre commande !');
             }

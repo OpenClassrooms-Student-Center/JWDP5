@@ -88,7 +88,7 @@ adress('http://localhost:3000/api/cameras' + '/' + elementId)
 
         localStorage.setItem('panier', JSON.stringify(panierAjout));
 
-        window.location.href = './panier.html'
+        window.location.href = 'panier.html'
 
     });
     
