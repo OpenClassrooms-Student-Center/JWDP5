@@ -1,17 +1,19 @@
 if (!localStorage.getItem('panier')) {  // Création du panier (appliqué sur chaque page js)
     localStorage.setItem('panier', JSON.stringify([]))  
-}
+};
+const panierAjout = JSON.parse(localStorage.getItem('panier')); // Récupération et affichage des éléments depuis le localSorage
+
 
 fetch('http://localhost:3000/api/cameras', {              // Fonction fetch pour récupérer les données avec l'url
-    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
-})                                                                          
+    method: 'GET' , headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+})                                                                      
 
 .then(response => response.json())         // L'appel de then() déclenche l'objet Promise
 .then(response => {
     console.log(response);
     
     const allProduits = document.getElementById('productsContainer'); //Création du contenu HTML pour chaque Produit
-    response.forEach(element => {                                   // forEach pour executer la fonction sur l'ensemble des elements du panier
+    response.forEach(element => {                                   // forEach pour executer la fonction sur l'ensemble des elements
 
         const myDiv = document.createElement('div');            
         myDiv.className = "article col-lg-4 col-md-6 mb-4";        //Div englobant l'ensemble du produit
@@ -59,4 +61,8 @@ fetch('http://localhost:3000/api/cameras', {              // Fonction fetch pour
         allProduits.append(myDiv);
         
     });
-});
+})
+.catch ((error) =>{
+    alert ('Désolé le serveur ne répond pas ! Réessayez ultérieurement.');
+})
+;

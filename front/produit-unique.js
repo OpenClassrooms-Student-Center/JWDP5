@@ -10,13 +10,13 @@ const Params = new URLSearchParams(url.search);  // récupère params via url.se
 const elementId = Params.get('id'); // récupération de l'id du produit
 
 async function adress(url) {  
-    let result = await fetch(url);         
+    let result = await fetch(url);            
     return result.json();
 };
 
 
 
-adress('https://oc-p5-api.herokuapp.com/api/cameras' + '/' + elementId)
+adress('http://localhost:3000/api/cameras' + '/' + elementId)
     .then(element => { 
     console.log(element);                                                                   // element désigne chaque camera
 
@@ -55,9 +55,8 @@ adress('https://oc-p5-api.herokuapp.com/api/cameras' + '/' + elementId)
     btnPanier.innerHTML = 'Ajouter au panier';
     panier.append(btnPanier);
 
-   
-
     // l'objet Event fournit une multitude d'informations sur l'événement actuellement déclenché, ici il se récupère dans l'argument "ajout"
+
     btnPanier.addEventListener('click', function (ajout) {
 
         ajout.preventDefault();         // Annule l'action par defaut du bouton .         
@@ -69,7 +68,6 @@ adress('https://oc-p5-api.herokuapp.com/api/cameras' + '/' + elementId)
         // La méthode find() permet de récupérer dans le tableau le premier produit qui correspond au id et a la lentille sélectionnée
         let elementDuPanier = panierAjout.find(camera => {
             return camera.elementId == elementId && camera.elementlenses == elementlenses;
-            return camera.elementImg == elementImg
         });
         console.log(elementDuPanier);
 
@@ -89,24 +87,15 @@ adress('https://oc-p5-api.herokuapp.com/api/cameras' + '/' + elementId)
         }
 
         localStorage.setItem('panier', JSON.stringify(panierAjout));
-        ajout.target.innerHTML = 'Article ajouté'; // Target modifie le contenu de l'élément qui a été déclenché/cliqué
 
         window.location.href = './panier.html'
 
     });
-
-
-    /*function onLoadCartNumbers() { // Affiche le nombre d'article dans le panier sur chaque page
-
-        const panierAjout = JSON.parse(localStorage.getItem('panier'));
-
-        if (panierAjout) {
-            document.querySelector('.menuPanier span').textContent = panierAjout;
-        }
-    }*/
-
-    //onLoadCartNumbers();
+    
+    
+}
+)
+.catch ((error) =>{
+    alert ('Désolé le serveur ne répond pas ! Réessayez ultérieurement.');
 });
-
-
 

@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Page d'accueil orinoco - Appareils photos vintage</title>
+  <title>Page panier orinoco - liste des appareils sélectionné</title>
 
   <!--FontAwesome-->
   <script src="https://kit.fontawesome.com/e517cdf63c.js" crossorigin="anonymous"></script>
@@ -64,7 +64,7 @@
   <main class="mt-5 pt-5 mb-1 panier" >
 
     <!--Container-->
-    <div id="productsContainer" class="container mb-4 border rounded">
+    <section id="productsContainer" class="container mb-4 border rounded">
       
       <div class="etatPanier"></div><hr> <!--Tite h2-->
        
@@ -100,12 +100,10 @@
         </div>
         <!-- /col-lg-2 -->
         
-        
-
       </div>
       <!--/row class Panier-->
 
-    </div>  
+    </section>  
     <!--/Container-->
 
 
@@ -118,29 +116,29 @@
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="name">Nom *</label>
-              <input name="lastname" id="nom" type="text" class="form-control" id="lastname" placeholder="Votre nom" required="required">
+              <label for="name">Nom </label>
+              <input type="text" name="lastname" id="nom"  class="form-control"  placeholder="Votre nom" required="required"><span id="formatInfosNom"></span>
             </div>
           </div>
           
           <div class="form-group">
-            <label for="firstname">Prénom *</label>
-            <input name="firstname" id="prenom" type="text" class="form-control" id="firstname" placeholder="Votre Prénom" required="required">
+            <label for="firstname">Prénom </label>
+            <input type="text" name="firstname" id="prenom"  class="form-control"  placeholder="Votre Prénom" required="required"><span id="formatInfosPrenom"></span>
           </div>
 
           <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" name="email" id="email" class="form-control" id="email" placeholder="orinoco@gmail.com" required="required">
+            <label for="email">Email </label>
+            <input type="email" name="email" id="email" class="form-control"  placeholder="orinoco@gmail.com" required="required"><span id="formatinfosMail"></span>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="adresse">Addresse *</label>
-              <input type="text" name="adresse" id="adresse" class="form-control" id="adresse" placeholder="278 Rue Simone Veil" required="required">
+              <label for="adresse">Addresse </label>
+              <input type="text" name="adresse" id="adresse" class="form-control"  placeholder="278 Rue Simone Veil" required="required"><span id="formatInfosAdresse"></span>
             </div>
             <div class="form-group col-md-2">
-              <label for="city">Ville *</label>
-              <input type="text" name="city" id="ville" class="form-control" id="city" placeholder="votre ville ..." required="required">
+              <label for="city">Ville </label>
+              <input type="text" name="city" id="ville" class="form-control"  placeholder="votre ville" required="required"><span id="formatInfosVille"></span>
             </div>
           </div>
 

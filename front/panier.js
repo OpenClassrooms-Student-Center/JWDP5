@@ -6,9 +6,9 @@ if (!localStorage.getItem('panier')) {
 
 const panierAjout = JSON.parse(localStorage.getItem('panier')); // Récupération et affichage des éléments depuis le localSorage
 
-let bigtotal = 0;           // Sous total général de l'ensemble des articles avant l'ajout des frais de port
+let bigtotal = 0;           // Sous total général de l'ensemble des articles avant l'ajout des frais 
 
-let sousTotalPanier = document.getElementById('prixSousTotal');     // Récupération de la l'id prixSousTotal pour le prix global des articles sans les frais
+let sousTotalPanier = document.getElementById('prixSousTotal');     // Récupération de la l'id prixSousTotal pour le afficherprix global des articles sans les frais
 let totalPanier = document.getElementById('Total');                 // Récupération de la l'id Total pour le prix net à payer
 
 const panierUtilisateur = document.querySelector('.etatPanier');      // Récupération de la classe permettant de gérer l'etat du panier
@@ -32,7 +32,8 @@ if (!panierAjout.length) {      // Si panier vide :
 
     panierUtilisateurTitre.textContent = "Finalisez la commande !";     // Le titre <h2> sera :
 
-    for (let i = 0; i < panierAjout.length; i++) {                  // Pour obtenir les paires clé/valeur du panier en localStorage
+    for (let i = 0; i < panierAjout.length; i++) 
+    {                  // Pour obtenir les paires clé/valeur du panier en localStorage
         
     const articleDansPanier = panierAjout[i];
 
@@ -44,8 +45,8 @@ if (!panierAjout.length) {      // Si panier vide :
     const elementPrice = articleDansPanier.elementPrice / 100;
     const soustotal = elementPrice * elementQuantity;
 
-    panierAjout.forEach(article => {
-        if ( article.elementId === elementId){     
+    panierAjout.forEach(article => {                // Pour l'ensemble des elements du panier on va vérifier si  
+        if ( article.elementId === elementId && article.elementlenses === elementlenses){     
             bigtotal += soustotal;
         }
         console.log(bigtotal);
@@ -145,18 +146,129 @@ if (!panierAjout.length) {      // Si panier vide :
         document.location.reload(true) // La méthode location.reload recharge la page, équivalent au clic sur le bouton Actualiser la page du navigateur
     });
 
-    sousTotalPanier.textContent = bigtotal + '.00 €';
+    sousTotalPanier.textContent = bigtotal + '.00 €';       // Le sous total du panier correspond au bigtotal
 
-    totalPanier.textContent = bigtotal + 9.99 + ' €';
+    let montantTotal = bigtotal + 9.99;
 
-    panierAjout.forEach(article => {
-        if ( article.elementId === elementId){     
-            bigtotal == soustotal;
-        }
-        console.log(bigtotal);
-    });
-        
+    totalPanier.textContent = montantTotal + ' €';       //Le total du panier correspond au bigtotal et les frais de livraisons
+    
+    localStorage.setItem('prixTotal', montantTotal);    //Enregistrement du prix total dans le localStorage
+    
     };
+
+    checkPanier = () => {
+        if (panierAjout > 0) { // Si panier il y a au moins un produit
+            panierAjout.forEach(produit => { // Chaque produit est envoyés vers l'Api
+                products.push(produit.elementId); // Insertion des produits dans le tableau products envoyé à l'Api
+            });
+            console.log(products);
+            return true;
+        } else {
+            console.log('Panier vide');
+            return false;
+        };
+    };
+
+
+    // Partie formulaire
+
+    //Récupération des informations des inputs
+
+    let nomInput = document.getElementById("nom");
+    let prenomInput = document.getElementById("prenom");
+    let emailInput = document.getElementById("email");
+    let adresseInput = document.getElementById("adresse");
+    let villeInput = document.getElementById("ville");
+
+    let formatInfosNom = document.getElementById("formatInfosNom");
+    let formatInfosPrenom = document.getElementById("formatInfosPrenom");
+    let formatInfosVille = document.getElementById("formatInfosVille");
+    let formatInfosTest = /^[a-zA-Z ,.'-]+$/;
+
+    let formatInfosMail = document.getElementById('formatinfosMail');
+    let FormatMailValid = /^[a-z0-9._-]+@[a-z0-9.-]{2,}[.][a-z]{2,3}$/;
+
+    let formatInfosAdresse = document.getElementById('formatInfosAdresse');
+    let formatAdresseValide = /[0-9a-zA-Z]{1,3}[a-z ,.'-]+$/;
+
+    const btnValider = document.getElementById('valider');
+    console.log(btnValider);
+
+    let products = [];      // informations necessaires pour la confirmation de commande
+    let contact;
+    
+    btnValider.addEventListener('click', function (event) {  
+    
+        event.preventDefault();
+
+        if (formatInfosTest.test(nomInput.value) == false){             // Vérification de la validité de chaque elements du formulaire
+            formatInfosNom.textContent = "Format de votre nom incorrect";
+            formatInfosNom.style.color = 'red';
+            return event.preventDefault();
+        }
+        else if (formatInfosTest.test(prenomInput.value) == false){
+            formatInfosPrenom.textContent = "Format de votre prénom incorrect";
+            formatInfosPrenom.style.color = 'red';
+            return event.preventDefault();
+        }
+        else if (formatInfosTest.test(villeInput.value) == false){
+            formatInfosVille.textContent = "Format de votre Ville incorrect";
+            formatInfosVille.style.color = 'red';
+            return event.preventDefault();
+        }
+        else if (FormatMailValid.test(emailInput.value) == false){
+            formatInfosMail.textContent = "Format de votre email incorrect";
+            formatInfosMail.style.color = 'red';
+            return event.preventDefault();
+        }
+        else if (formatAdresseValide.test(adresseInput.value) == false){
+            formatInfosAdresse.textContent = "Format de votre adresse incorrect";
+            formatInfosAdresse.style.color = 'red';
+            return event.preventDefault();
+        }
+        contact = {
+            firstName: nomInput.value,
+            lastName: prenomInput.value,
+            address: adresseInput.value,
+            city: villeInput.value,
+            email: emailInput.value
+        };
+
+        donneesAttendu({contact: contact, products: products}); // Appel de la fonction
+
+    });
+
     
 
+    const donneesAttendu = async function (data){
+
+        try{        //instruction permettant de tester un bloc de code pour les erreurs     
+            
+            let response = await fetch (apiUrl + "order", {     //fetch pour envoyer les infos au serveurs avec POST
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'          // Indique quel type de données vont être envoyées
+                },
+                body: JSON.stringify(data)                      // converti la valuer Javascript en chaîne JSON.
+            })
+            if(response.ok){                            // Si aucun problémes rencontré alors:
+                let data = await response.json();       // Attendre la reponse au format JSON
+                localStorage.setItem("orderId", JSON.stringify(data.orderId));      //Enregistrement des infos dans localStorage pour la page confirmation de commande
+                localStorage.setItem("firstName", JSON.stringify(data.contact.firstName));
+                localStorage.setItem("lastName", JSON.stringify(data.contact.lastName));
+                window.location.href = "./confirmation-de-commande.html";       // Window.location utilisé pour charger la page confirmation 
+                console.log(data)
+                alert('Validation de votre commande !');
+            }
+            else{                                       // Sinon renvoyer un message d'erreur dans la console
+                console.error('Retour du serveur :', response.status)
+                alert('Retour du serveur :'+ response.status);
+            }
+        }
+        catch (erreur){         //instruction permettant de gérer l'erreur.
+           alert ('Désolé le serveur ne répond pas ! Réessayez ultérieurement.')
+        }
+    };
+    
 };
+    

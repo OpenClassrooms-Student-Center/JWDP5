@@ -1,24 +1,45 @@
-const url = new URL(window.location.href);// Cette objet retourne l'url de la page actuel
-const Params = new URLSearchParams(url.search);  // récupère params via url.search (doc.dev-moz)
+document.querySelector('footer').className += 'fixed-bottom';       // On fixe le footer en bas
 
-const orderId = Params.get("orderId");
-const orderName = Params.get("nom");
-const orderFirstName = Params.get("prenom");
-const orderTotal = Params.get("bigTotal");
+const montantTotal = JSON.parse(localStorage.getItem('prixTotal')); // Récupération du prix total
+const orderId = JSON.parse(localStorage.getItem('orderId')); // Récupération du prix total
+const nom = JSON.parse(localStorage.getItem('firstName')); // Récupération du prix total
+const prenom = JSON.parse(localStorage.getItem('lastName')); // Récupération du prix total
 
 const confirmation = document.getElementById('confirmation');
 
-const responseMessage = document.createElement('span');
-const thanksMessage = document.createElement('p');
-thanksMessage.innerHTML = `Merci pour votre commande cher ${orderName} ${orderFirstName} !`;
-const totalMessage = document.createElement('p');
-totalMessage.innerHTML = `Le montant de votre commande est ${orderTotal},00€`;
-const numeroCommande = document.createElement('p');
-numeroCommande.innerHTML = `Votre numéro de commande est : ${orderId} ` ;
+const titreConfirmation = document.createElement('h2');
+titreConfirmation.className = 'display-5 m-3';
+titreConfirmation.innerHTML = 'Confirmation de commande ';
+confirmation.append(titreConfirmation);
 
-confirmation.append(responseMessage);
+const imgValidation = document.createElement ('i');          //image de validation
+imgValidation.className = "fas fa-check";
+titreConfirmation.append(imgValidation);
+
+const thanksMessage = document.createElement('p');
+thanksMessage.innerHTML = nom + " " + prenom + " " +  `toute l'équipe vous remercie pour votre commande!`;
 confirmation.append(thanksMessage);
+
+const totalMessage = document.createElement('p');
+totalMessage.innerHTML = "Le montant de votre commande est de " + montantTotal + "€";
 confirmation.append(totalMessage);
+
+
+const numeroCommande = document.createElement('p');
+numeroCommande.innerHTML = "Votre numéro de commande est le : " + orderId ;
 confirmation.append(numeroCommande);
 
-localStorage.clear(); // Vide le localStorage à la fin de la commande
+const retourAccueil = document.createElement ('button');
+retourAccueil.className = 'mb-4 btn btn-success';
+retourAccueil.innerHTML = "Retour à l'accueil";
+confirmation.append(retourAccueil);
+
+
+retourAccueil.addEventListener('click', function () {      //Evenement click sur le bouton de retour a l'acceuil
+    localStorage.clear();                       // Vide le localStorage à la fin de la commande
+    window.location.href = "./index.html";      
+});
+
+
+
+
