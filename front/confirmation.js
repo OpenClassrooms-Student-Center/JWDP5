@@ -37,7 +37,7 @@ confirmation.append(retourAccueil);
 
 retourAccueil.addEventListener('click', function () {      //Evenement click sur le bouton de retour a l'acceuil
     localStorage.clear();                       // Vide le localStorage à la fin de la commande
-    window.location.href = "./index.html";      
+    window.location.href = "../index.html";      
 });
 
 
