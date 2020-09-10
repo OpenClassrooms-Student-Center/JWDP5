@@ -25,7 +25,7 @@ function addClickListenerToButton() { //Fonction qui vient ajouter un eventliste
     buttons.forEach(button => { // pour chaque bouton on vient ajouter l'eventListener qui nous redirigera vers la page du produit grâce à l'ID produit.
         button.addEventListener('click', (e) => {
             const id = e.target.getAttribute('data-id');
-            const redirect = `produits.html`;
+            const redirect = `produit.html`;
             location.assign(redirect + `?id=${id}`);
         })
     })

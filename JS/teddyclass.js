@@ -14,19 +14,4 @@ class Teddy { // création de la classe teddy
                 <button id="see__product" class="details product__details btn" data-id="${this.id}"> Voir le produit</button>`
     }
 
-    displayToOrder() {
-        return `<img id="photo" class="product__photos" data-id="${this.id}" src="${this.image}" alt="product photo">
-                <h3 id="teddy__name">${this.name}</h3>
-                <p class="product__description"> <strong> Description : ${this.description}</strong></p>
-                <form id="sheet__form">
-                <label for="color_select">Choix de la couleur</label><br>
-                <select id="color_select" required>
-                <option value=""> - Couleur - </option></select><br><br>
-                <label for="color_select">Choix de la Quantité</label><br>
-                <select id="quantity_select" required>
-                <option value=""> - Quantité - </option></select>
-                <p id="price" class="product__price"> <strong> Prix : ${this.price/100},00 €</strong></p>
-                <button id="add__to__cart" class="product__add__to__cart"> <strong> Ajouter au panier</strong></button>
-                </form>`
-    }
 }
