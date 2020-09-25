@@ -16,15 +16,15 @@
 
     <!-- Bootstrap CSS File -->
     <link <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    …
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e1e907064b.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="displayProduct()">
+<body>
     <!-- Chargement des produits lors du lancement de la page -->
     <!-- Navbar -->
     <header>
@@ -46,25 +46,27 @@
                 <div class="collapse navbar-collapse" id="navbar-collapse-3">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="#">Panier</a></li>
+                        <li><a href="panier.html">Panier</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
         </nav><!-- /.navbar -->
     </header>
-
-    <main class="container">
-        <article id="produits">
-
-        </article>
+    <main id="product_page">
+        <h1>Orinoco</h1>
+        <h2>Récapitulatif de votre panier</h2>
     </main>
+    <div class="back">
+        <button><a href="index.html" title="Retour sur la page d'accueil">Retour à l'accueil</a></button>
+    </div>
 
-    <footer class="main__footer">
-        <h4>Site créé par LAZAR Youssef © - ORINOCO - 2020 </h4>
+    <footer id="sticky-footer">
+        <div class="container text-center">
+            <h4>Site créé par LAZAR Youssef © - ORINOCO - 2020 </h4>
+        </div>
     </footer>
 
-    <script src="JS/main.js"></script>
-    <script src="JS/teddyclass.js"></script>
-    <script src="JS/produit.js"></script>
+    <script type='text/javascript' src="JS/Cart.js"></script>
 </body>
-</body>
+
+</html>
