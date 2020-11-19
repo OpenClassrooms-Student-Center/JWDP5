@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta name="descrition" content="Créez votre ours en peluche vintage personnalisé dès aujourd'hui.">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Ours en peluche faits à la main</title >
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="panier.css" >
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Roboto:ital@1&display=swap');
+        </style>       
+    </head >
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <header>
+                    <div class="banniere"><a href="index.html"><img src="images/orinoco.jpg" alt="logo orinoco"></a></div>
+                    <h1>Ours en peluche faits à la main</h1>
+                </header>
+            </div>
+        
+            <div class="row row-nav">
+                <nav class="col navbar navbar-expand navbar-dark">
+                    <a class="nav-link" href="index.html">Accueil</a>                            
+                </nav>
+            </div>
+        </div>
+
+        <div id="panier"></div>        
+       
+        <div id="info" class="display_page_panier">
+            
+
+            <form id="confirmation" action="confirmation.html" class="form-example">
+                    <div class="form-exemple">
+                        <label for="lastName">Nom:</label >
+                        <input type="text" name="name" id="lastName"/>
+                    </div>
+                    <div  class="form-exemple">
+                        <label for="name">Prenom: </label >
+                        <input type="text" name="username" id="name"/>
+                    </div>
+                    <div class="form-exemple">
+                        <label for="email">E-mail:</label>
+                        <input type="email" name="useremail" id="email" requis placeholder="orinoco@gmail.com"/>
+                    </div>
+                    <div class="form-exemple">
+                        <label for="phone">Téléphone:</label>
+                        <input type="tel" name="userephone" id="phoneNumber" placeholder="06-01-02-03-04"
+                        pattern="[0-9]{,10}-"/>
+                    </div>
+                    <div class="form-exemple">
+                        <label for="adresse">Adresse:</label>
+                        <input type="text" name="useradresse" id="adresse"obligatoire/>
+                    </div>
+                    <div class="form-exemple">
+                        <label for="CodePostal">Code postal:</label>
+                        <input type="text" name="CodePostal" id="CodePostal" requis placeholder="19000" maxlength="5"/>
+                    </div>
+                    <div class="form-exemple">
+                        <label for="ville"> Ville </label >
+                        <input type="text" name="userville" id="ville"/>
+                    </div>
+
+                    <button class="confirm">Confirmation de réservation</button>
+
+                </form>   
+
+        </div>
+
+        
+        <footer>
+            <p>Mentions légales</p>
+        </footer>
+        <script src="panier.js"></script>
+        <script src="ajax.js"></script>
+    </body>
+</html>

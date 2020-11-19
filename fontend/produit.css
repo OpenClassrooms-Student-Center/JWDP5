@@ -1,0 +1,122 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  color: #fdb7ae;
+}
+body 
+{
+  background-color: #03A9f4;
+  font-family: "Roboto", sans-serif;
+}
+.banniere
+{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+#teddies
+{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 50px;
+}
+.container-fluid
+ {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding:0 0;
+}
+a,a:hover
+{
+  text-decoration: none;
+  color: inherit;
+}
+.row header 
+{
+  text-align: center;
+  font-family: "calligraffitti", cursive;
+  background-color: #741a02;
+  color: #fdb7ae;
+  width: 100%;
+}
+header h1 
+{
+  font-size: 2.5em;
+  margin: 8px;
+}
+.row
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  font-size: 1em;
+  width: 100%;
+  margin-bottom: 6%;
+}
+.row-nav
+{
+  width: 100%;
+  padding:5 5;
+}
+.col-12 {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  box-shadow: 0px 10px 10px #f46e6b;
+  text-align: center;
+  background-color: #915b39;
+  padding: 3px;
+  flex: 2 2 150px;
+  margin-right: 30px;
+  color: #fff9f9;
+  border-radius: 25%;
+  border: 5px outset #741a02;
+}
+.col-12 img 
+{
+  margin-bottom: 10px;
+  height: 250px;
+  width: 250px;
+  border-radius: 25%;
+  border: 5px solid #741a02;
+}
+.navbar
+{
+  font-size: 1.25em;
+  text-align: center;
+  background-color: #f46e6b;
+  border-radius: 25%;
+  border: 3px double #915b39;
+  width: 100%;
+}
+.navbar-expand
+{
+  display: flex;
+  justify-content: space-around;
+}
+.quantite
+{
+text-align: center;
+}
+.dropdown:hover > #cart-dropdown
+{
+    display: block;
+}
+p
+ {
+ 	text-align: center;
+ }
+ footer
+{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 6px;
+}

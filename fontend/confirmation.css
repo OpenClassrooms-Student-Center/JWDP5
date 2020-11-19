@@ -1,0 +1,109 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  color: #fdb7ae;
+}
+body 
+{
+  background-color: #03A9f4;
+  font-family: "Roboto", sans-serif;
+}
+.banniere
+{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+.accueil
+{
+  width: 80%;
+}
+h2,h3
+{
+  text-align: center;
+}
+section
+{
+  display: flex;
+  flex-direction: column;
+}
+.container-fluid
+ {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+a,a:hover
+{
+  text-decoration: none;
+  color: inherit;
+}
+.row header 
+{
+  text-align: center;
+  font-family: "calligraffitti", cursive;
+  background-color: #741a02;
+  color: #fdb7ae;
+  width: 100%;
+}
+.row
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  font-size: 1em;
+  width: 100%;
+  margin-bottom: 6%;
+}
+.row-nav
+{
+  width: 100%;
+  padding:5 5;
+}
+footer
+{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 6px;
+  width: 100%;
+  margin-left: 43%;
+}
+.navbar
+{
+  font-size: 1.25em;
+  text-align: center;
+  background-color: #f46e6b;
+  border-radius: 25%;
+  border: 3px double #915b39;
+  width: 100%;
+}
+.navbar-expand
+{
+  display: flex;
+  justify-content: space-around;
+}
+table
+{
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .8rem;
+    width: 80%;
+}
+.t
+{
+  text-align: center;
+}
+.form-group
+{
+  text-align: center;
+}
+.mention
+{
+
+}
