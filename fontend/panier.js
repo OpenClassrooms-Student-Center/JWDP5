@@ -119,35 +119,42 @@ JSON.parse(localStorage.getItem("userPanier")).forEach((produit)=>{
                         ----------------------------------------*/
 function userFormulaire(){
 
-const div=document.getElementById('info');
+      const div=document.getElementById('info');
 
-div.classList.add("display_page_panier");
+      div.classList.add("display_page_panier");
 
-const elt=document.getElementById('confirmation');
+      const elt=document.getElementById('confirmation');
 
- /*Création de l'évènement*/
-elt.addEventListener('submit',function(event){
-	const nom=document.getElementById('lastName').value;
-	const prenom=document.getElementById('name').value;
-	const mail=document.getElementById('email').value;
-	const phone=document.getElementById('phoneNumber').value;
-	const adress=document.getElementById('adresse').value;
-	const codePostal=document.getElementById('CodePostal').value;
-	const vill=document.getElementById('ville').value;
+      /*Création de l'évènement*/
+      elt.addEventListener('submit',function(event){
+      event.preventDefault();
 
-  let contact={
-lastName:nom,
-firstName:prenom,
-email:mail,
-address:adress,
-city:vill,
+	       const nom=document.getElementById('lastName').value;
+	       const prenom=document.getElementById('name').value;
+	       const mail=document.getElementById('email').value;
+	       const phone=document.getElementById('phoneNumber').value;
+	       const adress=document.getElementById('adresse').value;
+	       const codePostal=document.getElementById('CodePostal').value;
+	       const vill=document.getElementById('ville').value;
+          /*Création la variable contact avec les information du formulaire*/
+        let contact={
+        name:nom,
+        firstName:prenom,
+        address:adress,
+        email:mail,
+        city:vill,
+        };
+        /*enregistrement dans le panier*/
+        localStorage.setItem('userFormulaire',JSON.stringify(contact));
+        /*appel ajax*/
+        ajax("http://localhost:3000/api/teddies/order","POST",
+        {
+        contact,products
+        }).then(produits=>{
+          localStorage.setItem('orderid',produits.orderId);
+          /*lien vers la page confirmation*/
+          document.location.href="confirmation.html";
+          })
+     })
 };
-localStorage.setItem('userFormulaire',JSON.stringify(contact));
-  })
-};
-postnewformulaire("http://localhost:3000/api/teddies/order").then(produits=>{
-    userPanier(produits)
-    userFormulaire(produits)
-})
 userFormulaire();
-console.log(userFormulaire)

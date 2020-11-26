@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   width: 100%;
-  color: #fdb7ae;
+  color: #fbfdae;
 }
 body 
 {
@@ -61,7 +61,7 @@ a,a:hover
 .row-nav
 {
   width: 100%;
-  padding:5 5;
+  
 }
 footer
 {

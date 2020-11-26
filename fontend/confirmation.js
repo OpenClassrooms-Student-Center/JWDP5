@@ -77,10 +77,13 @@ addition=()=>{
 
   function userFormulaire(){
 
+    /*recuperation de la balise html par ID*/
   	const formulaire=document.getElementById('formulaire');
 
+    /*recuperation information du localstorage formulaire*/
   	const user=JSON.parse(localStorage.getItem('userFormulaire'));
   			
+        /*affiche contenu html*/
   			const lastName=user.lastName;
   			const name=user.firstName;
   			const adresse=user.address;
@@ -94,6 +97,8 @@ addition=()=>{
   			nom.textContent=lastName;
   			prenom.textContent=name;
   			livrer.textContent=adresse+' '+city;
+        /*vide le panier une fois la commande validé*/
+        localStorage.clear();
   			};
   userFormulaire();
-  console.log(userFormulaire);
+  

@@ -38,32 +38,32 @@
             <form id="confirmation" action="confirmation.html" class="form-example">
                     <div class="form-exemple">
                         <label for="lastName">Nom:</label >
-                        <input type="text" name="name" id="lastName"/>
+                        <input type="text" name="name" id="lastName" required />
                     </div>
                     <div  class="form-exemple">
                         <label for="name">Prenom: </label >
-                        <input type="text" name="username" id="name"/>
+                        <input type="text" name="username" id="name" required />
                     </div>
                     <div class="form-exemple">
                         <label for="email">E-mail:</label>
-                        <input type="email" name="useremail" id="email" requis placeholder="orinoco@gmail.com"/>
+                        <input type="email" name="useremail" id="email"  placeholder="orinoco@gmail.com" required/>
                     </div>
                     <div class="form-exemple">
-                        <label for="phone">Téléphone:</label>
+                        <label for="phoneNumber">Téléphone:</label>
                         <input type="tel" name="userephone" id="phoneNumber" placeholder="06-01-02-03-04"
-                        pattern="[0-9]{,10}-"/>
+                        pattern="[0-9]{10}" required/>
                     </div>
                     <div class="form-exemple">
                         <label for="adresse">Adresse:</label>
-                        <input type="text" name="useradresse" id="adresse"obligatoire/>
+                        <input type="text" name="useradresse" id="adresse" required/>
                     </div>
                     <div class="form-exemple">
                         <label for="CodePostal">Code postal:</label>
-                        <input type="text" name="CodePostal" id="CodePostal" requis placeholder="19000" maxlength="5"/>
+                        <input type="text" name="CodePostal" id="CodePostal" placeholder="19000" maxlength="5" required/>
                     </div>
                     <div class="form-exemple">
                         <label for="ville"> Ville </label >
-                        <input type="text" name="userville" id="ville"/>
+                        <input type="text" name="userville" id="ville" required/>
                     </div>
 
                     <button class="confirm">Confirmation de réservation</button>
