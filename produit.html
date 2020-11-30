@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta name="description" content="Créez votre ours en peluche vintage personnalisé dès aujourd'hui.">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Ours en peluche faits à la main</title >
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        <link rel="stylesheet" type="text/css" href="produit.css" >
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&family=Roboto:ital@1&display=swap');
+        </style>
+     </head >
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <header>
+                    <div class="banniere"><a href="index.html"><img src="images/orinoco.jpg" alt="logo orinoco"></a></div>
+                    <h1>Ours en peluche faits à la main</h1>
+                </header>
+            </div>
+        </div>
+
+        <div class="contener-fluid">
+                <div class="row row-nav">
+                    <nav class="col navbar navbar-expand navbar-dark">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="panier.html">Panier</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                
+            <div id="teddies"></div>
+
+            <div class="quantite">
+                <label>Quantité: </label>
+                <select id="qt" name="q">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                        
+            <div class="flex-block">
+                        <div id="colors"></div>
+               
+                       <button id="ajouterProduitPanier">Ajouter au panier</button>
+                    </div>
+                </div>
+        </div>
+        <script src="ajax.js"></script>
+        <script src="produit.js"></script>
+
+    </body>
+</html>
