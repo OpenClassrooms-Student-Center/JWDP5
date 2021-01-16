@@ -1,7 +1,7 @@
 @font-face {
   font-family: "belligerent_madnessregular";
-  src: url("../font/belligerent-webfont.eot");
-  src: url("../font/belligerent-webfont.eot?#iefix") format("embedded-opentype"), url("../font/belligerent-webfont.woff2") format("woff2"), url("../font/belligerent-webfont.woff") format("woff"), url("../font/belligerent-webfont.ttf") format("truetype"), url("../font/belligerent-webfont.svg#belligerent_madnessregular") format("svg");
+  src: url("../fonts/belligerent-webfont.eot");
+  src: url("../fonts/belligerent-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/belligerent-webfont.woff2") format("woff2"), url("../fonts/belligerent-webfont.woff") format("woff"), url("../fonts/belligerent-webfont.ttf") format("truetype"), url("../fonts/belligerent-webfont.svg#belligerent_madnessregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -32,6 +32,7 @@ a {
   text-decoration: none;
   color: black;
   font-family: "belligerent_madnessregular";
+  font-size: 20px;
 }
 
 .page__container {
@@ -84,8 +85,6 @@ a {
   padding-top: 0.5rem;
   border: solid 6px;
   border-color: #F3E9F1;
-}
-.title h1 {
   font-family: "belligerent_madnessregular";
 }
 
