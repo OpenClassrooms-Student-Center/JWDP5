@@ -1,6 +1,6 @@
 @mixin gradient{
-    background: $color-third}
-
+    background: $color-third;
+}
 @mixin gradient-inverse{
     background: $color-fourth;
 }
