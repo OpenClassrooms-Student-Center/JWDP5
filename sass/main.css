@@ -34,16 +34,10 @@ a {
   font-family: "belligerent_madnessregular";
 }
 
-#btn__cart {
+.page__container {
   display: flex;
   flex-flow: column;
-  margin: 0 auto;
-}
-#btn__cart > img {
-  width: 90px;
-}
-
-.page__container {
+  justify-content: center;
   width: 100%;
   box-sizing: border-box;
 }
@@ -51,13 +45,24 @@ a {
 .navbar__header {
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  height: 150px;
+  height: 160px;
   width: 100%;
   background: #F3E9F1;
 }
-.navbar .logo {
+
+.navbar__logo {
+  display: flex;
   width: 200px;
+  margin: auto;
+}
+
+#btn__cart {
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+}
+#btn__cart > img {
+  width: 90px;
 }
 
 .homepage__container {

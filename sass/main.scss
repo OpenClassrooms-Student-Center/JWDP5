@@ -47,19 +47,12 @@ a{
     color: black;
     font-family:'belligerent_madnessregular';
 }
-#btn{
-    &__cart{
-        display:flex;
-        flex-flow: column;
-        margin:0 auto;
 
-        & > img{
-            width:90px;
-        } 
-    }
-}
 .page{
     &__container{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
         width:100%;
         box-sizing: border-box;
     }
@@ -67,19 +60,34 @@ a{
 
 .navbar{
     &__header{
+        
         display:flex;
         flex-flow: column;
-        justify-content: center;
-        height:150px;
+        height:160px;
         width:100%;
         background:#F3E9F1;
+    }  
+}        
+.navbar{
+    &__logo{
+        display:flex;
+        width:200px; 
+        margin:auto;
+    } 
+}   
+
+#btn{
+    &__cart{
+        display:flex;
+        flex-flow: column;
+        margin:auto;
         
-    }    
-        & .logo{
-            width:200px;  
-        }   
-    
-}
+        & > img{
+            width:90px;
+        } 
+    }
+}   
+
 
 .homepage{
     &__container{
