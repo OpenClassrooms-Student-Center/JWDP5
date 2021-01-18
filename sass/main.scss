@@ -15,6 +15,7 @@
 
 $color-primary:#c568f3;
 $color-secondary:#eeaf3b;
+$color-fith:#F3E9F1;
 $color-third: linear-gradient(to right, #d1841f 10%, #c568f3);
 $color-fourth: linear-gradient( to right, #c568f3 10%, #d1841f);
 
@@ -48,6 +49,8 @@ a{
     font-family:'belligerent_madnessregular';
     font-size:20px;
 }
+
+/*--PAGE ACCUEIL--*/
 
 .page{
     &__container{
@@ -199,6 +202,7 @@ a{
         }
     }
 }
+/*--END PAGE ACCUEIL--*/
 
 /*--PRODUCTS PAGE--*/
 .bloc{
@@ -223,7 +227,50 @@ a{
     }
 }
 
-/*-- END PODUCT PAGE---*/
+/*-- END PRODUCT PAGE---*/
+
+/*-- CART PAGE--*/
+
+.form{
+    &__container{
+        display:flex;
+        justify-content: center;
+        width:100%;
+        line-height:3rem;
+        margin-bottom:10rem;
+        
+    }
+}
+.form{
+    &__group{
+        line-height: 1.5rem;
+        justify-content: center;
+    }
+}
+input{
+    display: block;
+    border-radius:50px;
+    border: solid $color-primary 3px;
+    height:25px;
+    padding-left:10px;
+    width:100%;
+}
+button{
+    cursor: pointer;
+    margin-top:5rem;
+    border-radius:50px;
+    height:4rem;
+    width:100%;
+    background:$color-third;
+}
+
+.black{
+    color:black;
+    font-family: 'belligerent_madnessregular';
+    font-size:25px;
+}
+
+/*--END CART PAGE--*/
 
 .footer{
     &__container{

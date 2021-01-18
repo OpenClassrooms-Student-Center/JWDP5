@@ -26,11 +26,46 @@
                         <span class="word">Orinoco!</span>  
                     </h1>
                 </div>
-
-        </div>       
+            </div> 
+            <div class="form__container">
+                <form id="form_1" novalidate success-msg="Your message has been sent." fail-msg="Sorry it seems that our mail server is not responding, Sorry for the inconvenience!">
+                    <div class="form-group ">
+                        <label for="surname" class="black">
+                            Nom
+                        </label>
+                        <input id="surname" type="text" placeholder="Entrer votre nom " class="form-control" />
+                    </div>
+                        <label for="name" class=" black">
+                            Prénom
+                            <input id="name" type='text' placeholder="Entrez votre prénon" class="form-control" />
+                        </label>
+                    <div class="form-group">
+                        <label for="adresse" class="black">
+                            Adresse
+                        </label>
+                        <input id="adresse" class="form-control" type="text" placeholder="3, allée des Lyonnais"  />
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class=black>
+                            Ville
+                        </label>
+                        <input id="city"  placeholder="Lyon" class="form-control" />
+                    </div> 
+                    <div class="form-group">
+                        <label for="email" class="black">
+                            Adresse email
+                        </label>
+                        <input type="email" id="email" placeholder="entrez une adresse émail valide" class="form-control" required />
+                    </div>
+                    <button class="black" type="submit">
+                        Validez votre commande !
+                    </button>
+                </form> 
+            </div>      
             <footer class="footer__container ">
                 <a onclick="aboutUs()" class="footer__all" tabindex="0">À propos de nous</a>
                 <a onclick="contactUs()" class="footer__all" tabindex="0">Contactez-nous</a>
             </footer>
+        </div>
     </body>
 </html>  
