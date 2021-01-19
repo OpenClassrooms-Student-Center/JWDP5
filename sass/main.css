@@ -57,6 +57,11 @@ a {
   width: 200px;
   margin: auto;
 }
+.navbar__logo:hover {
+  cursor: pointer;
+  transform: translateX(30%);
+  transition: transform 800ms linear;
+}
 
 #btn__cart {
   display: flex;
@@ -140,7 +145,7 @@ a {
 }
 .btns__homepage > img {
   width: 150px;
-  margin: 0.3rem auto 1rem auto;
+  margin: 0.5rem auto 2rem auto;
   border-radius: 50px;
 }
 .btns__homepage > img:hover {
@@ -181,16 +186,46 @@ a {
   flex-flow: column;
   box-sizing: border-box;
   margin: 1rem auto;
-  width: 100%;
+  width: 95%;
 }
 .bloc__image img {
   width: 200px;
+  object-fit: cover;
+  width: 40%;
+  height: 20%;
+  padding: 5px;
   margin: auto;
+  border-radius: 50px 0 50px 0;
+  border: solid 1px #c568f3;
 }
 
 .bloc__image1 {
-  border: solid 1px;
-  margin-bottom: 5rem;
+  display: flex;
+  flex-flow: column;
+  border: solid 3px;
+  border-color: #eeaf3b;
+  margin: 0 0 2rem 0;
+  border-radius: 50px 0 50px 0;
+  padding: 5px;
+}
+.bloc__image1 div {
+  display: flex;
+  flex-flow: column;
+  line-height: 1.5rem;
+  font-size: 18px;
+  text-align: center;
+  font-family: "belligerent_madnessregular";
+}
+
+.btn__product {
+  border: solid 3px;
+  border-radius: 50px;
+  font-size: 18px;
+  background: linear-gradient(to right, #d1841f 10%, #c568f3);
+  height: 50px;
+  width: 8rem;
+  margin: auto;
+  font-family: "belligerent_madnessregular";
 }
 
 /*-- END PRODUCT PAGE---*/
@@ -215,15 +250,6 @@ input {
   height: 25px;
   padding-left: 10px;
   width: 100%;
-}
-
-button {
-  cursor: pointer;
-  margin-top: 5rem;
-  border-radius: 50px;
-  height: 4rem;
-  width: 100%;
-  background: linear-gradient(to right, #d1841f 10%, #c568f3);
 }
 
 .black {

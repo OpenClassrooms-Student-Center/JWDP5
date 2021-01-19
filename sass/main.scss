@@ -77,6 +77,11 @@ a{
         display:flex;
         width:200px; 
         margin:auto;
+        &:hover{
+            cursor:pointer;
+            transform:translateX(30%);
+            transition: transform 800ms  linear;
+        }
     } 
 }   
 
@@ -162,10 +167,10 @@ a{
         flex-flow: column;
         justify-content: space-evenly;
         margin:0 auto 1rem auto ;
-        width:100%; 
+        width:100%;
         & >  img{
             width:150px;
-            margin:.3rem auto 1rem auto;
+            margin:.5rem auto 2rem auto;
             border-radius:50px;
             &:hover{
                 cursor: pointer;
@@ -174,7 +179,7 @@ a{
             }
         }
     }
-}
+}  
 .btn{
     &__homepage{
         cursor: pointer;
@@ -183,7 +188,7 @@ a{
         @include gradient;
         box-sizing: border-box;
         width:30%;
-        margin:auto;
+        margin: auto;
         border:solid 6px;
         border-color:#F3E9F1;
         font-size:20px;
@@ -209,21 +214,52 @@ a{
     &__image{
         display: flex;
         flex-flow: column;
-        
         box-sizing: border-box;
         margin:1rem auto;
-        width:100%;
+        width:95%;
         
         & img{
             width: 200px;
+            object-fit: cover;
+            width:40%;
+            height:20%;
+            padding:5px;
             margin:auto;
+            border-radius:50px 0 50px 0;
+            border: solid 1px $color-primary;
         }
     }
 }
 .bloc{
     &__image1{
-        border:solid 1px;
-        margin-bottom:5rem;
+        display:flex;
+        flex-flow: column;
+        border:solid 3px;
+        border-color:$color-secondary;
+        margin:0 0 2rem 0;
+        border-radius:50px 0 50px 0;
+        padding:5px;
+    
+        & div{
+            display: flex;
+            flex-flow: column;
+            line-height: 1.5rem;
+            font-size: 18px;
+            text-align:center;
+            font-family: 'belligerent_madnessregular';
+        }
+    }
+}
+.btn{
+    &__product{
+        border: solid 3px;
+        border-radius:50px;
+        font-size: 18px;
+        background: $color-third;
+        height:50px;
+        width:8rem;
+        margin:auto;
+        font-family: 'belligerent_madnessregular';
     }
 }
 
@@ -254,14 +290,6 @@ input{
     height:25px;
     padding-left:10px;
     width:100%;
-}
-button{
-    cursor: pointer;
-    margin-top:5rem;
-    border-radius:50px;
-    height:4rem;
-    width:100%;
-    background:$color-third;
 }
 
 .black{
