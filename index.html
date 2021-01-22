@@ -2,10 +2,12 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Orinico site vente en ligne">
+        <meta name="description" content="Orinico site de vente en ligne spécialisé dals les cameras, teddies et furnitures">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="robots" content="index, follow">
         <link rel="stylesheet" href="sass/main.css">
-        <script src="orinoco.js" defer></script>
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <script type="text/javascript" src="orinoco.js" defer></script>
         <title>Oronico | Votre boutique e-commerce pour cameras, teddies et furnitures</title>
 
     </head>
@@ -13,7 +15,7 @@
         <div class="page__container">
             <header class="navbar__header">
                 <a href="index.html" aria-label="Retour sur la page d'accueil"><img class="navbar__logo" src="images/logo_orinico.webp" alt="Logo-Orinico"/></a>
-                <a id="btn__cart" href="" class="cart__header" aria-label="bouton cart">
+                <a id="btn__cart" href="cart.html" class="cart__header" aria-label="bouton cart">
                     <img class="cart" src="images/logo_orinico.webp" alt="image cart">
                     Panier 
                 </a>
@@ -28,7 +30,7 @@
                     </h1>
                 </div>    
                 <div id="btns" class="btns__homepage">
-                    <button class="btn__homepage" onclick="getItems('cameras')">Cameras</button>
+                    <button  class="btn__homepage" onclick="getItems('cameras')">Cameras</button>
                     <img class="bkg__img" src="images/vcam_2.webp" alt="image cameras"/>
                     <button class="btn__homepage" onclick="getItems('teddies')">Teddies</button>
                     <img class="bkg__img" src="images/teddy_3.webp" alt="image teddies"/>
@@ -38,8 +40,8 @@
             </div> 
         </div>    
             <footer class="footer__container ">
-                <a onclick="aboutUs()" class="footer__all" tabindex="0">À propos de nous</a>
-                <a onclick="contactUs()" class="footer__all" tabindex="0">Contactez-nous</a>
+                <button id="footer-1" onclick="aboutUs()"  tabindex="0">À propos de nous</button>
+                <button id="footer-2" onclick="contactUs()" tabindex="0">Contactez-nous</button>
             </footer>
     </body>
 </html>

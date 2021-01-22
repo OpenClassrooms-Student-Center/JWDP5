@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "xabikos.javascriptsnippets",
+        "ritwickdey.liveserver",
+        "dbaeumer.jshint",
+        "msjsdiag.debugger-for-chrome",
+        "christian-kohler.npm-intellisense",
+        "dbaeumer.vscode-eslint"
+    ]
+}

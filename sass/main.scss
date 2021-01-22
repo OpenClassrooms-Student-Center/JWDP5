@@ -113,7 +113,7 @@ a{
         box-sizing: border-box;
         text-align: center;
         height:7rem;
-        width: 23rem;
+        width: 95%;
         margin:3rem auto;
         border-radius:50px;
         background: black;
@@ -121,10 +121,13 @@ a{
         border:solid 6px;
         border-color:#F3E9F1;
         font-family:'belligerent_madnessregular'; 
+        &:hover{
+            transform: scale(.8);
+            transition: transform  600ms linear ;
+        }
     }   
 } 
 .word{
-    color:black;
     animation: button-effect 8s linear infinite;
     -moz-animation:button-effect 8s linear infinite;
     -webkit-animation:button-effect 8s linear infinite;
@@ -187,7 +190,7 @@ a{
         height:50px;
         @include gradient;
         box-sizing: border-box;
-        width:30%;
+        width:150px;
         margin: auto;
         border:solid 6px;
         border-color:#F3E9F1;
@@ -207,6 +210,7 @@ a{
         }
     }
 }
+
 /*--END PAGE ACCUEIL--*/
 
 /*--PRODUCTS PAGE--*/
@@ -257,7 +261,7 @@ a{
         font-size: 18px;
         background: $color-third;
         height:50px;
-        width:8rem;
+        width:10rem;
         margin:auto;
         font-family: 'belligerent_madnessregular';
     }
@@ -281,6 +285,7 @@ a{
     &__group{
         line-height: 1.5rem;
         justify-content: center;
+        width:50%;
     }
 }
 input{
@@ -289,13 +294,26 @@ input{
     border: solid $color-primary 3px;
     height:25px;
     padding-left:10px;
-    width:100%;
+    width:15rem;
+    margin:auto;
 }
 
 .black{
     color:black;
     font-family: 'belligerent_madnessregular';
     font-size:25px;
+    border-radius:50px;
+}
+.black-valid{
+    color:black;
+    font-family: 'belligerent_madnessregular';
+    font-size:30px;
+    margin:5rem auto;
+    height:100px;
+    width:300px;
+    border: solid 3px;
+    border-radius: 50px;
+    background: $color-third;
 }
 
 /*--END CART PAGE--*/
@@ -307,14 +325,28 @@ input{
         box-sizing: border-box;
         width:100%;
         height:150px;
-        background:#F3E9F1;
-    }
-    &__all{
-        cursor: pointer;
-        margin:1rem auto .5rem auto;
-        font-size:30px;
-        font-family: 'belligerent_madnessregular';
+        background:#F3E9F1; 
+    }   
+        & button{
+            
+        } 
+}    
+#footer-1, #footer-2{
+    cursor: pointer;
+    margin:1rem auto .5rem auto;
+    font-size:30px;
+    font-family: 'belligerent_madnessregular';
+    border-radius:50px;
+    width:300px;
+    height:50px;
+    background: $color-third;
+    border:solid 4px $color-secondary;
+  
+    &:hover{
+        background: $color-fourth;
+        border: solid 4px $color-primary;
     }
 }
+
 
 

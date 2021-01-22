@@ -5,6 +5,7 @@
         <meta name="description" content="Orinico site vente en ligne">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
         <link rel="stylesheet" href="sass/main.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
         <title>Oronico | Votre boutique e-commerce pour cameras, teddies et furnitures</title>
 
     </head>
@@ -57,14 +58,14 @@
                         </label>
                         <input type="email" id="email" placeholder="entrez une adresse émail valide" class="form-control" required />
                     </div>
-                    <button class="black" type="submit">
+                    <button class="black-valid" type="submit">
                         Validez votre commande !
                     </button>
                 </form> 
             </div>      
             <footer class="footer__container ">
-                <a onclick="aboutUs()" class="footer__all" tabindex="0">À propos de nous</a>
-                <a onclick="contactUs()" class="footer__all" tabindex="0">Contactez-nous</a>
+                <button onclick="aboutUs()" id="footer-1" tabindex="0">À propos de nous</button>
+                <button onclick="contactUs()" id="footer-2" tabindex="0">Contactez-nous</button>
             </footer>
         </div>
     </body>
