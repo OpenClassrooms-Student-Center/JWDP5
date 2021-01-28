@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss" : "node-sass -watch sass/ -o css/"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +18,8 @@
     "mongoose": "^5.3.8",
     "mongoose-unique-validator": "^2.0.2",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0"
   }
 }

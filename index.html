@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
         <meta name="robots" content="index, follow">
         <link rel="stylesheet" href="sass/main.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-        <script type="text/javascript" src="orinoco.js" defer></script>
+        
         <title>Oronico | Votre boutique e-commerce pour cameras, teddies et furnitures</title>
 
     </head>
@@ -40,8 +41,29 @@
             </div> 
         </div>    
             <footer class="footer__container ">
-                <button id="footer-1" onclick="aboutUs()"  tabindex="0">À propos de nous</button>
-                <button id="footer-2" onclick="contactUs()" tabindex="0">Contactez-nous</button>
+                <button id="btn__footer1" class="btn__footer1">À propos de nous</button>
+                    <div id="overlay" class="overlay">
+                        <div id="popup" class="popup">
+                            <p>
+                                Bienvenue chez ORINOCO!!<br> <br>Nous sommes specialiste dans la ventes e-commerce sur des produits haut de gammes spécifiques.<br> Nous vous invitons à cliquer sur nos différentes catégories.<br><br> Bon surfing!!<br>
+                                L'équipe d'ORINOCO!! <br><br><span id="btn__close" class="btn__close">ok</span>
+                            </p>
+                        </div>
+                    </div>
+                <button id="btn__footer2" class="btn__footer2">Contactez-nous</button>
+                <div id="overlay2" class="overlay2">
+                    <div id="popup" class="popup">
+                        <i class="fas fa-at"></i>
+                        <p class="email">contact@orinoco.fr</p>
+                        <i class="fas fa-phone-square"></i>
+                        <p class="phone">03.04.06.07.08</p>
+                        <i class="fas fa-map-pin"></i>
+                        <p class="address">ORINOCO <br><br>3 avenue Bellecourt<br>69000 Lyon</p>
+                        <p><span id="btn__close2" class="btn__close2">ok</span></p>
+                        </p>
+                    </div>
+                </div>
             </footer>
+        <script src="js/index.js" ></script>
     </body>
 </html>
