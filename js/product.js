@@ -1,71 +1,44 @@
 
-
-      (async function() {
-         const cameras = await getCameras();
-         
-            for(camera of cameras){
-                displayCamera(camera);
-                 console.log(camera);
-         }
-     })();
-
-    function getCameras()  {// RECUPERATION API
-    return fetch("http://localhost:3000/api/cameras")
-    .then(function(response){
-        return response.json();
-        })
-
-        .then(function(cameras){ 
-            return cameras;
+//RECUPERATION API
+fetch("http://localhost:3000/api/cameras")
+    .then((response) =>
+        response.json()
+    .then((data) => { 
+        console.log(data);
+        let affichage = '<div>';
+        for(let camera of data){
+            
+            affichage += `<img src=" ${camera.imageUrl}"/>`;
+            affichage += `<p> ref : ${camera._id}</p>`;
+            affichage += `<h2> ${camera.name}</h2>`;
+            affichage += `<p> ${camera.description}</p>`;
+            affichage += `<p> Lenses : ${camera.lenses}</p>`;
+            affichage += `<p> Prix : ${camera.price}</p>`;
+            affichage += `<p> Quantity :
+                <select><option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                </select></p>`;
+                
+            affichage += `<button class="btn__product">Ajouter au panier</button>`;
+        }
+            affichage += '</div>';
+            document.querySelector("#bloc__image1").innerHTML = affichage;
         })
         .catch(function(error){
             alert(error);
-        });
-    }
-  
-  
-    function displayCamera(camera) {// PERMET DE CLONER LES CAMERAS
-        const templateElt = document.getElementById("templateCamera");
-        const cloneElt = document.importNode(templateElt.content, true);
-        
-        cloneElt.getElementById("imageUrl").src = camera.imageUrl;
-        cloneElt.getElementById("ref").textContent += camera._id;
-        cloneElt.getElementById("name").textContent = camera.name;
-        cloneElt.getElementById("description").textContent = camera.description;
-        cloneElt.getElementById("lenses").textContent += camera.lenses;
-        cloneElt.getElementById("price").textContent += camera.price;
-        
+    }));
 
-        document.getElementById("bloc__image1").appendChild(cloneElt);   
-    
-}
-
-
-Object.values(jsonObj)[0].lenses
-
-// AJOUT OPTION QUANTITE
-
-
-
-window.onload = function (){
-
-    const selectOpt = document.getElementById('chooseQuantity');
-    numbers = ['5', '4' , '3' , '2' , '1'];
-
-    const combo = document.createElement('select');
-    
    
-    while(numbers.length)
-
-    {
-        const nombres = numbers.pop();
-        const opt = new Option(nombres, nombres);
-        combo.options[combo.options.length] = opt;
-
-   }
-    selectOpt.appendChild(combo);
     
-}
+
+
+
+
+
+
 
 
 
