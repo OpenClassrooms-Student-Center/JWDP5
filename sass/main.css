@@ -147,23 +147,23 @@ a {
   width: 100%;
 }
 .btns__homepage > img {
-  width: 150px;
-  margin: 0.5rem auto 2rem auto;
+  width: 300px;
+  margin: 3rem auto 2rem auto;
   border-radius: 50px;
 }
 .btns__homepage > img:hover {
   cursor: pointer;
-  transform: translateX(60%);
+  transform: rotate(360deg);
   transition: transform 800ms linear;
 }
 
 .btn__homepage {
   cursor: pointer;
   border-radius: 50px;
-  height: 50px;
+  height: 100px;
   background: linear-gradient(to right, #d1841f 10%, #c568f3);
   box-sizing: border-box;
-  width: 150px;
+  width: 200px;
   margin: auto;
   border: solid 6px;
   border-color: #F3E9F1;
@@ -212,7 +212,7 @@ a {
   border-radius: 50px 0 50px 0;
   padding: 5px;
 }
-#bloc__image1 div {
+#bloc__image1 .productList {
   border: solid 1px #c568f3;
   border-radius: 50px 0 50px 0;
   display: flex;
@@ -224,15 +224,7 @@ a {
   font-family: "belligerent_madnessregular";
 }
 
-#selectQuantity {
-  font-family: "belligerent_madnessregular";
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3rem;
-  font-size: 20px;
-}
-
-#chooseQuantity {
+.select {
   font-family: "belligerent_madnessregular";
   font-size: 20px;
 }
@@ -294,6 +286,7 @@ input {
 }
 
 /*--END CART PAGE--*/
+/*-- FOOTER--*/
 .footer__container {
   display: flex;
   flex-flow: column;
@@ -310,7 +303,7 @@ input {
   font-family: "belligerent_madnessregular";
   border-radius: 50px;
   width: 300px;
-  height: 50px;
+  height: 100px;
   background: linear-gradient(to right, #d1841f 10%, #c568f3);
   border: solid 4px #eeaf3b;
 }
@@ -319,6 +312,7 @@ input {
   border: solid 4px #c568f3;
 }
 
+/*--POPUP APPEARS WHEN CLICKING--*/
 .overlay, .overlay2 {
   position: absolute;
   top: 0;
@@ -328,7 +322,6 @@ input {
   background-color: #ebdddd;
   opacity: 0.96;
   width: 100%;
-  height: 1200px;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
   text-align: center;
