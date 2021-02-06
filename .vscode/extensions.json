@@ -5,6 +5,7 @@
         "dbaeumer.jshint",
         "msjsdiag.debugger-for-chrome",
         "christian-kohler.npm-intellisense",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "jeremyrajan.webpack"
     ]
 }

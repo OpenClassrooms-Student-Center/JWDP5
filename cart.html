@@ -13,7 +13,7 @@
         <div class="page__container">
             <header class="navbar__header  ">
                 <a href="index.html" aria-label="Retour sur la page d'accueil"><img class="navbar__logo" src="images/logo_orinico.webp" alt="Logo-Orinico"/></a>
-                <a id="btn__cart" href="" class="cart__header" aria-label="bouton cart">
+                <a id="btn__cart" class="cart__header" aria-label="bouton cart">
                     <img class="cart" src="images/logo_orinico.webp" alt="image__cart">
                     Panier
                 </a>
@@ -27,48 +27,58 @@
                         <span class="word">Orinoco!</span>  
                     </h1>
                 </div>
+            </div>
+            <div id="title">
+
             </div> 
-            <div class="form__container">
-                <form id="form_1" novalidate success-msg="Your message has been sent." fail-msg="Sorry it seems that our mail server is not responding, Sorry for the inconvenience!">
-                    <div class="form-group ">
-                        <label for="surname" class="black">
-                            Nom
-                        </label>
-                        <input id="surname" type="text" placeholder="Entrer votre nom " class="form-control" />
-                    </div>
-                        <label for="name" class=" black">
-                            Prénom
-                            <input id="name" type='text' placeholder="Entrez votre prénon" class="form-control" />
-                        </label>
+            <div class="bloc__items">
+
+            </div>
+            
+            <div class="form__container ">  
+                <div id="error"></div>
+                <form action id="form" name="form">
                     <div class="form-group">
-                        <label for="adresse" class="black">
-                            Adresse
+                        <label for="lastName" class="black">
+                            Nom :
                         </label>
-                        <input id="adresse" class="form-control" type="text" placeholder="3, allée des Lyonnais"  />
+                        <input type="text" id="lastName" name="lastName" placeholder="Entrer votre nom " class="form-control"  />
                     </div>
                     <div class="form-group">
-                        <label for="city" class=black>
-                            Ville
+                        <label for="firstName" class=" black">
+                            Prénom :
+                            <input type='text'id="firstName" name="firstName" placeholder="Entrez votre prénom" class="form-control" />
                         </label>
-                        <input id="city"  placeholder="Lyon" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label  for="adress" class="black">
+                            Adresse :
+                        </label>
+                        <input class="form-control" id="address" name="address"type="text" placeholder="3, allée des Lyonnais"  />
+                    </div>
+                    <div class="form-group">
+                        <label  for="city" class=black>
+                            Ville :
+                        </label>
+                        <input id="city" name="city" placeholder="Lyon" class="form-control" />
                     </div> 
                     <div class="form-group">
                         <label for="email" class="black">
-                            Adresse email
+                            Adresse email :
                         </label>
-                        <input type="email" id="email" placeholder="entrez une adresse émail valide" class="form-control" required />
+                        <input type="email" id="email" name="email" placeholder="entrez une adresse émail valide" class="form-control" />
                     </div>
-                    <button class="black-valid" type="submit">
-                        Validez votre commande !
-                    </button>
+                    <div class="form-group">
+                        <input class="black-valid" type="submit" value="Validez votre commande !"/>
+                    </div>
                 </form> 
-            </div>     
+             </div>    
             <footer class="footer__container ">
                 <button id="btn__footer1" class="btn__footer1">À propos de nous</button>
                     <div id="overlay" class="overlay">
                         <div id="popup" class="popup">
                             <p>
-                                Bienvenue chez ORINOCO!!<br> <br>Nous sommes specialiste dans la ventes e-commerce sur de produits haut de gammes d'appareils photos.<br> Nous vous invitons à cliquer sur notre bouton cameras.<br><br> Bon surfing!!<br>
+                                Bienvenue chez ORINOCO!!<br> <br>Nous sommes spécialiste dans la ventes e-commerce sur de produits haut de gammes d'appareils photos.<br> Nous vous invitons à cliquer sur notre bouton cameras.<br><br> Bon surfing!!<br>
                                 L'équipe d'ORINOCO!! <br><br><span id="btn__close" class="btn__close">ok</span>
                             </p>
                         </div>
@@ -87,7 +97,8 @@
                     </div>
                 </div>
             </footer>
-            <script src="js/index.js" ></script>
+             <script src="js/cart.js"></script>
+             <script src="js/modal.js" ></script>
         </div>
     </body>
 </html>  
