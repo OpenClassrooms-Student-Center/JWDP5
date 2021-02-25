@@ -5,22 +5,31 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@import "./utils/_mixins";
+
+$color-primary:#c568f3;
+$color-secondary:#eeaf3b;
+$color-third: linear-gradient(to right, $color-secondary 10%, $color-primary);
+$color-fourth: linear-gradient( to right, $color-primary 10%, $color-secondary);
+$color-fith: #F3E9F1;
+
 @keyframes button-effect {
   0% {
-    color: #eeaf3b;
-    text-shadow: 0 0 0.1rem #eeaf3b;
+    color: $color-secondary;
+    text-shadow: 0 0 0.1rem $color-secondary;
   }
   40% {
-    color: #c568f3;
-    text-shadow: 0 0 0.1rem #c568f3;
+    color: $color-primary;
+    text-shadow: 0 0 0.1rem $color-primary;
   }
   70% {
-    color: #eeaf3b;
-    text-shadow: 0 0 0.1rem #eeaf3b;
+    color: $color-secondary;
+    text-shadow: 0 0 0.1rem $color-secondary;
   }
   100% {
-    color: #c568f3;
-    text-shadow: 0 0 0.1rem #c568f3;
+    color: $color-primary;
+    text-shadow: 0 0 0.1rem $color-primary;
   }
 }
 @keyframes article-cart {
@@ -49,44 +58,50 @@ a {
 }
 
 /*--PAGE ACCUEIL--*/
-.page__container {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
+.page{
+  &__container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
-
-.navbar__header {
-  display: flex;
-  flex-flow: column;
-  height: 160px;
-  width: 100%;
-  background: #F3E9F1;
+.navbar{
+  &__header {
+    display: flex;
+    flex-flow: column;
+    height: 160px;
+    width: 100%;
+    background: #F3E9F1;
+  }
 }
-
-.navbar__logo {
-  display: flex;
-  width: 200px;
-  margin: auto;
+.navbar{
+  &__logo {
+    display: flex;
+    width: 200px;
+    margin: auto;
+  }
 }
-
-.navbar__logo:hover {
-  cursor: pointer;
-  transform: translateX(30%);
-  transition: transform 800ms linear;
+.navbar{
+  &__logo:hover {
+    cursor: pointer;
+    transform: translateX(30%);
+    transition: transform 800ms linear;
+  }
 }
-
-#btn__cart {
-  display: flex;
-  flex-flow: column;
-  margin: auto;
+#btn{
+  &__cart {
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+  }
 }
-
-#btn__cart > img {
-  width: 90px;
+#btn{
+  &__cart > img {
+    width: 90px;
+  }
 }
-
 .homepage__container {
   display: flex;
   flex-flow: column;
@@ -94,26 +109,29 @@ a {
   box-sizing: border-box;
 }
 
-.title__homepage {
-  cursor: pointer;
-  box-sizing: border-box;
-  text-align: center;
-  height: 7rem;
-  width: 95%;
-  margin: 3rem auto;
-  border-radius: 50px;
-  background: black;
-  padding-top: 0.5rem;
-  border: solid 6px;
-  border-color: #F3E9F1;
-  font-family: "belligerent_madnessregular";
+.title{
+  &__homepage {
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    height: 7rem;
+    width: 95%;
+    margin: 3rem auto;
+    border-radius: 50px;
+    background: black;
+    padding-top: 0.5rem;
+    border: solid 6px;
+    border-color: #F3E9F1;
+    font-family: "belligerent_madnessregular";
+  }
 }
 
-.title__homepage:hover {
-  transform: scale(0.8);
-  transition: transform 600ms linear;
+.title{
+  &__homepage:hover {
+    transform: scale(0.8);
+    transition: transform 600ms linear;
+  }
 }
-
 .word {
   animation: button-effect 8s linear infinite;
   -moz-animation: button-effect 8s linear infinite;
@@ -154,114 +172,141 @@ a {
   -ms-animation-delay: 0.07s;
 }
 
-.btns__homepage {
-  box-sizing: border-box;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  margin: 0 auto 1rem auto;
-  width: 100%;
-}
 
-.btns__homepage > img {
-  width: 300px;
-  margin: 3rem auto 2rem auto;
-  border-radius: 50px;
-}
 
-.btns__homepage > img:hover {
-  cursor: pointer;
-  transform: rotate(360deg);
-  transition: transform 800ms linear;
-}
 
-.btn__homepage {
-  cursor: pointer;
-  border-radius: 50px;
-  height: 100px;
-  background: linear-gradient(to right, #d1841f 10%, #c568f3);
-  box-sizing: border-box;
-  width: 200px;
-  margin: auto;
-  border: solid 6px;
-  border-color: #F3E9F1;
-  font-size: 20px;
-  font-family: "belligerent_madnessregular";
-}
 
-.btn__homepage:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  background: linear-gradient(to right, #c568f3 10%, #d1841f);
-  border: solid 6px;
-  border-color: black;
+#bloc{
+  &__image {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    margin: 1rem auto;
+    width: 95%;
+  }
 }
-
-/*--END PAGE ACCUEIL--*/
-/*--PRODUCTS PAGE--*/
-#bloc__image {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  box-sizing: border-box;
-  margin: 1rem auto;
-  width: 95%;
+#bloc{
+  &__image img {
+    width: 200px;
+    object-fit: cover;
+    width: 40%;
+    height: 20%;
+    padding: 5px;
+    margin: 0.8rem auto;
+    border-radius: 50px 0 50px 0;
+    border: solid 1px #eeaf3b;
+  }
 }
-
-#bloc__image img {
-  width: 200px;
-  object-fit: cover;
-  width: 40%;
-  height: 20%;
-  padding: 5px;
-  margin: 0.8rem auto;
-  border-radius: 50px 0 50px 0;
-  border: solid 1px #eeaf3b;
+#bloc{
+  &__image1 {
+    display: flex;
+    flex-flow: column;
+    border: solid 3px;
+    border-color: #eeaf3b;
+    margin: 0.3rem 0 2rem 0;
+    border-radius: 50px 0 50px 0;
+    padding: 5px;
+  }
 }
-
-#bloc__image1 {
-  display: flex;
-  flex-flow: column;
+#bloc{
+  &__image1 .productList {
+    border: solid 1px #c568f3;
+    border-radius: 50px 0 50px 0;
+    display: flex;
+    flex-flow: column;
+    line-height: 1.5rem;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-family: "belligerent_madnessregular";
+  }
+}
+#btn{
+  &__camera {
   border: solid 3px;
-  border-color: #eeaf3b;
-  margin: 0.3rem 0 2rem 0;
-  border-radius: 50px 0 50px 0;
-  padding: 5px;
-}
-
-#bloc__image1 .productList {
-  border: solid 1px #c568f3;
-  border-radius: 50px 0 50px 0;
-  display: flex;
-  flex-flow: column;
-  line-height: 1.5rem;
+  border-radius: 50px;
   font-size: 18px;
-  text-align: center;
-  margin-bottom: 0.8rem;
+  padding-top:.3rem;  
+  background: linear-gradient(to right, #d1841f 10%, #c568f3);
+  height: 28px;
+  width: 11rem;
+  margin: auto auto 0.5rem auto;
   font-family: "belligerent_madnessregular";
+  }
 }
+/*--END PAGE ACCUEIL--*/
 
+/*-- PAGE PRODUCT--*/
+
+
+#bloc{
+  &__product {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    margin: 1rem auto;
+    width: 95%;
+  }
+}
+#bloc{
+  &__product img {
+    width: 200px;
+    object-fit: cover;
+    width: 40%;
+    height: 20%;
+    padding: 5px;
+    margin: 0.8rem auto;
+    border-radius: 50px 0 50px 0;
+    border: solid 1px #eeaf3b;
+  }
+}
+#bloc{
+  &__product {
+    display: flex;
+    flex-flow: column;
+    border: solid 3px;
+    border-color: #eeaf3b;
+    margin: 0.3rem 0 2rem 0;
+    border-radius: 50px 0 50px 0;
+    padding: 5px;
+  }
+}
+#bloc{
+  &__product .productList {
+    border: solid 1px #c568f3;
+    border-radius: 50px 0 50px 0;
+    display: flex;
+    flex-flow: column;
+    line-height: 1.5rem;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-family: "belligerent_madnessregular";
+  }
+}
 .choice, .selectQ {
   font-family: "belligerent_madnessregular";
   font-size: 20px;
 }
 
-.btn__product {
-  border: solid 3px;
-  border-radius: 50px;
-  font-size: 18px;
-  background: linear-gradient(to right, #d1841f 10%, #c568f3);
-  height: 50px;
-  width: 10rem;
-  margin: auto auto 0.5rem auto;
-  font-family: "belligerent_madnessregular";
+#btn{
+  &__addtocart {
+    border: solid 3px;
+    border-radius: 50px;
+    font-size: 18px;
+    background: linear-gradient(to right, #d1841f 10%, #c568f3);
+    height: 50px;
+    width: 11rem;
+    margin: auto auto .5rem auto;
+    font-family: "belligerent_madnessregular";
+  }
 }
 
-/*-- END PRODUCT PAGE---*/
+/*-- END  PRODUCT PAGE---*/
+
+
 /*-- CART PAGE--*/
 .title {
   font-family: "belligerent_madnessregular";
@@ -270,35 +315,90 @@ a {
   animation: article-cart 10s ease-in-out infinite;
 }
 
-.bloc__items {
-  border-radius: 10px;
-  border: solid 2px #c568f3;
-  display: flex;
-  justify-content: center;
-  width: 70%;
-  height: 35%;
-  line-height: 3rem;
-  margin: auto auto 5rem auto;
-  font-family: "belligerent_madnessregular";
-  font-size: 20px;
-  box-shadow: 2px 2px 2px 2px #F3E9F1;
+.cart{
+  &__items {
+    border-radius: 10px;
+    border: solid 2px #c568f3;
+    display: flex;
+    flex-flow: column;
+    width: 85%;
+    height: 55%;
+    line-height: 2rem;
+    margin: auto auto 2rem auto;
+    padding-top:.5rem;
+    font-family: "belligerent_madnessregular";
+    font-size: 20px;
+    box-shadow: 2px 2px 2px 2px #eeaf3b;
+  }
 }
 
-.form__container {
-  border-radius: 10px;
-  border: solid 2px #eeaf3b;
-  box-shadow: 2px 2px 2px 2px #c568f3;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  width: 85%;
-  height: 35%;
-  line-height: 3rem;
-  margin: auto auto 5rem auto;
-  font-family: "belligerent_madnessregular";
-  font-size: 15px;
+.container{
+  &__recap, &__total, &__emptyCart{
+    width:90%;
+    height:55%;
+    border-radius: 10px;
+    border:solid 2px #eeaf3b;
+    display: block;
+    margin:0 0 .8rem .8rem;
+    box-shadow: 2px 2px 2px 2px #c568f3;
+    text-align: center;
+  }
+}
+  .container{
+    &__recap img{
+    object-fit: cover;
+    width: 40%;
+    height: 20%;
+    padding: 5px;
+    margin: 0.8rem auto;
+    border-radius: 50px 0 50px 0;
+    border: solid 1px #eeaf3b;
+  }
+}
+.btn{
+  &__emptyCart{
+    border: solid 3px black;
+    border-radius: 50px;
+    width: 250px;
+    height:30px;
+    font-size: 20px;
+    text-align: center;
+    margin:auto auto 1rem auto;
+    font-family: "belligerent_madnessregular";
+    background: linear-gradient(to right,#c568f3 10% , #d1841f );
+  }
 }
 
+.btn{
+  &__cancelArticle{
+    font-family: "belligerent_madnessregular";
+    font-size: 20px;
+    width:200px;
+    height:50px;
+    margin: 2rem auto 2rem auto;
+    border: solid 3px black;
+    border-radius: 50px;
+    background: linear-gradient(to right, #d1841f 10%, #c568f3);
+  }
+}
+
+
+.form{
+  &__container {
+    border-radius: 10px;
+    border: solid 2px #eeaf3b;
+    box-shadow: 2px 2px 2px 2px #c568f3;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 85%;
+    height: 35%;
+    line-height: 3rem;
+    margin: auto auto 5rem auto;
+    font-family: "belligerent_madnessregular";
+    font-size: 15px;
+  }
+}
 .form-control {
   display: block;
   margin: auto;
@@ -313,19 +413,14 @@ a {
   width: 80%;
   border-radius: 10px;
   text-align: center;
-  border: solid 0px;
+  border: solid 1px;
   border-color: #c568f3;
   box-shadow: 2px 2px 2px 2px #eeaf3b;
 }
 
-#form input:focus {
+input:focus{
   outline: none;
 }
-
-#form input:invalid {
-  border: 10px solid red;
-}
-
 #error {
   margin: auto;
   color: red;
@@ -343,6 +438,8 @@ a {
   color: black;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
+  width:200px;
+  height:50px;
   margin: 2rem auto 2rem auto;
   border: solid 3px;
   border-radius: 50px;
@@ -350,16 +447,19 @@ a {
 }
 
 /*--END CART PAGE--*/
-/*-- FOOTER--*/
-.footer__container {
-  display: flex;
-  flex-flow: column;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  background: #F3E9F1;
-}
 
+
+/*-- FOOTER--*/
+.footer{
+  &__container {
+    display: flex;
+    flex-flow: column;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: #F3E9F1;
+  }
+}
 .btn__footer1, .btn__footer2 {
   cursor: pointer;
   margin: 1rem auto 0.5rem auto;
@@ -378,6 +478,8 @@ a {
 }
 
 /*--POPUP APPEARS WHEN CLICKING--*/
+
+
 .overlay, .overlay2 {
   position: absolute;
   top: 0;
@@ -413,242 +515,37 @@ a {
 }
 
 /*----MEDIA QUERY---*/
+
+
 @media screen and (min-width: 768px) {
-  #btn__cart {
-    cursor: pointer;
-    display: flex;
-    flex-flow: column;
-    margin-right: 100px;
+  #btn{
+    &__cart {
+      cursor: pointer;
+      display: flex;
+      flex-flow: column;
+      margin-right: 100px;
+    }
   }
-
-  #btn__cart > img {
-    width: 90px;
+  #btn{
+    &__cart > img {
+      width: 90px;
+    }
   }
-
-  .title__homepage {
-    cursor: pointer;
-    box-sizing: border-box;
-    text-align: center;
-    width: 60%;
+  .title{
+    &__homepage {
+      cursor: pointer;
+      box-sizing: border-box;
+      text-align: center;
+      width: 60%;
+    }
   }
-
-  .title__homepage:hover {
-    transform: scale(0.8);
-    transition: transform 600ms linear;
+  .title{
+    &__homepage:hover {
+      transform: scale(0.8);
+      transition: transform 600ms linear;
+    }
   }
-
   #form input {
     width: 40%;
   }
 }
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-
-/*# sourceMappingURL=main.scss.map */

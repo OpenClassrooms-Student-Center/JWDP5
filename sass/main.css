@@ -154,55 +154,6 @@ a {
   -ms-animation-delay: 0.07s;
 }
 
-.btns__homepage {
-  box-sizing: border-box;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  margin: 0 auto 1rem auto;
-  width: 100%;
-}
-
-.btns__homepage > img {
-  width: 300px;
-  margin: 3rem auto 2rem auto;
-  border-radius: 50px;
-}
-
-.btns__homepage > img:hover {
-  cursor: pointer;
-  transform: rotate(360deg);
-  transition: transform 800ms linear;
-}
-
-.btn__homepage {
-  cursor: pointer;
-  border-radius: 50px;
-  height: 100px;
-  background: linear-gradient(to right, #d1841f 10%, #c568f3);
-  box-sizing: border-box;
-  width: 200px;
-  margin: auto;
-  border: solid 6px;
-  border-color: #F3E9F1;
-  font-size: 20px;
-  font-family: "belligerent_madnessregular";
-}
-
-.btn__homepage:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  background: linear-gradient(to right, #c568f3 10%, #d1841f);
-  border: solid 6px;
-  border-color: black;
-}
-
-/*--END PAGE ACCUEIL--*/
-/*--PRODUCTS PAGE--*/
 #bloc__image {
   display: flex;
   flex-flow: column;
@@ -245,23 +196,79 @@ a {
   font-family: "belligerent_madnessregular";
 }
 
+#btn__camera {
+  border: solid 3px;
+  border-radius: 50px;
+  font-size: 18px;
+  padding-top: 0.3rem;
+  background: linear-gradient(to right, #d1841f 10%, #c568f3);
+  height: 28px;
+  width: 11rem;
+  margin: auto auto 0.5rem auto;
+  font-family: "belligerent_madnessregular";
+}
+
+/*--END PAGE ACCUEIL--*/
+/*-- PAGE PRODUCT--*/
+#bloc__product {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  margin: 1rem auto;
+  width: 95%;
+}
+
+#bloc__product img {
+  width: 200px;
+  object-fit: cover;
+  width: 40%;
+  height: 20%;
+  padding: 5px;
+  margin: 0.8rem auto;
+  border-radius: 50px 0 50px 0;
+  border: solid 1px #eeaf3b;
+}
+
+#bloc__product {
+  display: flex;
+  flex-flow: column;
+  border: solid 3px;
+  border-color: #eeaf3b;
+  margin: 0.3rem 0 2rem 0;
+  border-radius: 50px 0 50px 0;
+  padding: 5px;
+}
+
+#bloc__product .productList {
+  border: solid 1px #c568f3;
+  border-radius: 50px 0 50px 0;
+  display: flex;
+  flex-flow: column;
+  line-height: 1.5rem;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  font-family: "belligerent_madnessregular";
+}
+
 .choice, .selectQ {
   font-family: "belligerent_madnessregular";
   font-size: 20px;
 }
 
-.btn__product {
+#btn__addtocart {
   border: solid 3px;
   border-radius: 50px;
   font-size: 18px;
   background: linear-gradient(to right, #d1841f 10%, #c568f3);
   height: 50px;
-  width: 10rem;
+  width: 11rem;
   margin: auto auto 0.5rem auto;
   font-family: "belligerent_madnessregular";
 }
 
-/*-- END PRODUCT PAGE---*/
+/*-- END  PRODUCT PAGE---*/
 /*-- CART PAGE--*/
 .title {
   font-family: "belligerent_madnessregular";
@@ -270,18 +277,63 @@ a {
   animation: article-cart 10s ease-in-out infinite;
 }
 
-.bloc__items {
+.cart__items {
   border-radius: 10px;
   border: solid 2px #c568f3;
   display: flex;
-  justify-content: center;
-  width: 70%;
-  height: 35%;
-  line-height: 3rem;
-  margin: auto auto 5rem auto;
+  flex-flow: column;
+  width: 85%;
+  height: 55%;
+  line-height: 2rem;
+  margin: auto auto 2rem auto;
+  padding-top: 0.5rem;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
-  box-shadow: 2px 2px 2px 2px #F3E9F1;
+  box-shadow: 2px 2px 2px 2px #eeaf3b;
+}
+
+.container__recap, .container__total, .container__emptyCart {
+  width: 90%;
+  height: 55%;
+  border-radius: 10px;
+  border: solid 2px #eeaf3b;
+  display: block;
+  margin: 0 0 0.8rem 0.8rem;
+  box-shadow: 2px 2px 2px 2px #c568f3;
+  text-align: center;
+}
+
+.container__recap img {
+  object-fit: cover;
+  width: 40%;
+  height: 20%;
+  padding: 5px;
+  margin: 0.8rem auto;
+  border-radius: 50px 0 50px 0;
+  border: solid 1px #eeaf3b;
+}
+
+.btn__emptyCart {
+  border: solid 3px black;
+  border-radius: 50px;
+  width: 250px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  margin: auto auto 1rem auto;
+  font-family: "belligerent_madnessregular";
+  background: linear-gradient(to right, #c568f3 10%, #d1841f);
+}
+
+.btn__cancelArticle {
+  font-family: "belligerent_madnessregular";
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  margin: 2rem auto 2rem auto;
+  border: solid 3px black;
+  border-radius: 50px;
+  background: linear-gradient(to right, #d1841f 10%, #c568f3);
 }
 
 .form__container {
@@ -313,17 +365,13 @@ a {
   width: 80%;
   border-radius: 10px;
   text-align: center;
-  border: solid 0px;
+  border: solid 1px;
   border-color: #c568f3;
   box-shadow: 2px 2px 2px 2px #eeaf3b;
 }
 
-#form input:focus {
+input:focus {
   outline: none;
-}
-
-#form input:invalid {
-  border: 10px solid red;
 }
 
 #error {
@@ -343,6 +391,8 @@ a {
   color: black;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
+  width: 200px;
+  height: 50px;
   margin: 2rem auto 2rem auto;
   border: solid 3px;
   border-radius: 50px;
@@ -441,215 +491,5 @@ a {
     width: 40%;
   }
 }
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
-/*# sourceMappingURL=main.scss.map */
 
 /*# sourceMappingURL=main.css.map */
