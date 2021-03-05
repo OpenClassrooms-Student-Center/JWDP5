@@ -31,6 +31,7 @@ async function camera(){
     const chooseLenses = document.createElement('select');
     chooseLenses.setAttribute("class",'choice');
     chooseLenses.setAttribute("id" , 'choiceL');
+    chooseLenses.setAttribute("onchange", 'selectedLenses()');
       
     const selectQuantity = document.createElement('select');
     selectQuantity.setAttribute("class", 'selectQ');
@@ -50,19 +51,23 @@ async function camera(){
       }
      
 
-    let cameras = camera.lenses;
-      for (let j = 0; j < cameras.length; j ++){
+    let sLenses = camera.lenses;
+      for (let j = 0; j < sLenses.length; j ++){
           let optLenses = document.createElement('option');
           optLenses.value = j;
-          optLenses.innerHTML = cameras[j];
+          optLenses.innerHTML = sLenses[j];
           chooseLenses.appendChild(optLenses);
          console.log(optLenses);
       }
+
+
+    
 
  // END SELECT & OPTIONS
 
     let image = document.createElement('img');
     image.src = camera.imageUrl;
+    image.setAttribute("alt", 'photo de la camera sélectionnée');
     let id = document.createElement('p');
     id.textContent = `Réf : ${camera._id}`;
     let nom = document.createElement('h2');
@@ -98,11 +103,20 @@ async function camera(){
    
           
 // END HTML PRODUCT
+// POPUP WINDOW
 
-//  RUNNING OF CART 
-const idLenses = document.getElementById('choiceL');
+    const popupConfirmation = () => {
 
-console.log(idLenses);
+    if(window.confirm(`${camera.name} à bien été ajouté au panier
+
+Consulter le panier cliquez sur  OK 
+Revenir à l'accueil cliquez sur Cancel`)){
+        window.location.href = "cart.html";
+    }
+    else{
+        window.location.href = "index.html";
+    }
+}
 
 
   // CLICK TO CART PAGE TO ADD PRODUCT
@@ -119,25 +133,13 @@ pageAddToCart.addEventListener('click', (e) => {
     nom : camera.name,
     id: camera._id,
     image: camera.imageUrl,
-    prix: camera.price /100 +',00'+ ' €'
- 
+    prix: camera.price ,
+   
   }   
 
 //LOCALSTORAGE
 
-// POPUP WINDOW
 
-const popupConfirmation = () => {
-
-    if(window.confirm(`${camera.name} à bien été ajouté au panier
-
-Consulter le panier OK ou revenir à l'accueil Cancel`)){
-        window.location.href = "cart.html";
-    }
-    else{
-        window.location.href = "index.html";
-    }
-}
 
 let addLocalStorage = JSON.parse(localStorage.getItem("basket"));
 
@@ -161,5 +163,5 @@ else{
 });
 
 }
-  camera();
-
+    camera();
+ 

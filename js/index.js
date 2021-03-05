@@ -3,7 +3,7 @@
 
 async function getAllCameras(){
     let response = await fetch('http://localhost:3000/api/cameras/');
-    let cameras = response.json();
+    let cameras= response.json();
     return cameras;//PROMESSE
 
 }
@@ -29,11 +29,15 @@ getAllCameras().then(function(cameras){
 
         let image = document.createElement('img');
         image.src = camera.imageUrl;
+        image.setAttribute("alt", 'photo de la camera')
         let id = document.createElement('p');
         id.textContent = `Réf : ${camera._id}`;
         let nom = document.createElement('h2');
         nom.textContent = camera.name;
         let a = document.createElement('a');
+        const spinner = document.createElement('div');
+        spinner.setAttribute("class", 'spinner');
+
         a.setAttribute("href" , 'product.html?id=' + camera._id);
         a.setAttribute("id", 'btn__camera');
         a.textContent = `Voir plus de détails`;
@@ -43,7 +47,8 @@ getAllCameras().then(function(cameras){
         productList.appendChild(image);
         productList.appendChild(id);
         productList.appendChild(nom);
-        productList.appendChild(a);
+        productList.appendChild(spinner);
+;       productList.appendChild(a);
  });        
         // FIN PRODUCT HTML
 
@@ -54,6 +59,9 @@ getAllCameras().then(function(cameras){
 
 // CLICK TO CART PAGE FROM PANIER HEADER
 const pageCart = document.getElementById('btn__cart');
-pageCart.addEventListener('click', function (){
+
+pageCart.addEventListener('click', () =>{
+
     window.location.href = "cart.html";
+    
     });

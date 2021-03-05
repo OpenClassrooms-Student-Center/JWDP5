@@ -18,6 +18,7 @@
                     Panier
                 </a>
             </header>
+
             <div class="homepage__container">
                 <div class="title__homepage">
                     <h1>
@@ -31,48 +32,55 @@
             <div id="title">
 
             </div> 
-            <div class="cart__items" id="cart__items">
+            <section id="hide-page">
+                <div class="cart__items" id="cart__items">
                   
 
-            </div>
-            <div class="form__container ">  
-                <div id="error"></div>
-                <form action id="form" name="form" >
-                    <div class="form-group">
-                        <label for="lastName" class="black">
+                </div>
+                <div class="cont__total" id="cont__total">
+
+                </div>
+
+                </div>
+                <div class="form__container ">  
+                    
+                    <form method="POST" id="form" name="form" >
+                        <div class="form-group">
+                            <label for="lastName" class="black">
                             Nom :
                         </label>
-                        <input type="text" id="lastName" name="lastName" placeholder="Entrer votre nom " class="form-control"  />
-                    </div>
-                    <div class="form-group">
-                        <label for="firstName" class=" black">
-                            Prénom :
-                            <input type='text'id="firstName" name="firstName" placeholder="Entrez votre prénom" class="form-control" />
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label  for="adress" class="black">
-                            Adresse :
-                        </label>
-                        <input class="form-control" id="address" name="address"type="text" placeholder="3, allée des Lyonnais"  />
-                    </div>
-                    <div class="form-group">
-                        <label  for="city" class=black>
-                            Ville :
-                        </label>
-                        <input id="city" name="city" placeholder="Lyon" class="form-control" />
-                    </div> 
-                    <div class="form-group">
-                        <label for="email" class="black">
-                            Adresse email :
-                        </label>
-                        <input type="email" id="email" name="email" placeholder="entrez une adresse émail valide" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <button class="black-valid" id="add__cart" type="submit" value="Validez votre commande !">Validez votre commande!</button>
-                    </div>
-                </form> 
-             </div>    
+                        <input type="text" id="lastName" name="lastName" placeholder="Entrer votre nom " class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName" class=" black">
+                                Prénom :
+                                <input type='text'id="firstName" name="firstName" placeholder="Entrez votre prénom" class="form-control" required/>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label  for="adress" class="black">
+                                Adresse :
+                            </label>
+                            <input class="form-control" id="address" name="address"type="text" placeholder="3, allée des Lyonnais"  required/>
+                        </div>
+                        <div class="form-group">
+                            <label  for="city" class=black>
+                                Ville :
+                            </label>
+                            <input id="city" name="city" placeholder="Lyon" class="form-control" required/>
+                        </div> 
+                        <div class="form-group">
+                            <label for="email" class="black">
+                                Adresse email :
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="entrez une adresse émail valide" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <button class="black-valid" id="check-cart" type="submit" >Valider votre commande !!</button>
+                        </div>
+                    </form> 
+                </div>
+            </section>    
             <footer class="footer__container ">
                 <button id="btn__footer1" class="btn__footer1">À propos de nous</button>
                     <div id="overlay" class="overlay">
@@ -98,6 +106,7 @@
                 </div>
             </footer>
              <script src="js/cart.js"></script>
+             
              <script src="js/modal.js" ></script>
         </div>
     </body>
