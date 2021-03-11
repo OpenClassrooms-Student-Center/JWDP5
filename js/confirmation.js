@@ -1,6 +1,4 @@
-let ordered = JSON.parse(sessionStorage.getItem("order"));
-sessionStorage.setItem("order", JSON.stringify("ordered"));
-console.log(ordered);
+
 //GET INFO TO SEND TO CONFIRM PAGE
 
 
@@ -10,12 +8,12 @@ returnOrder = ()=> {
         document.getElementById("last__Name").innerHTML = ordered.contact.lastName; //GET THE NAME FROM CONTACT
         document.getElementById("orderId").innerHTML = ordered.orderId;
         console.log(ordered);
-        sessionStorage.removeItem("order");
+        //sessionStorage.removeItem("order");
     }
     
     else{
        
-       window.location = "index.html";
+      
      
     }
 };
@@ -53,23 +51,25 @@ confirmUnitPrice.textContent = "prix";
 // GET ID FOR EACH PRODUCTS
 
 let i = 0;
-let order = JSON.parse(sessionStorage.getitem('order'));
+let order = JSON.parse(sessionStorage.getItem("order"));
 
 order.products.forEach((orderProduct) =>{
 //CREATE LINE
 let confirmProductLine = document.createElement("tr");
-confirmProductLine.setAttribute("id", "product" + i);
 let confirmImageProduct = document.createElement("img");
-confirmImageProduct.setAttribute("class", product__image);
-confirmImageProduct.setAttribute("src", orderProduct.imageUrl);
-confirmImageProduct.setAttribute("alt", "image de l'article acheté");
 let confirmLastNameProduct= document.createElement("td");
 let confirmUnitPriceProduct = document.createElement("td");
+
+confirmProductLine.setAttribute("id", "product" + i);
+confirmImageProduct.setAttribute("class", 'product__image');
+confirmImageProduct.setAttribute("src", orderProduct.imageUrl);
+confirmImageProduct.setAttribute("alt", "image de l'article acheté");
+
 
 //INSERT IN HTML
 
 confirmRecap.appendChild(confirmProductLine);
-confirmProductLine.appendChild(confirmImageproduct);
+confirmProductLine.appendChild(confirmImageProduct);
 confirmProductLine.appendChild(confirmLastNameProduct);
 confirmProductLine.appendChild(confirmUnitPriceProduct);
 
@@ -86,12 +86,12 @@ confirmUnitPriceProduct.textContent = orderProduct.price / 100 + ",00" + "€";
 
 confirmRecap.appendChild(confirmTotal);
 confirmTotal.appendChild(confirmTotalColumn);
-confirmTotal.setAttribute("id", sumLine);
-confirmTotalColumn.textContent = "Total payé";
+confirmTotal.setAttribute("id", 'sumLine');
+confirmTotalColumn.textContent = "Total payé : ";
 confirmTotal.appendChild(confirmTotalPaid);
 
 confirmTotalPaid.setAttribute("id", 'sum__ConfirmTotal');
-confirmTotalPaid.setAttribute("colspan", "4");//The colspan attribute defines the number of columns a cell should span.
+confirmTotalPaid.setAttribute("colspan", "2");//The colspan attribute defines the number of columns a cell should span.
 confirmTotalColumn.setAttribute("id", 'column__ConfirmTotal');
 
 // CALCULATE ALL
@@ -99,9 +99,10 @@ confirmTotalColumn.setAttribute("id", 'column__ConfirmTotal');
 let sumConfirmTotal = 0;
 order.products.forEach((orderProduct) => {
     sumConfirmTotal += orderProduct.price /100;
-})
+});
 
-
+console.log(sumConfirmTotal);
+document.getElementById("sum__ConfirmTotal").textContent = sumConfirmTotal + ',00' + " €";
 }
 
 

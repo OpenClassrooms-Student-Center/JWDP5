@@ -16,12 +16,10 @@ getAllCameras().then(function(cameras){
      //structure HTML
      
     
-    cameras.forEach( camera =>{
+    cameras.forEach(camera =>{
 
     
         // creation element html
-
-        
         const productList = document.createElement('div');
         productList.setAttribute("class", 'productList');
         productList.setAttribute("id" , 'productList');
@@ -29,15 +27,16 @@ getAllCameras().then(function(cameras){
 
         let image = document.createElement('img');
         image.src = camera.imageUrl;
-        image.setAttribute("alt", 'photo de la camera')
+        image.setAttribute("alt", 'photo de la camera');
         let id = document.createElement('p');
         id.textContent = `Réf : ${camera._id}`;
         let nom = document.createElement('h2');
         nom.textContent = camera.name;
-        let a = document.createElement('a');
+       
         const spinner = document.createElement('div');
         spinner.setAttribute("class", 'spinner');
-
+        
+        let a = document.createElement('a');
         a.setAttribute("href" , 'product.html?id=' + camera._id);
         a.setAttribute("id", 'btn__camera');
         a.textContent = `Voir plus de détails`;
@@ -48,7 +47,7 @@ getAllCameras().then(function(cameras){
         productList.appendChild(id);
         productList.appendChild(nom);
         productList.appendChild(spinner);
-;       productList.appendChild(a);
+        productList.appendChild(a);
  });        
         // FIN PRODUCT HTML
 
@@ -65,3 +64,5 @@ pageCart.addEventListener('click', () =>{
     window.location.href = "cart.html";
     
     });
+
+    getAllCameras();

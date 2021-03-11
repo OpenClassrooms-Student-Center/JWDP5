@@ -1,61 +1,58 @@
-
-
-let addLocalStorage = JSON.parse(localStorage.getItem("basket"));
-localStorage.setItem('basket',JSON.stringify(addLocalStorage));
-console.log(addLocalStorage);
-
-//PRODUCT CART TITLE
- const title__cart = document.createElement('h2');
+//CART TITLE
+function titleCart(){
+    const title__cart = document.createElement('h2');
     title__cart.setAttribute("class", 'title');
     title__cart.textContent = `Article(s) Selectionné(s)`;
-    
     title.appendChild(title__cart);
+}
 
+let arrayPrice = [];
 
-//IF CART IS EMPTY : DELETE DIV
+let products = [];
 
-if(addLocalStorage === null || addLocalStorage == 0) {
-  
-    
-    document.getElementById('hide-page').style.display = 'none';
-    
-    alert(`Vous n'avez pas d'article dans votre panier!!
+let contact = {};
+class ContactData {
+    constructor(lastName, firstName, address, city, email) {
+        this.lastName = lastName ;
+        this.firstName = firstName;
+        this.address = address;
+        this.city = city;
+        this.email = email;
+    }
+}
 
-Vous allez être redigérer vers la page d'accueil.`)
-    window.location.href  = "index.html"
-} else{
-    // IF CART IS NOT EMPTY : DISPLAY PRODUCTS IN LOCALSTORAGE
-    let productCart = addLocalStorage;
-    for (k = 0; k < addLocalStorage.length; k++) {
-        console.log(addLocalStorage.length);
+function createCart(itemCamera, cartContent) {
 
-        const containerRecap = document.createElement('div');
+        let containerRecap = document.createElement('div');
         containerRecap.setAttribute("class", 'container__recap');
         containerRecap.setAttribute("id", 'container__recap');
 
         let imageProduct = document.createElement('img');
-        imageProduct.src = productCart[k].image;
+        imageProduct.src = itemCamera.imageUrl;
         imageProduct.setAttribute("alt", 'image de la photo sélectionée');
 
-        const idProducts = document.createElement('div');
+        let idProducts = document.createElement('div');
         idProducts.setAttribute("class", 'id__products');
         let idProduct = document.createElement('p');
-        idProduct.textContent = `Réf : ` + productCart[k].id;
+        idProduct.textContent = `Réf : ` + itemCamera.id;
 
-        const nomProducts = document.createElement('div');
+        let nomProducts = document.createElement('div');
         nomProducts.setAttribute("class", 'nom__products');
         let nomProduct = document.createElement('p');
-        nomProduct.textContent = `Article : ` + productCart[k].nom; 
+        nomProduct.textContent = `Article : ` + itemCamera.name; 
         
+        let lenseCamera = document.createElement('p');
+        nomProduct.appendChild(lenseCamera);
+        lenseCamera.textContent = cartContent[j].selectedLenses;
     
-        const prixProducts = document.createElement('div');
+        let prixProducts = document.createElement('div');
         prixProducts.setAttribute("class", 'prix__products');
         let prixProduct = document.createElement('p');
-        prixProduct.textContent = `Prix : `+ productCart[k].prix/100 + `,00` + `€`;
+        prixProduct.textContent = `Prix : `+ itemCamera.price/100 + `,00` + `€`;
         
-        const divCancelArticle = document.createElement('div');
+        let divCancelArticle = document.createElement('div');
         divCancelArticle.setAttribute("id", 'btn-cancelArticle');
-        const cancelArticle = document.createElement('button');
+        let cancelArticle = document.createElement('button');
         cancelArticle.setAttribute("id", 'btn__cancelArticle');
         cancelArticle.setAttribute("class", 'btn__cancelArticle');
         cancelArticle.textContent = `Supprimer l'article`;
@@ -71,16 +68,28 @@ Vous allez être redigérer vers la page d'accueil.`)
         prixProducts.append(prixProduct);
         containerRecap.append(divCancelArticle);
         divCancelArticle.appendChild(cancelArticle);
-       
+}   
 
-    }
-    
-   console.log(productCart);
-   console.log(cart__items);
-} 
+    console.log(cart__items);
 
+
+function addIdProduct(cartContent) {
+    products.push(cartContent[i].idCamera);
+}
+ // CALCULATE THE TOTAL OF CART
+
+function totalOrder(){
+    const reducer = (value, prix) => value + prix; 
+
+    let prices = cartContent.map(camera => camera.prix/100);
+
+    let sumTotal = prices.reduce(reducer);
+   console.log(sumTotal) ;
+
+    document.getElementById("container__total").textContent = `Total de votre panier :   `;
+    document.getElementById("sum__totals").textContent = sumTotal + `,00`  + `€`;
  
-
+}
  // HTML TOTAL CART
     const total = document.createElement('div');
     total.setAttribute("class", 'container__totals');
@@ -94,6 +103,29 @@ Vous allez être redigérer vers la page d'accueil.`)
     
     console.log(cont__total);
 
+    async function getCart() {
+        try {
+            let response = await fetch("http://localhost:3000/api/cameras");
+            if(response.ok) {
+                let cameras = await response.json();
+                let cartContent = JSON.parse(localStorage.getItem("basket")) || {};
+
+                for (i = 0 ; i < cartContent.length; i++) {
+                    let itemCamera = cameras.find(cameras => cameras['_id'] == cartContent[i].idCamera);
+                    console.log(itemCamera);
+                    createCart(itemCamera, cartContent);
+                    addIdProduct(cartContent);
+                    
+              }
+              totalOrder();
+            }else {
+            console.error('retour du server', response.status);
+            }
+        }
+        catch (e) {
+            console.log(e);
+        }
+}
 // BUTTON CANCEL ONE ARTICLE   
 
     
@@ -142,7 +174,6 @@ Si vous ne souhaitez pas supprimer l'article choisi cliquez sur Cancel`)){
     emptyCart.textContent = `Vider le panier!!`;
     cont__total.appendChild(emptyCart);
 
-
     let  removeBtnEmptyCart = document.getElementsByClassName('btn__emptyCart');
     console.log(removeBtnEmptyCart);
 
@@ -174,17 +205,6 @@ Cliquez sur Cancel pour garder vos articles dans le panier.`)){
     };
     
 
- // CALCULATE THE TOTAL OF CART
-const reducer = (value, prix) => value + prix; 
-
-let prices = addLocalStorage.map(camera => camera.prix/100);
-
-let sumTotal = prices.reduce(reducer);
-   console.log(sumTotal) ;
-
-
-document.getElementById("container__total").textContent = `Total de votre panier :   `;
-document.getElementById("sum__totals").textContent = sumTotal + `,00`  + `€`;
 
 
    
@@ -197,7 +217,7 @@ checkInput = ()  => {
 
     if(hideForm === null || hideForm == 0) {
   
-        let none = document.getElementById('form');
+    
         document.getElementById('form').style.display = 'none';
     
     }else{
@@ -207,7 +227,7 @@ checkInput = ()  => {
     // REGEX
 
     let checkNumber = /[0-9]/;
-    let checkMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let checkMail = /[a-z0-9-.]+@[a-z0-9-]+.[a-z]{1,4}/;
     let checkSpecialCharacter = /[§!@#$%^&*().?":{}|<>]/;
 
     // MESSAGE END CONTROL
@@ -316,36 +336,29 @@ checkCart = () => {
 
 //SENDING TO API
     //ARRAY AND OBJ ASKED BY API FOR ORDER
-    let contact;
-    let products = addLocalStorage.map(camera => camera.id); //ARRAY
-    let url = "http://localhost:3000/api/cameras/order";// FIND IN FOLDER ROUTE
 
-    const sendFormCart = (sendForm, url) => {
-    return new Promise((resolve) => { //SEE https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises
-        let request = new XMLHttpRequest();// SEE https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
-        request.onload = function (){               // " && " in Javascript is the operator for AND. 
-            if(this.readyState === XMLHttpRequest.DONE && this.status === 201) {//201 MEAN THE REQUEST IS SUCCESSFULL WITH METHOD POST
-                sessionStorage.setItem("order", this.responseText);// responseText return the response into string (chaine de caracteres)
-                resolve(JSON.parse(this.responseText));
-                window.location = "confirmation.html";
-                console.log(sendForm);
-        } else{
-            } 
-        }; 
-        request.open("POST", url); //La méthode open() de XMLHttpRequest instancie une nouvelle requête ou réinitialise un déjà existante
-        request.setRequestHeader("Content-type", "application/json");//https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Accept
-        request.send(sendForm);
-        console.log(sendForm);
-    })
-};
-
+    async function sendForm(url ='http://localhost:3000/api/cameras/order', data = { contact, products }) {
+        const response = await fetch(url, {//https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+            method : 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Youpii', data);
+        })
+        .catch((error) => {
+            console.log('Sorry!!', error);
+        })
+    }
 
 confirmOrder = ()  => {
     let validCommand = document.getElementById('form');
     validCommand.addEventListener("submit", (e) => {
         e.preventDefault();
         //IF THE CART IS NOT EMPTY AND AND THE FORM IS VALID > BUILD A PRODUCTS ARRAY TO API
-
 
         if (checkCart() == true && checkInput() != null) {
             console.log("envoie effectué");
@@ -361,7 +374,7 @@ confirmOrder = ()  => {
             };
 
             let sendForm = JSON.stringify(order);
-            sendFormCart(sendForm, url)
+            sendForm(url, data)
             console.log(order);
         
             //RETURN ORIGINAL STATE LOCALSTORAGE
@@ -375,9 +388,10 @@ confirmOrder = ()  => {
 };
 
 
-
+titleCart();
 
 checkInput();
 checkCart();
 confirmOrder();
+
 

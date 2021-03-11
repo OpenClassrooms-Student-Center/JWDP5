@@ -1,24 +1,34 @@
-//RECUPERATION API ONE CAMERA
-
-
-async function getCamera(){
-    let url =  new URL (document.location);
-    let params = url.searchParams;
-    let idCamera = params.get("id");
-    let response = await fetch('http://localhost:3000/api/cameras/' +idCamera, {method: 'GET'});
-    let camera = await response.json();
-    return camera; //PROMESSE
-
+// CREATE PAGE FOR PRODUCT ARRAY
+class MyProduct {
+    constructor(idCamera, selectedLenses) {
+        this.idCamera = idCamera;
+        this.selectedLenses = selectedLenses;
+    }
 }
 
-                                                                                       
-async function camera(){
-    const camera = await getCamera();
-    console.log(camera);
-   
-           
+
+//RECUPERATION ID ONE CAMERA IN URL
+
+function getCamera(cameras){
+    let urlSearch =  new URLSearchParams(window.location.search);
+    console.log(urlSearch);
+    let idCamera = urlSearch.get('id');
+    console.log(idCamera);
+    getCameraItem(cameras, idCamera);
+}
+                                                                                   
+function getCameraItem(cameras, idCamera){
+
+    let cameraChoice = cameras.find(cameras => cameras['_id'] == idCamera);
+    console.log(cameraChoice);
+    createLayoutCamera(cameraChoice, idCamera);
+
+} 
+
+
 // CREATION HTML PRODUCT
-      
+function createLayoutCamera(cameraChoice, idCamera){
+
     const productList = document.createElement('div');
     productList.setAttribute("class", 'productList');
     productList.setAttribute("id" , 'productList');
@@ -28,62 +38,29 @@ async function camera(){
     label.setAttribute("class", 'label');
     label.setAttribute("id", 'label');
       
-    const chooseLenses = document.createElement('select');
-    chooseLenses.setAttribute("class",'choice');
-    chooseLenses.setAttribute("id" , 'choiceL');
-    chooseLenses.setAttribute("onchange", 'selectedLenses()');
-      
     const selectQuantity = document.createElement('select');
     selectQuantity.setAttribute("class", 'selectQ');
     selectQuantity.setAttribute("id" , 'selectQ');
 
-
-// LAYOUT SELECT & OPTIONS
-
-    let min = 1;
-    let max = 5;
-      for(let i = min; i <=max; i++ ){
-          let selectQopt = document.createElement('option');
-          selectQopt.value = i;
-          selectQopt.innerHTML = i;
-          selectQuantity.appendChild(selectQopt);
-          console.log(selectQopt); 
-      }
-     
-
-    let sLenses = camera.lenses;
-      for (let j = 0; j < sLenses.length; j ++){
-          let optLenses = document.createElement('option');
-          optLenses.value = j;
-          optLenses.innerHTML = sLenses[j];
-          chooseLenses.appendChild(optLenses);
-         console.log(optLenses);
-      }
-
-
-    
-
- // END SELECT & OPTIONS
-
     let image = document.createElement('img');
-    image.src = camera.imageUrl;
+    image.src = cameraChoice.imageUrl;
     image.setAttribute("alt", 'photo de la camera sélectionnée');
     let id = document.createElement('p');
-    id.textContent = `Réf : ${camera._id}`;
+    id.textContent = `Réf : ${cameraChoice._id}`;
     let nom = document.createElement('h2');
-    nom.textContent = camera.name;
+    nom.textContent = cameraChoice.name;
     let description = document.createElement('p');
-    description.textContent = camera.description;
+    description.textContent = cameraChoice.description;
     label.textContent = `Optiques : `;
     let prix = document.createElement('p');
-    prix.textContent = `Prix : ${camera.price /100 +',00'+ ' €'}`;
+    prix.textContent = `Prix : ${cameraChoice.price /100 +',00'+ ' €'}`;
     let quantity = document.createElement('p');
     quantity.textContent = 'Quantité : ';
-    let button = document.createElement('button');
-    button.setAttribute("id", 'btn__addtocart');
-    button.setAttribute("type", 'submit');
-    button.textContent= 'Ajouter au Panier !';
-      
+    let buttonAddToCart = document.createElement('button');
+    buttonAddToCart.setAttribute("id", 'btn__addtocart');
+    buttonAddToCart.setAttribute("type", 'submit');
+    buttonAddToCart.textContent= 'Ajouter au Panier !';
+    
       
 // DISPLAY DOM
 
@@ -95,73 +72,86 @@ async function camera(){
     productList.appendChild(nom);
     productList.appendChild(description);
     productList.appendChild(label);
-    label.appendChild(chooseLenses);
     productList.appendChild(prix);
     productList.appendChild(quantity);
     quantity.appendChild(selectQuantity);
-    productList.appendChild(button);
+    productList.appendChild(buttonAddToCart);
+
    
-          
+    choiceLense(label, cameraChoice);
+    sQuantity(selectQuantity);
+    getLensesSelected(buttonAddToCart, idCamera);
+ }  
+
+ // LAYOUT SELECT & OPTIONS
+
+function choiceLense(label, cameraChoice){
+
+    let chooseLenses = document.createElement('select');
+    label.appendChild(chooseLenses);
+    chooseLenses.setAttribute("class",'choice');
+    chooseLenses.setAttribute("id" , 'choiceL');
+
+    numLenses = cameraChoice.lenses;
+    for (let j = 0; j < numLenses.length; j ++){
+    let optLenses = document.createElement('option');
+        chooseLenses.appendChild(optLenses);
+        optLenses.textContent = cameraChoice.lenses[j];
+       
+        console.log(optLenses);
+  } 
+}
+
+function sQuantity(selectQuantity) {
+    let min = 1;
+    let max = 5;
+      for(let i = min; i <=max; i++ ){
+            let selectQopt = document.createElement('option');  
+            selectQopt.value = i;
+            selectQopt.innerHTML = i;
+            selectQuantity.appendChild(selectQopt);
+            console.log(selectQopt); 
+      }
+}
+
+// END SELECT & OPTIONS        
 // END HTML PRODUCT
-// POPUP WINDOW
 
-    const popupConfirmation = () => {
+//ADD PRODUCT UN CART
 
-    if(window.confirm(`${camera.name} à bien été ajouté au panier
+function getLensesSelected(buttonAddToCart, idCamera){
+    buttonAddToCart.addEventListener('click', function () {
+        let cartContent = JSON.parse(localStorage.getItem("basket"));
+        let selectedLenses = document.getElementById('choiceL').value;
+        console.log(selectedLenses);
+        if (cartContent === null) {
+            cartContent = [];
+        }
+        let product = new MyProduct(idCamera, selectedLenses);
+        cartContent.push(product);
+        localStorage.setItem("basket", JSON.stringify(cartContent));
+        window.location = 'cart.html'
+      
+        
+    });
+}
 
-Consulter le panier cliquez sur  OK 
-Revenir à l'accueil cliquez sur Cancel`)){
-        window.location.href = "cart.html";
+async function getCameras() {
+    try{
+        let response = await fetch("http://localhost:3000/api/cameras");
+        if(response.ok){
+            let cameras = await response.json();
+            console.log(cameras);
+            getCamera(cameras);
+        }else{
+            console.error('retour du server :' , response.status)
+        }
+    }catch (e){
+        console.log(e);
     }
-    else{
-        window.location.href = "index.html";
-    }
 }
 
 
-  // CLICK TO CART PAGE TO ADD PRODUCT
- 
-const pageAddToCart = document.getElementById('btn__addtocart');
+getCameras();
 
-pageAddToCart.addEventListener('click', (e) => {
-   e.preventDefault();
-
-
-  // GET CART DATA
-  let addCart = {
-
-    nom : camera.name,
-    id: camera._id,
-    image: camera.imageUrl,
-    prix: camera.price ,
-   
-  }   
-
-//LOCALSTORAGE
-
-
-
-let addLocalStorage = JSON.parse(localStorage.getItem("basket"));
-
-//IF PRODUCTS IN LOCAL STORAGE
-if(addLocalStorage){
-    addLocalStorage.push(addCart);
-    localStorage.setItem('basket',JSON.stringify(addLocalStorage));
-    console.log(addLocalStorage);
-    popupConfirmation();
-}
-//IF NO PRODUCT IN LOCAL STORAGE
-else{
-    addLocalStorage = [];
-    addLocalStorage.push(addCart);
-    localStorage.setItem('basket',JSON.stringify(addLocalStorage));
-    console.log(addLocalStorage);
-    popupConfirmation();
-}
-
-
-});
-
-}
-    camera();
  
