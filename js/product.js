@@ -5,7 +5,7 @@ class MyProduct {
         this.selectedLenses = selectedLenses;
     }
 }
-
+//----------------------------
 
 //RECUPERATION ID ONE CAMERA IN URL
 
@@ -16,7 +16,7 @@ function getCamera(cameras){
     console.log(idCamera);
     getCameraItem(cameras, idCamera);
 }
-                                                                                   
+//------------------------                                                                                 
 function getCameraItem(cameras, idCamera){
 
     let cameraChoice = cameras.find(cameras => cameras['_id'] == idCamera);
@@ -24,7 +24,7 @@ function getCameraItem(cameras, idCamera){
     createLayoutCamera(cameraChoice, idCamera);
 
 } 
-
+//---------------------------
 
 // CREATION HTML PRODUCT
 function createLayoutCamera(cameraChoice, idCamera){
@@ -82,7 +82,7 @@ function createLayoutCamera(cameraChoice, idCamera){
     sQuantity(selectQuantity);
     getLensesSelected(buttonAddToCart, idCamera);
  }  
-
+//--------------------------------
  // LAYOUT SELECT & OPTIONS
 
 function choiceLense(label, cameraChoice){
@@ -101,7 +101,7 @@ function choiceLense(label, cameraChoice){
         console.log(optLenses);
   } 
 }
-
+//--------------------------------
 function sQuantity(selectQuantity) {
     let min = 1;
     let max = 5;
@@ -113,11 +113,11 @@ function sQuantity(selectQuantity) {
             console.log(selectQopt); 
       }
 }
-
+//--------------------------------------
 // END SELECT & OPTIONS        
 // END HTML PRODUCT
 
-//ADD PRODUCT UN CART
+//ADD PRODUCT IN CART
 
 function getLensesSelected(buttonAddToCart, idCamera){
     buttonAddToCart.addEventListener('click', function () {
@@ -135,23 +135,19 @@ function getLensesSelected(buttonAddToCart, idCamera){
         
     });
 }
-
+//---------------------------------------------
 async function getCameras() {
-    try{
+  
         let response = await fetch("http://localhost:3000/api/cameras");
         if(response.ok){
             let cameras = await response.json();
             console.log(cameras);
             getCamera(cameras);
         }else{
-            console.error('retour du server :' , response.status)
+            console.error('retour du server :' , response.status);
         }
-    }catch (e){
-        console.log(e);
     }
-}
-
-
+//---------------------------
 getCameras();
 
  

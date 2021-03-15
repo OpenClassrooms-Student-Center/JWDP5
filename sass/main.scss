@@ -73,8 +73,8 @@ $color-fith: #F3E9F1;
   }
   100% {
       -webkit-transform: rotate(360deg);
-      -moz-transform:rotate(360deg)
-;        transform: rotate(360deg);
+      -moz-transform:rotate(360deg);
+      transform: rotate(360deg);
       opacity: 0;
       visibility: hidden;
   } 
@@ -232,7 +232,7 @@ a {
 #bloc{
   &__image {
     display: flex;
-    flex-flow: column;
+    flex-flow: column wrap;
     justify-content: space-evenly;
     box-sizing: border-box;
     margin:  0;
@@ -468,9 +468,6 @@ a {
   }
 }
 
-
-
-
 .form{
   &__container {
     border-radius: 10px;
@@ -501,26 +498,18 @@ a {
   width: 80%;
   border-radius: 10px;
   text-align: center;
-  border: solid 1px;
-  border-color: #c568f3;
   box-shadow: 2px 2px 2px 2px #eeaf3b;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
-input:invalid {
-  border : solid 2px red;
+input:required:valid{
+  border: solid 3px #c568f3;
 }
-input:valid {
-  border : solid 1px black;
+input:invalid{
+  border: solid 3px red ;
 }
-#error {
-  margin: auto;
-  color: red;
-  font-size: 20px;
-}
-
 .black {
   color: black;
   font-family: "belligerent_madnessregular";
@@ -570,42 +559,22 @@ body{
   font-size: 18px;
 }
 .returnAccueil{
+  margin: auto auto 1rem auto;
+  width: 200px;
+}
+.btn-returnAccueil{
   color: black;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
   width:200px;
   height:40px;
-  margin: 2rem auto 1rem auto;
+  margin:auto ;
   border: solid 3px;
   border-radius: 50px;
-  padding-top:.5rem;
+  padding-top:.2rem;
   background: linear-gradient(to right, #d1841f 10%, #c568f3);
 }
-.product{
-  &__image {
-    object-fit: cover;
-    width: 100px;
-    height: 30%;
-    padding: 5px;
-    margin:.8rem auto;
-    border-radius: 50px 0 50px 0;
-    border: solid 1px #eeaf3b;
-  }
-}
-table{
-  margin:auto;
-}
-th{
-  width:150px;
-  
-}
 
-#sum, #column{
-  &__ConfirmTotal{
-    font-size:20px;
-    text-align: right;
-  }
-}
 /*-- FOOTER--*/
 .footer{
   &__container {
@@ -835,11 +804,11 @@ th{
 }
 
 #btn-cancelArticle{
-  display:flex;
-  flex-flow: column;
+  display: flex;
+  align-items: flex-start;
   height:90px;
-  width:100%;
-  margin:auto;
+  width:250px;
+  margin:0 300px 2rem 0;
 }
 
 .sum, .container{

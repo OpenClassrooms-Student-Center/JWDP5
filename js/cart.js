@@ -1,3 +1,5 @@
+
+
 //CART TITLE
 function titleCart(){
     const title__cart = document.createElement('h2');
@@ -6,11 +8,18 @@ function titleCart(){
     title.appendChild(title__cart);
 }
 
+//CREATE ARRAY FOR PRICES
 let arrayPrice = [];
 
+//CREATE ARRAY TO SEND TO SERVER WITH ID CAMERAS
 let products = [];
 
+//CREATE OBJ CONTACT TO SEND TO SERVER
 let contact = {};
+
+
+//------------------------------------
+// CLASS FOR OBJ CONTACT
 class ContactData {
     constructor(lastName, firstName, address, city, email) {
         this.lastName = lastName ;
@@ -20,7 +29,12 @@ class ContactData {
         this.email = email;
     }
 }
+//------------------------------
 
+//STRUCTURE OF CART PAGE
+
+//-------------------------------------------
+//CREATE HTML FROM PRODUCT CHOOSEN
 function createCart(itemCamera, cartContent) {
 
         let containerRecap = document.createElement('div');
@@ -34,7 +48,7 @@ function createCart(itemCamera, cartContent) {
         let idProducts = document.createElement('div');
         idProducts.setAttribute("class", 'id__products');
         let idProduct = document.createElement('p');
-        idProduct.textContent = `Réf : ` + itemCamera.id;
+        idProduct.textContent = `Réf : ` + itemCamera._id;
 
         let nomProducts = document.createElement('div');
         nomProducts.setAttribute("class", 'nom__products');
@@ -43,12 +57,12 @@ function createCart(itemCamera, cartContent) {
         
         let lenseCamera = document.createElement('p');
         nomProduct.appendChild(lenseCamera);
-        lenseCamera.textContent = cartContent[j].selectedLenses;
+        lenseCamera.textContent = `Optiques : ` + cartContent[i].selectedLenses;
     
-        let prixProducts = document.createElement('div');
-        prixProducts.setAttribute("class", 'prix__products');
-        let prixProduct = document.createElement('p');
-        prixProduct.textContent = `Prix : `+ itemCamera.price/100 + `,00` + `€`;
+        let priceProducts = document.createElement('div');
+        priceProducts.setAttribute("class", 'prix__products');
+        let priceProduct = document.createElement('p');
+        priceProduct.textContent =  `prix : ` + itemCamera.price/100 + ",00" + "€";
         
         let divCancelArticle = document.createElement('div');
         divCancelArticle.setAttribute("id", 'btn-cancelArticle');
@@ -57,6 +71,7 @@ function createCart(itemCamera, cartContent) {
         cancelArticle.setAttribute("class", 'btn__cancelArticle');
         cancelArticle.textContent = `Supprimer l'article`;
 
+        
         cart__items.appendChild(containerRecap);
         containerRecap.append(imageProduct);
         containerRecap.append(idProducts);
@@ -64,334 +79,251 @@ function createCart(itemCamera, cartContent) {
         containerRecap.append(nomProducts);
         nomProducts.append(nomProduct);
      
-        containerRecap.append(prixProducts);
-        prixProducts.append(prixProduct);
+        containerRecap.append(priceProducts);
+        priceProducts.append(priceProduct);
         containerRecap.append(divCancelArticle);
         divCancelArticle.appendChild(cancelArticle);
-}   
+        
+        deleteOneArticle(cartContent)
+}  
+console.log(cart__items);
+    
+//-------------------------------
 
-    console.log(cart__items);
-
-
+//ADD PRODUCT
 function addIdProduct(cartContent) {
     products.push(cartContent[i].idCamera);
 }
+//------------------------------
+
+ // ADD PRICE 
+
+function addItemPrice(itemCamera){ 
+
+    let itemPrice = itemCamera.price;
+    arrayPrice.push(itemPrice);
+}
+//----------------------
  // CALCULATE THE TOTAL OF CART
 
-function totalOrder(){
-    const reducer = (value, prix) => value + prix; 
+function totalOrder(arrayPrice){
 
-    let prices = cartContent.map(camera => camera.prix/100);
+    let totalPrice = document.getElementById("sum__totals");
+    let total = 0;
+    for(h  = 0; h < arrayPrice.length; h++) {
+        total = total + arrayPrice[h];
+        totalPrice.textContent =  total/100 + ",00" + "€";
 
-    let sumTotal = prices.reduce(reducer);
-   console.log(sumTotal) ;
-
-    document.getElementById("container__total").textContent = `Total de votre panier :   `;
-    document.getElementById("sum__totals").textContent = sumTotal + `,00`  + `€`;
- 
+        //STOCL THE PRICE FOR CONFIRMATION PAGE
+        localStorage.setItem("totalOrder", JSON.stringify(total));
+    }
 }
+//---------------------------------------------------
  // HTML TOTAL CART
+
+ function createTotalCart(){
     const total = document.createElement('div');
     total.setAttribute("class", 'container__totals');
     total.setAttribute("id", 'container__total');
+    total.textContent = `Total à payer :`  ;
     const sum = document.createElement('div');
     sum.setAttribute("id", 'sum__totals');
     sum.setAttribute("class", 'sum__totals');
-
-    cont__total.append(total);
-    cont__total.appendChild(sum);
-    
-    console.log(cont__total);
-
-    async function getCart() {
-        try {
-            let response = await fetch("http://localhost:3000/api/cameras");
-            if(response.ok) {
-                let cameras = await response.json();
-                let cartContent = JSON.parse(localStorage.getItem("basket")) || {};
-
-                for (i = 0 ; i < cartContent.length; i++) {
-                    let itemCamera = cameras.find(cameras => cameras['_id'] == cartContent[i].idCamera);
-                    console.log(itemCamera);
-                    createCart(itemCamera, cartContent);
-                    addIdProduct(cartContent);
-                    
-              }
-              totalOrder();
-            }else {
-            console.error('retour du server', response.status);
-            }
-        }
-        catch (e) {
-            console.log(e);
-        }
-}
-// BUTTON CANCEL ONE ARTICLE   
-
-    
-    let removebtnCancelArticle = document.getElementsByClassName('btn__cancelArticle');
-    console.log(removebtnCancelArticle);
-     for( let h = 0; h < removebtnCancelArticle.length; h++){
-         let button = removebtnCancelArticle[h];
-     
-    button.addEventListener('click' , (event) => {
-        event.preventDefault();
-
-      
-    
-    // ALERT ARTICLE DELETE WHEN LOADING THE PAGE
-        
-
-        if(window.confirm(`
-Cliquez sur OK pour supprimer l'article.
-  
-Si vous ne souhaitez pas supprimer l'article choisi cliquez sur Cancel`)){
-        // SELECT ID TO BE DELETED
-        let buttonRemoveArticle = addLocalStorage[h].id;
-  
-        // METHOD FILTER CHOSE ELEMENT TO KEEP AND DELETE ELEMENT WHERE LE BTN HAS BEEN CLICK
-        addLocalStorage = addLocalStorage.filter( el => el.id !== buttonRemoveArticle);
-        
-        // SEND VARIABLE TO LOCALSTORAGE
-        localStorage.setItem('basket', JSON.stringify(addLocalStorage)
-        );
-        window.location.href = "cart.html";
-      
-            } else{
-             
-            
-            }
-           
-        })  
-   
-    
-}   
-    // DELETE ALL ARTICLE IN CART
     
     const emptyCart = document.createElement('button');
     emptyCart.setAttribute("class", 'btn__emptyCart');
     emptyCart.setAttribute("id", 'btn__emptyCart');
     emptyCart.textContent = `Vider le panier!!`;
+    
+    cont__total.append(total);
+    cont__total.appendChild(sum);
     cont__total.appendChild(emptyCart);
 
-    let  removeBtnEmptyCart = document.getElementsByClassName('btn__emptyCart');
+ }   
+    console.log(cont__total);
+//---------------------------------------
+
+//CREATE CART
+async function getCart() {
+  
+        let response = await fetch("http://localhost:3000/api/cameras");
+        if(response.ok) {
+            let cameras = await response.json();
+            let cartContent = JSON.parse(localStorage.getItem("basket")) || {};
+
+            for (i = 0 ; i < cartContent.length; i++) {
+                let itemCamera = cameras.find(cameras => cameras['_id'] == cartContent[i].idCamera);
+                console.log(itemCamera);
+                createCart(itemCamera, cartContent);
+                addItemPrice(itemCamera);
+                addIdProduct(cartContent);
+            }
+            totalOrder(arrayPrice);
+            }else {
+            console.error('retour du server', response.status);
+            }
+        
+}
+
+//---------------------------------------------------
+
+//DELETE WHOLE CONTAINER IF NO ITEM IN CART
+function deleteDiv() {
+    let cartContent = JSON.parse(localStorage.getItem("basket"));
+  
+    if(cartContent === null || cartContent == 0){
+        document.getElementById('hide-page').style.display = 'none'; 
+        localStorage.removeItem('basket');
+        localStorage.removeItem('totalOrder');
+        
+    }else{
+        document.getElementById('hide-page').style.display = 'block';
+    }
+
+}
+
+//DELETE ONE ARTICLE
+
+//------------------------------
+
+function deleteOneArticle(cartContent) {
+
+let removebtnCancelArticle = document.getElementsByClassName('btn__cancelArticle');
+    console.log(removebtnCancelArticle);
+     for( let h = 0; h < removebtnCancelArticle.length; h++){
+         
+        removebtnCancelArticle[h].addEventListener('click' , (e) => {
+        e.preventDefault();
+        
+        // SELECT ID TO BE DELETED
+        let buttonRemoveArticle = cartContent[h].idCamera;
+        // METHOD FILTER CHOSE ELEMENT TO KEEP AND DELETE ELEMENT WHERE LE BTN HAS BEEN CLICK
+        cartContent = cartContent.filter((el) => el.idCamera !== buttonRemoveArticle);
+        // SEND VARIABLE TO LOCALSTORAGE TO BE DELETED
+        localStorage.setItem('basket', JSON.stringify(cartContent));
+        window.location.href = "cart.html";
+        })
+    }
+}
+//--------------------------
+
+//DELETE ALL ARTICLE
+
+function deleteAllArticle (){
+    
+let  removeBtnEmptyCart = document.getElementsByClassName('btn__emptyCart');
     console.log(removeBtnEmptyCart);
 
-     for( let l = 0; l < removeBtnEmptyCart.length; l++){
+    for( let l = 0; l < removeBtnEmptyCart.length; l++){
         let button = removeBtnEmptyCart[l];
-    
+
     button.addEventListener('click' ,(e) => {
         e.preventDefault();
-        
-             // SEND VARIABLE TO LOCALSTORAGE
-        let addLocalStorage = JSON.parse(localStorage.getItem("basket"));
-        localStorage.setItem('basket', JSON.stringify(addLocalStorage));
-     
-        if(window.confirm(`Cliquez sur OK pour supprimer vos articles et être
-redirigé vers la page d'accueil.
 
-Cliquez sur Cancel pour garder vos articles dans le panier.`)){
-    
-        // ALERT ALL ARTICLE WILL BE DELETED WHEN LOADING THE PAGE
-        localStorage.removeItem('basket');
-        window.location.href = "index.html";
-        
-       } else{
-        // ARTICLE WILL STAY ON THE CART PAGE
-       }
+            localStorage.removeItem('basket');
+            localStorage.removeItem('totalOrder');
             
-       });
-
+            window.location.href = "index.html";
+       })
     };
-    
+}
+
+//-------------------------------------------
 
 
+//GET ID OF ORDER SENT FROM API AND POST TO LOCALSTORAGE
 
-   
-//---------FORMULAIRE
+function getOrderConfId(responseId) {
+    let orderId = responseId.orderId;
+    console.log(orderId);
+    localStorage.setItem("orderConfId", orderId)
+}
 
-checkInput = ()  => {
+//--------------------------------------------------
 
-    
-    let hideForm = document.getElementById('form');
+// GET FORM FROM OBJ CONTACT
+function getForm(){
+    let lastName = document.getElementById('lastName').value;
+    let firstName = document.getElementById('firstName').value;
+    let address = document.getElementById('address').value;
+    let city= document.getElementById('city').value;
+    let email = document.getElementById('email').value;
+     return {lastName, firstName, address, city, email};
+}
 
-    if(hideForm === null || hideForm == 0) {
-  
-    
-        document.getElementById('form').style.display = 'none';
-    
-    }else{
-        
-    }
-    console.log(hideForm)
-    // REGEX
-
-    let checkNumber = /[0-9]/;
-    let checkMail = /[a-z0-9-.]+@[a-z0-9-]+.[a-z]{1,4}/;
-    let checkSpecialCharacter = /[§!@#$%^&*().?":{}|<>]/;
-
-    // MESSAGE END CONTROL
-    let checkMessage = "";
-
-    // GET INPUTS
-
-    let lastName = document.getElementById("lastName").value;
-    let firstName = document.getElementById("firstName").value;
-    let address = document.getElementById("address").value;
-    let city = document.getElementById("city").value;
-    let email = document.getElementById("email").value;
-
-    //TEST OF EACH INPUTS
-
-    //FIRST NAME TEST
-    if (                        //  L'égalité faible (==) effectuera une conversion des deux éléments à comparer avant d'effectuer la comparaison
-        checkNumber.test(lastName) == true ||
-        checkSpecialCharacter.test(lastName) == true ||
-        lastName == ""
-    ) {
-        checkMessage = "Veuillez vérifier les informations concernant votre nom";
-        
-    }else {
-        console.log("nom accepté" );
-    }
-
-    //FIRSTNAME TEST
-    if (
-        checkNumber.test(firstName) == true ||
-        checkSpecialCharacter.test(firstName) == true ||
-        firstName == ""
-    ) {
-        checkMessage = "Veuillez vérifier les informations concernant  votre prénom";
-        
-    }else {
-        console.log("prénom accepté");
-    }
-
-    //ADDRESS TEST
-    if (
-        checkSpecialCharacter.test(address) == true ||
-        address == ""
-    ) {//\n = new line or jump line
-        checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre adresse";
-        
-    }else {
-        console.log("adresse acceptée");
-    }
-
-    //CITY TEST
-    if (
-        checkSpecialCharacter.test(city) == true ||
-        city == ""
-    ) {
-        checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre ville";
-        
-    }else {
-        console.log("ville acceptée");
-    }
-
-    //EMAIL TEST
-    if (
-        checkMail.test(email) == false ||
-        email == ""
-    ) {//\n = new line or jump line
-        checkMessage = checkMessage + "\n" + "Veuillez vérifier les informations concernant votre email";
-        
-    }else {
-        console.log("email accepté");
-    }
-
-    // IF ONE OF THE IMPUTS IS NOT CORRECT > ALERT MESSAGE
-    if (checkMessage!=""){
-        
-    }
-
-    //IF FORM IS CORRECT THEN > OBJ CONTACT
-    else{
-        contact = {
-            lastName: lastName,
-            firstName : firstName,
-            address : address,
-            city : city,
-            email : email,
-        }; 
-        return contact;
-    }
-};
-
-// VERIFY THE CART
-checkCart = () => {
-    //VERIFY IF THERE IS A LEAST ONE PRODUCT            //BASKET KEY CREATED BEFORE
-    let stateCart = JSON.parse(localStorage.getItem("basket"));
-    //IF THE CART IS EMPTY      // RETURN EXPR1 IF CAN BE CONVERTED FALSE OTHERWISE RETURN EXPR2
-    if (stateCart.length < 1 || stateCart == null) {
-        alert("Votre panier est vide");
-        console.log("le panier est vide")
-        
-        return false;
-    }else{
-        console.log("Le panier n'est pas vide");
-        return true ;
-    }
-};
-
-//SENDING TO API
-    //ARRAY AND OBJ ASKED BY API FOR ORDER
-
-    async function sendForm(url ='http://localhost:3000/api/cameras/order', data = { contact, products }) {
-        const response = await fetch(url, {//https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+//-----------------------------------
+//POST REQUESTED TO SEND TO API
+async function sendForm(dataToSend) {
+   console.log(dataToSend)
+        let response = await fetch("http://localhost:3000/api/cameras/order", {
             method : 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
+            headers : {
+                "Content-Type" : "application/json"
+                
             },
-            body : JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Youpii', data);
-        })
-        .catch((error) => {
-            console.log('Sorry!!', error);
-        })
-    }
-
-confirmOrder = ()  => {
-    let validCommand = document.getElementById('form');
-    validCommand.addEventListener("submit", (e) => {
-        e.preventDefault();
-        //IF THE CART IS NOT EMPTY AND AND THE FORM IS VALID > BUILD A PRODUCTS ARRAY TO API
-
-        if (checkCart() == true && checkInput() != null) {
-            console.log("envoie effectué");
-            
-            let products = JSON.parse(localStorage.getItem("basket"))
-            
-            console.log("tableau envoyé à l'API : " + products);
+            body : JSON.stringify(dataToSend)
+        });
+        if (response.ok) {
+            let responseId = await response.json();
+           
+            getOrderConfId(responseId);
+            window.location = 'confirmation.html'
         
-            // CREATING OBJ TO SEND
-            let order = {
-                contact : contact,
-                products : products.map(camera => camera.id)
-            };
-
-            let sendForm = JSON.stringify(order);
-            sendForm(url, data)
-            console.log(order);
-        
-            //RETURN ORIGINAL STATE LOCALSTORAGE
-            contact = {};
-            products = [];
-            localStorage.clear();
-        } else {
-        console.log("ERROR");
+        }else{
+        console.error('retour du server : ', response.status);
         }
-    });
-};
+  
+}
 
+//-----------------------------
+
+//VALIDATE ORDER OBJ CONTACT AND ARRAY TO API
+function confirmOrder() {
+    let contact = getForm();
+    let dataToSend = {contact, products}
+    console.log(dataToSend);
+    sendForm(dataToSend);
+    console.log(contact)
+    
+}
+
+//-------------------------
+
+//VALIDATE FORM
+function validateForm(){
+    let btnValidate = document.getElementById('check-cart');
+    btnValidate.addEventListener('click', (e) =>{
+        e.preventDefault()
+    
+
+        let lastName = document.getElementById('lastName').value;
+        let firstName = document.getElementById('firstName').value;
+        let address = document.getElementById('address').value;
+        let city = document.getElementById('city').value;
+        let email = document.getElementById('email').value;
+
+        if(lastName, firstName, address, city, email != "" && /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(lastName, firstName, address, city, email)) 
+
+        {
+        confirmOrder();
+            localStorage.removeItem("basket");
+            return true; 
+        }else{
+            alert("Veuillez remplir tous les champs correctement, merci!!");
+            return false;
+        }
+    })  
+}
+           
+
+
+//CALLING FUNCTION
 
 titleCart();
-
-checkInput();
-checkCart();
-confirmOrder();
+getCart()
+createTotalCart();
+deleteDiv()
+deleteAllArticle()
+validateForm()
 
 

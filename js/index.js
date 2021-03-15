@@ -7,7 +7,7 @@ async function getAllCameras(){
     return cameras;//PROMESSE
 
 }
- 
+ //------------------------------------
 getAllCameras().then(function(cameras){
      console.log(window.location);
      console.log(cameras);
@@ -55,6 +55,7 @@ getAllCameras().then(function(cameras){
 
 });
 
+//-----------------------------------------
 
 // CLICK TO CART PAGE FROM PANIER HEADER
 const pageCart = document.getElementById('btn__cart');
@@ -62,7 +63,11 @@ const pageCart = document.getElementById('btn__cart');
 pageCart.addEventListener('click', () =>{
 
     window.location.href = "cart.html";
-    
+   
     });
 
-    getAllCameras();
+ //---------------------------------------------   
+
+        
+ getAllCameras();
+   
