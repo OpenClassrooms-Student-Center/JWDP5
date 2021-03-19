@@ -2,10 +2,15 @@
 
 
 async function getAllCameras(){
-    let response = await fetch('http://localhost:3000/api/cameras/');
-    let cameras= response.json();
-    return cameras;//PROMESSE
 
+    let response = await fetch('http://localhost:3000/api/cameras')
+    if(response.ok){
+    let cameras = response.json();
+    return cameras;//PROMESSE
+    }else{
+        console.error('retour du server :' , response.status);
+        alert('Le serveur ne répond pas!');
+    }
 }
  //------------------------------------
 getAllCameras().then(function(cameras){

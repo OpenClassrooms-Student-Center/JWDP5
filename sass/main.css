@@ -469,10 +469,6 @@ input:focus {
   outline: none;
 }
 
-input:valid {
-  border-color: solid 3px red;
-}
-
 .black {
   color: black;
   font-family: "belligerent_madnessregular";

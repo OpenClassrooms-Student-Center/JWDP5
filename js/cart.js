@@ -101,7 +101,7 @@ function addItemPrice(itemCamera){
 
     let itemPrice = itemCamera.price;
     arrayPrice.push(itemPrice);
-}
+} 
 //----------------------
  // CALCULATE THE TOTAL OF CART
 
@@ -115,7 +115,7 @@ function totalOrder(arrayPrice){
         
         //STOCK THE PRICE FOR CONFIRMATION PAGE
         localStorage.setItem("totalOrder", JSON.stringify(total));
-    }
+    }console.log(total)
 }
 //---------------------------------------------------
  // HTML TOTAL CART
@@ -153,7 +153,6 @@ async function getCart() {
         for (i = 0 ; i < cartContent.length; i++) {
             let itemCamera = cameras.find(cameras => cameras['_id'] == cartContent[i].idCamera);
             console.log(itemCamera);
-            console.log(itemCamera.price);
             createCart(itemCamera, cartContent);
             addItemPrice(itemCamera);
             addIdProduct(cartContent);
@@ -161,8 +160,7 @@ async function getCart() {
         totalOrder(arrayPrice);
         }else {
         console.error('retour du server', response.status);
-        }
-        
+        } 
 }
 
 //---------------------------------------------------
@@ -202,8 +200,10 @@ let removebtnCancelArticle = document.getElementsByClassName('btn__cancelArticle
          // SEND VARIABLE TO LOCALSTORAGE TO BE DELETED
         localStorage.setItem('basket', JSON.stringify(cartContent));
         window.location.href = "cart.html";
+        alert ('Votre article a été supprimé du panier !');
+        localStorage.removeItem('basket');
         
-        })
+        });
     }
 }
 //--------------------------
@@ -262,12 +262,13 @@ async function sendForm(dataToSend) {
                 "Content-Type" : "application/json"
                 
             },
-            body : JSON.stringify(dataToSend)
+            body : dataToSend,
         });
         if (response.ok) {
             let responseId = await response.json()
             
             getOrderConfId(responseId);
+           
             window.location = 'confirmation.html';
         
         }else{
@@ -280,7 +281,7 @@ async function sendForm(dataToSend) {
 //VALIDATE ORDER OBJ CONTACT AND ARRAY TO API
 function confirmOrder() {
     let contact = getForm();
-    let dataToSend = {contact, products}
+    let dataToSend = JSON.stringify({contact, products});
     console.log(dataToSend);
     sendForm(dataToSend);
     console.log(contact);
@@ -342,8 +343,10 @@ function validateForm(){
             return false;
         }
         confirmOrder();
-            return true;  
-    }); 
+        localStorage.removeItem('basket')
+            return true; 
+           
+    });  
 }
  
            

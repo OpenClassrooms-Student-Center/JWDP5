@@ -80,7 +80,7 @@ function createLayoutCamera(cameraChoice, idCamera){
    
     choiceLense(label, cameraChoice);
     sQuantity(selectQuantity);
-    getLensesSelected(buttonAddToCart, idCamera);
+    getCameraSelected(buttonAddToCart, idCamera);
  }  
 //--------------------------------
  // LAYOUT SELECT & OPTIONS
@@ -120,7 +120,7 @@ function sQuantity(selectQuantity) {
 
 //ADD PRODUCT IN CART
 
-function getLensesSelected(buttonAddToCart, idCamera){
+function getCameraSelected(buttonAddToCart, idCamera){
     buttonAddToCart.addEventListener('click', function () {
         let cartContent = JSON.parse(localStorage.getItem("basket"));
         let selectedLenses = document.getElementById('choiceL').value;
@@ -131,7 +131,8 @@ function getLensesSelected(buttonAddToCart, idCamera){
         let product = new MyProduct(idCamera, selectedLenses);
         cartContent.push(product);
         localStorage.setItem("basket", JSON.stringify(cartContent));
-        alert ('Votre article a été ajouté au panier')
+        alert (`Votre article a été ajouté au panier!`)
+        
         window.location = 'index.html'
       
         
@@ -146,7 +147,7 @@ async function getCameras() {
             console.log(cameras);
             getCamera(cameras);
         }else{
-            console.error('retour du server :' , response.status);
+            console.log('retour du server :' , response.status);
         }
     }
 //---------------------------
