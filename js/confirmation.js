@@ -21,6 +21,7 @@ function resetPageConf() {
         
         localStorage.removeItem("orderConfId");
         localStorage.removeItem("totalOrder");
+        localStorage.removeItem('basket');
         window.location.href = 'index.html';
     })
 }

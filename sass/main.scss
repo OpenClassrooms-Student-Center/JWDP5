@@ -35,14 +35,14 @@ $color-fith: #F3E9F1;
 @keyframes article-cart {
   0% {
     transform: scale(0.5);
-    color: #F3E9F1;
+    color: $color-fith;
   }
   50% {
-    color: #c568f3;
+    color: $color-primary;
   }
   100% {
     transform: scale(1);
-    color: #eeaf3b;
+    color: $color-secondary;
   }
 }
 
@@ -79,6 +79,20 @@ $color-fith: #F3E9F1;
       visibility: hidden;
   } 
 }
+@keyframes logo {
+  0%{
+    transform : translateX(5%);
+  }
+  50%{
+    transform :translateX(20%);
+  }
+  100%{
+    transform : translateX(5%);
+  }
+  
+
+
+}
 
       /*--loader--*/
 
@@ -112,7 +126,7 @@ a {
   font-size: 20px;
 }
 
-/*--PAGE ACCUEIL--*/
+/*--HEARDER ON ALL PAGES--*/
 .page{
   &__container {
     display: flex;
@@ -139,15 +153,27 @@ a {
     margin: auto;
   }
 }
+.fas{
+  position:absolute;
+  top:30px;
+  left:50px;
+  font-size:25px;
+  border: solid 2px $color-primary;
+  border-radius: 50px;
+  padding: 3px;
+  color: $color-secondary;
+  cursor: pointer;
+  
+}
 .navbar{
-  &__logo:hover {
-    cursor: pointer;
-    transform: translateX(30%);
-    transition: transform 800ms linear;
+  &__logo{
+    
+    animation: logo 4000ms linear  infinite;
   }
 }
 #btn{
   &__cart {
+    cursor : pointer;
     display: flex;
     flex-flow: column;
     margin: auto;
@@ -158,6 +184,11 @@ a {
     width: 90px;
   }
 }
+
+//-----END
+
+//-----PAGE ACCUEIL
+
 .homepage{
   &__container {
     display: flex;
@@ -230,16 +261,6 @@ a {
 }
 
 #bloc{
-  &__image {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-evenly;
-    box-sizing: border-box;
-    margin:  0;
-    width: 100%;
-  }
-}
-#bloc{
   &__image img {
     width: 200px;
     object-fit: cover;
@@ -264,7 +285,7 @@ a {
   }
 }
 #bloc{
-  &__image1 .productList {
+  &__image1 .productList{
     border: solid 1px #c568f3;
     border-radius: 50px 0 50px 0;
     display: flex;
@@ -348,6 +369,7 @@ a {
 
 #btn{
   &__addtocart {
+    cursor :pointer;
     border: solid 3px;
     border-radius: 50px;
     font-size: 18px;
@@ -442,9 +464,9 @@ a {
 }
 .btn{
   &__cancelArticle{
+    cursor: pointer;
     font-family: "belligerent_madnessregular";
     font-size: 20px;
-    
     width:200px;
     height:50px;
     margin: 2rem auto 2rem auto;
@@ -456,6 +478,7 @@ a {
 
 .btn{
   &__emptyCart{
+    cursor: pointer;
     border: solid 3px black;
     border-radius: 50px;
     width: 250px;
@@ -498,18 +521,17 @@ a {
   width: 80%;
   border-radius: 10px;
   text-align: center;
+  border: solid 2px #c568f3;
   box-shadow: 2px 2px 2px 2px #eeaf3b;
 }
 
 input:focus {
   outline: none;
 }
-input:required:valid{
-  border: solid 3px #c568f3;
+input:valid{
+  border-color: solid 3px red;
 }
-input:invalid{
-  border: solid 3px red ;
-}
+
 .black {
   color: black;
   font-family: "belligerent_madnessregular";
@@ -518,6 +540,7 @@ input:invalid{
 }
 
 .black-valid {
+  cursor: pointer;
   color: black;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
@@ -576,6 +599,7 @@ body{
 }
 
 /*-- FOOTER--*/
+
 .footer{
   &__container {
     display: flex;
@@ -607,7 +631,7 @@ body{
 
 
 .overlay, .overlay2 {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -615,11 +639,12 @@ body{
   background-color: #ebdddd;
   opacity: 0.96;
   width: 100%;
-  height: 1500px;
+  height: 100%;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
   text-align: center;
   display: none;
+  z-index: 1000;
 }
 
 .btn__close, .btn__close2 {
@@ -632,7 +657,7 @@ body{
 }
 
 .popup {
-  margin: 10% auto;
+  margin: 20% auto;
   width: 55%;
   padding: 1rem 0 1rem 0;
   background: white;
@@ -645,7 +670,11 @@ body{
 
 @media screen and (min-width: 768px) {
  
- 
+ /*---HEADER--*/
+
+ .fas{
+   left:150px;
+ }
  /*--INDEX--*/
 
   #btn{
@@ -706,7 +735,7 @@ body{
       text-align: center;
       margin-bottom: 0.8rem;
       font-family: "belligerent_madnessregular";
-      width:35%;
+      width:34%;
     }
   }
   #bloc{
@@ -791,11 +820,16 @@ body{
     
   }
 }
+.prix{
+  &__products{
+    width: 100px;
+  }
+}
 
 .cont{
   &__total{
     justify-content: flex-end;
-    width:450px;
+    width: 450px;
     height : 25%;
     border: solid 2px #eeaf3b;
     margin: auto  auto 1rem auto;
@@ -827,4 +861,46 @@ body{
 #form input {
   width: 40%;
   }
+}
+
+@media screen and (min-width : 1476px){
+
+
+/*----HEADER---*/
+
+.fas{
+  left:350px;
+}
+/*-----INDEX PAGE----*/
+#bloc{
+  &__image1 .productList{
+    width: 25%;
+  }
+}
+/*----CART PAGE----*/
+
+
+.container{
+  &__recap{
+    width:1200px;
+    height:300px;
+    display:flex;
+  }
+}
+
+.id{
+  &__products {
+   height:90px;
+   width:260px;
+   margin: auto 0 auto 0;
+ 
+ }
+}
+.nom, .prix{
+ &__products{
+   height:90px;
+   width:120px;
+   margin: auto 0 auto 0;
+ }
+}
 }

@@ -97,6 +97,7 @@ function choiceLense(label, cameraChoice){
     let optLenses = document.createElement('option');
         chooseLenses.appendChild(optLenses);
         optLenses.textContent = cameraChoice.lenses[j];
+        
        
         console.log(optLenses);
   } 
@@ -130,7 +131,8 @@ function getLensesSelected(buttonAddToCart, idCamera){
         let product = new MyProduct(idCamera, selectedLenses);
         cartContent.push(product);
         localStorage.setItem("basket", JSON.stringify(cartContent));
-        window.location = 'cart.html'
+        alert ('Votre article a été ajouté au panier')
+        window.location = 'index.html'
       
         
     });
