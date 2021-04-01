@@ -66,19 +66,20 @@ $color-fith: #F3E9F1;
       opacity:1;
   }
   75%{
-      -webkit-transform: rotate(200deg);
-      -moz-transform:rotate(200deg);
-      transform: rotate(200deg);
+      -webkit-transform: rotate(250deg);
+      -moz-transform:rotate(250deg);
+      transform: rotate(250deg);
       opacity: 1;
   }
   100% {
       -webkit-transform: rotate(360deg);
       -moz-transform:rotate(360deg);
       transform: rotate(360deg);
-      opacity: 0;
-      visibility: hidden;
+      opacity: 1;
+     
   } 
 }
+
 @keyframes logo {
   0%{
     transform : translateX(5%);
@@ -89,30 +90,42 @@ $color-fith: #F3E9F1;
   100%{
     transform : translateX(5%);
   }
-  
-
-
 }
 
       /*--loader--*/
+#cont{
+  &__spinner{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: $color-fith;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+  }
+}
+#cont__spinner.hidden{
+  opacity:0;
+  visibility: hidden;
+}
 
-
-.spinner {
-  border-top:10px solid $color-third;
-  border-bottom:10px solid $color-fourth;
+.load-spinner {
+  border-top:16px solid $color-secondary;
+  border-bottom:16px solid $color-secondary;
+  border-right: 16px solid $color-primary;
+  border-left: 16px solid $color-primary;
   border-radius:50%;
   width: 300px;
   height:300px;
-  animation: spin 3s  cubic-bezier(.56,.57,.62,.64)  reverse ;
-  -webkit-animation: spin 3s  cubic-bezier(.56,.57,.62,.64)  reverse ;
-  -moz-animation: spin 3s  cubic-bezier(.56,.57,.62,.64)  reverse ;
-  left: calc(50% - 140px);
-  top: calc(30% - 70px);
-  z-index:3;
-  opacity:0;  
+  animation: spin 1s   linear infinite;
+  -webkit-animation: spin 1s   linear infinite;
+  -moz-animation: spin 1s    linear infinite ;
+  left: calc(50% - 170px);
+  top: calc(50%  - 25%);
+  z-index:999;
   position:absolute;
 }
-
 
 body {
   width: 100%;
@@ -177,12 +190,22 @@ a {
     display: flex;
     flex-flow: column;
     margin: auto;
+    width:150px;
+    height:70px;
+   
   }
 }
 #btn{
   &__cart > img {
     width: 90px;
+    height: 70px;
+    
   }
+}
+#indexPanier{
+  display: flex;
+  height:20px;
+  width:100px;
 }
 
 //-----END
@@ -359,13 +382,14 @@ a {
     font-size: 18px;
     text-align: center;
     margin-bottom: 0.8rem;
-    font-family: "belligerent_madnessregular";
+    font-family: "belligerent_madnessregular" ;
   }
 }
-.choice, .selectQ {
-  font-family: "belligerent_madnessregular";
+#choiceQ{
+  font-family:"belligerent_madnessregular";
   font-size: 20px;
 }
+
 
 #btn{
   &__addtocart {
@@ -434,6 +458,10 @@ a {
     padding-top: .5rem;
 
   }
+}
+.choice {
+  font-family: "belligerent_madnessregular";
+  font-size: 20px;
 }
   .container{
     &__recap img{
@@ -876,7 +904,6 @@ body{
 }
 /*----CART PAGE----*/
 
-
 .container{
   &__recap{
     width:1200px;
@@ -892,6 +919,11 @@ body{
    margin: auto 0 auto 0;
  
  }
+}
+.quantity{
+  display: flex;
+  justify-content: flex-start;
+  width: 200px;
 }
 .nom, .prix{
  &__products{

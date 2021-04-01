@@ -1,10 +1,15 @@
-// CREATE PAGE FOR PRODUCT ARRAY
+// CREATE CLASS FOR PRODUCT ARRAY
 class MyProduct {
-    constructor(idCamera, selectedLenses) {
+    constructor(idCamera, selectedLenses, selectedQ) {
         this.idCamera = idCamera;
         this.selectedLenses = selectedLenses;
-    }
+        this.selectedQ = selectedQ;
+    }   
 }
+//----------------------
+// CONST TO ADD IN THE LOCALSTORE
+const store = new Store('basket');
+
 //----------------------------
 
 //RECUPERATION ID ONE CAMERA IN URL
@@ -24,6 +29,8 @@ function getCameraItem(cameras, idCamera){
     createLayoutCamera(cameraChoice, idCamera);
 
 } 
+
+
 //---------------------------
 
 // CREATION HTML PRODUCT
@@ -60,10 +67,8 @@ function createLayoutCamera(cameraChoice, idCamera){
     buttonAddToCart.setAttribute("id", 'btn__addtocart');
     buttonAddToCart.setAttribute("type", 'submit');
     buttonAddToCart.textContent= 'Ajouter au Panier !';
-    
-      
+     
 // DISPLAY DOM
-
 
     bloc__product.appendChild(detail__product);
     detail__product.appendChild(productList);
@@ -77,14 +82,12 @@ function createLayoutCamera(cameraChoice, idCamera){
     quantity.appendChild(selectQuantity);
     productList.appendChild(buttonAddToCart);
 
-   
     choiceLense(label, cameraChoice);
     sQuantity(selectQuantity);
     getCameraSelected(buttonAddToCart, idCamera);
  }  
 //--------------------------------
  // LAYOUT SELECT & OPTIONS
-
 function choiceLense(label, cameraChoice){
 
     let chooseLenses = document.createElement('select');
@@ -97,19 +100,18 @@ function choiceLense(label, cameraChoice){
     let optLenses = document.createElement('option');
         chooseLenses.appendChild(optLenses);
         optLenses.textContent = cameraChoice.lenses[j];
-        
-       
         console.log(optLenses);
   } 
 }
 //--------------------------------
 function sQuantity(selectQuantity) {
-    let min = 1;
-    let max = 5;
-      for(let i = min; i <=max; i++ ){
-            let selectQopt = document.createElement('option');  
-            selectQopt.value = i;
-            selectQopt.innerHTML = i;
+
+    let i = 0;
+    while (i <= 4){
+        i++;
+            let selectQopt = document.createElement('option'); 
+            selectQopt.setAttribute("id", "choiceQ");
+            selectQopt.textContent= i;
             selectQuantity.appendChild(selectQopt);
             console.log(selectQopt); 
       }
@@ -122,19 +124,14 @@ function sQuantity(selectQuantity) {
 
 function getCameraSelected(buttonAddToCart, idCamera){
     buttonAddToCart.addEventListener('click', function () {
-        let cartContent = JSON.parse(localStorage.getItem("basket"));
+       
         let selectedLenses = document.getElementById('choiceL').value;
-        console.log(selectedLenses);
-        if (cartContent === null) {
-            cartContent = [];
-        }
-        let product = new MyProduct(idCamera, selectedLenses);
-        cartContent.push(product);
-        localStorage.setItem("basket", JSON.stringify(cartContent));
-        alert (`Votre article a été ajouté au panier!`)
-        
-        window.location = 'index.html'
-      
+        let selectedQ = document.getElementById('selectQ').value;
+        let product = new MyProduct(idCamera, selectedLenses, selectedQ);
+        store.addProduct(product);
+
+        alert (`Votre article a été ajouté au panier!`); 
+        window.location = 'index.html';
         
     });
 }
@@ -152,5 +149,5 @@ async function getCameras() {
     }
 //---------------------------
 getCameras();
-
+store.nombreIndexPanier();
  

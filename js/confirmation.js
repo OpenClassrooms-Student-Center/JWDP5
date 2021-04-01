@@ -10,10 +10,7 @@ function addConfirmOrder() {
     confirmPrice.textContent = totalPrice/100 + ',00' + '€';
 
 }
-//---------------------------------------
-
-
-//-----------------------------------------
+//------------------------------------
 function resetPageConf() {
 
     let btnCancel = document.getElementById('returnAccueil');

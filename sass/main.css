@@ -56,17 +56,16 @@
     opacity: 1;
   }
   75% {
-    -webkit-transform: rotate(200deg);
-    -moz-transform: rotate(200deg);
-    transform: rotate(200deg);
+    -webkit-transform: rotate(250deg);
+    -moz-transform: rotate(250deg);
+    transform: rotate(250deg);
     opacity: 1;
   }
   100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     transform: rotate(360deg);
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
   }
 }
 @keyframes logo {
@@ -81,19 +80,36 @@
   }
 }
 /*--loader--*/
-.spinner {
-  border-top: 10px solid linear-gradient(to right, #eeaf3b 10%, #c568f3);
-  border-bottom: 10px solid linear-gradient(to right, #c568f3 10%, #eeaf3b);
+#cont__spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #F3E9F1;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+#cont__spinner.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.load-spinner {
+  border-top: 16px solid #eeaf3b;
+  border-bottom: 16px solid #eeaf3b;
+  border-right: 16px solid #c568f3;
+  border-left: 16px solid #c568f3;
   border-radius: 50%;
   width: 300px;
   height: 300px;
-  animation: spin 3s cubic-bezier(0.56, 0.57, 0.62, 0.64) reverse;
-  -webkit-animation: spin 3s cubic-bezier(0.56, 0.57, 0.62, 0.64) reverse;
-  -moz-animation: spin 3s cubic-bezier(0.56, 0.57, 0.62, 0.64) reverse;
-  left: calc(50% - 140px);
-  top: calc(30% - 70px);
-  z-index: 3;
-  opacity: 0;
+  animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  left: calc(50% - 170px);
+  top: calc(50% - 25%);
+  z-index: 999;
   position: absolute;
 }
 
@@ -154,10 +170,19 @@ a {
   display: flex;
   flex-flow: column;
   margin: auto;
+  width: 150px;
+  height: 70px;
 }
 
 #btn__cart > img {
   width: 90px;
+  height: 70px;
+}
+
+#indexPanier {
+  display: flex;
+  height: 20px;
+  width: 100px;
 }
 
 .homepage__container {
@@ -318,7 +343,7 @@ a {
   font-family: "belligerent_madnessregular";
 }
 
-.choice, .selectQ {
+#choiceQ {
   font-family: "belligerent_madnessregular";
   font-size: 20px;
 }
@@ -380,6 +405,11 @@ a {
   box-shadow: 2px 2px 2px 2px #c568f3;
   text-align: center;
   padding-top: 0.5rem;
+}
+
+.choice {
+  font-family: "belligerent_madnessregular";
+  font-size: 20px;
 }
 
 .container__recap img {
@@ -785,6 +815,12 @@ body {
     height: 90px;
     width: 260px;
     margin: auto 0 auto 0;
+  }
+
+  .quantity {
+    display: flex;
+    justify-content: flex-start;
+    width: 200px;
   }
 
   .nom__products, .prix__products {
