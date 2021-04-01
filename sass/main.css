@@ -412,6 +412,10 @@ a {
   font-size: 20px;
 }
 
+.quantity {
+  margin: 0.5rem 0 0 0;
+}
+
 .container__recap img {
   object-fit: cover;
   width: 40%;
@@ -731,9 +735,13 @@ body {
   }
 
   .nom__products, .prix__products {
-    height: 90px;
+    height: 110px;
     width: 125px;
     margin: auto 0 auto 0;
+  }
+
+  .lenseS {
+    margin: 0;
   }
 
   .container__recap {

@@ -25,11 +25,11 @@ class ContactData {
         this.email = email;
     }
 }
+
 //-----------------------------
 //CONST TO LOCALSTORE
 const store = new Store('basket');
-const storeTotal = new StoreTotal("totalOrder");
-//-----------------------------
+
 //STRUCTURE OF CART PAGE
 //-------------------------------------------
 //CREATE HTML FROM PRODUCT CHOOSEN
@@ -54,6 +54,7 @@ function createCart(itemCamera, key) {
     nomProduct.textContent = `Article : ` + itemCamera.name; 
         
     let lenseCamera = document.createElement('p');
+    lenseCamera.setAttribute("class", 'lenseS')
     nomProduct.appendChild(lenseCamera);
     lenseCamera.textContent = `Optiques : ` + key[i].selectedLenses;
 
@@ -64,7 +65,8 @@ function createCart(itemCamera, key) {
     let priceProducts = document.createElement('div');
     priceProducts.setAttribute("class", 'prix__products');
     let priceProduct = document.createElement('p');
-    priceProduct.textContent =`Prix : ` + itemCamera.price/100*key[i].selectedQ + ",00" + "€";
+    priceProduct.setAttribute("id", 'price__product');
+    priceProduct.textContent =`Prix : ` + itemCamera.price*key[i].selectedQ/100 + ",00" + "€";
 
     let divCancelArticle = document.createElement('div');
     divCancelArticle.setAttribute("id", 'btn-cancelArticle');
@@ -81,13 +83,11 @@ function createCart(itemCamera, key) {
     containerRecap.append(nomProducts);
     nomProducts.append(nomProduct);
     nomProduct.appendChild(quantity);
-   
     containerRecap.append(priceProducts);
     priceProducts.append(priceProduct);
     containerRecap.append(divCancelArticle);
     divCancelArticle.appendChild(cancelArticle);
-
-   
+    
     deleteOneArticle(key);
 }  
 
@@ -95,40 +95,31 @@ console.log(cart__items);
     
 //-------------------------------
  // CALCULATE THE TOTAL OF CART
-/*function totalOrder(arrayPrice, key){
+function totalOrder(arrayPrice){
     let totalPrice = document.getElementById("sum__totals");
     let total = 0;
+    
     for(h  = 0; h < arrayPrice.length; h++) {
-        total = total + arrayPrice[h];
-        totalPrice.textContent =  total/100* key[i].selectedQ + ",00" + "€";
+        total = total + arrayPrice[h] ;
+        totalPrice.textContent =  total/100 + ",00" + "€";
         //STOCK THE PRICE FOR CONFIRMATION PAGE
         localStorage.setItem("totalOrder", JSON.stringify(total));
-    }console.log(total);*/
-//}
-/*function sQuantity(selectQuantity) {
-    let i = 0;
-    while (i <= 4){
-        i++;
-            let selectQopt = document.createElement('option'); 
-            selectQopt.setAttribute("id", "choiceQ");
-            selectQopt.value = i;
-            selectQopt.textContent = i;
-            selectQuantity.appendChild(selectQopt);
-            console.log(selectQopt); 
-      }
-}*/
+        
+    }console.log(total);
+}
 
 //---------------------------------------------------
  // HTML TOTAL CART
- function createTotalCart(){
+ function createTotalCart() {
     const total = document.createElement('div');
     total.setAttribute("class", 'container__totals');
     total.setAttribute("id", 'container__total');
     total.textContent = `Total à payer :`  ;
+
     const sum = document.createElement('div');
     sum.setAttribute("id", 'sum__totals');
     sum.setAttribute("class", 'sum__totals');
-    
+   
     const emptyCart = document.createElement('button');
     emptyCart.setAttribute("class", 'btn__emptyCart');
     emptyCart.setAttribute("id", 'btn__emptyCart');
@@ -137,7 +128,7 @@ console.log(cart__items);
     cont__total.append(total);
     cont__total.appendChild(sum);
     cont__total.appendChild(emptyCart);
- }   
+}   
     console.log(cont__total);
 //---------------------------------------
 //CREATE CART
@@ -151,27 +142,23 @@ async function getCart() {
             let itemCamera = cameras.find(cameras => cameras['_id'] ==(key[i].idCamera));
             console.log(itemCamera);
             createCart(itemCamera, key);
-            store.addItemPrice(itemCamera);
+            store.addItemPrice(itemCamera, key);
             store.addIdProduct(key); 
-           
         }
-        
-        storeTotal.addTotal(totalO);
-
+        totalOrder(arrayPrice);   
+        }else{
         console.error('retour du server', response.status);
-        } 
-}
+    }    
+} 
 //---------------------------------
 //DELETE ONE ARTICLE
 
 function deleteOneArticle(key) {
-
     const RemoveBtnCancelArticle = document.getElementsByClassName('btn__cancelArticle');
      
         for( let h = 0; h < RemoveBtnCancelArticle.length; h++){ 
         RemoveBtnCancelArticle[h].addEventListener('click' , (e) => {
         e.preventDefault();
-        
         
         //SELECT ID TO BE DELETED
         let buttonRemoveArticle = key[h].idCamera;

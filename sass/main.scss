@@ -463,6 +463,9 @@ a {
   font-family: "belligerent_madnessregular";
   font-size: 20px;
 }
+.quantity{
+    margin:.5rem 0 0 0 ;
+}
   .container{
     &__recap img{
     object-fit: cover;
@@ -814,11 +817,17 @@ body{
 }
 .nom, .prix{
   &__products{
-    height:90px;
+    height:110px;
     width:125px;
     margin: auto 0 auto 0;
+    
   }
 }
+.lenseS{
+ 
+  margin:0;
+}
+
 .container{
   &__recap{
     width:90%;
