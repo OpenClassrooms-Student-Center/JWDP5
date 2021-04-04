@@ -49,8 +49,7 @@ getAllCameras().then(function(cameras){
         // FIN PRODUCT HTML
 });
 //-----------------------------------
-const store = new Store('basket');
-//-----------------------------------------
+
 
 function loadSpinner(){
     document.querySelector('#cont__spinner').classList.add('hidden');

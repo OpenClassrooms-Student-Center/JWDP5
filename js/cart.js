@@ -26,12 +26,9 @@ class ContactData {
     }
 }
 
-//-----------------------------
-//CONST TO LOCALSTORE
-const store = new Store('basket');
+//-------------------------------------------
 
 //STRUCTURE OF CART PAGE
-//-------------------------------------------
 //CREATE HTML FROM PRODUCT CHOOSEN
 function createCart(itemCamera, key) {
 
@@ -58,15 +55,15 @@ function createCart(itemCamera, key) {
     nomProduct.appendChild(lenseCamera);
     lenseCamera.textContent = `Optiques : ` + key[i].selectedLenses;
 
-    let quantity = document.createElement('p');
-    quantity.setAttribute("class", 'quantity');
-    quantity.textContent = 'Quantité : ' + key[i].selectedQ ;
-
     let priceProducts = document.createElement('div');
     priceProducts.setAttribute("class", 'prix__products');
     let priceProduct = document.createElement('p');
     priceProduct.setAttribute("id", 'price__product');
     priceProduct.textContent =`Prix : ` + itemCamera.price*key[i].selectedQ/100 + ",00" + "€";
+
+    let quantity = document.createElement('p');
+    quantity.setAttribute("class", 'quantity');
+    quantity.textContent = 'Quantité : ' + key[i].selectedQ ;
 
     let divCancelArticle = document.createElement('div');
     divCancelArticle.setAttribute("id", 'btn-cancelArticle');
@@ -82,15 +79,15 @@ function createCart(itemCamera, key) {
     idProducts.append(idProduct);
     containerRecap.append(nomProducts);
     nomProducts.append(nomProduct);
-    nomProduct.appendChild(quantity);
+    
     containerRecap.append(priceProducts);
     priceProducts.append(priceProduct);
+    priceProduct.appendChild(quantity);
     containerRecap.append(divCancelArticle);
     divCancelArticle.appendChild(cancelArticle);
     
-    deleteOneArticle(key);
+    deleteOneArticle(i);
 }  
-
 console.log(cart__items);
     
 //-------------------------------
@@ -150,28 +147,32 @@ async function getCart() {
         console.error('retour du server', response.status);
     }    
 } 
+
 //---------------------------------
 //DELETE ONE ARTICLE
 
-function deleteOneArticle(key) {
+function deleteOneArticle(i) {
     const RemoveBtnCancelArticle = document.getElementsByClassName('btn__cancelArticle');
      
         for( let h = 0; h < RemoveBtnCancelArticle.length; h++){ 
-        RemoveBtnCancelArticle[h].addEventListener('click' , (e) => {
+        
+        RemoveBtnCancelArticle[h].addEventListener('click', (e) => {
         e.preventDefault();
+     
+      
+        let products = store.getProducts();
+
+      
+        products.splice(i,1);
+            
         
-        //SELECT ID TO BE DELETED
-        let buttonRemoveArticle = key[h].idCamera;
-        
-        //METHOD FILTER CHOSE ELEMENT TO KEEP AND DELETE ELEMENT WHERE LE BTN HAS BEEN CLICK
-        key = key.filter(el => el.idCamera != buttonRemoveArticle);
-        
+          
          // SEND VARIABLE TO LOCALSTORAGE TO BE DELETED
         
-        localStorage.setItem('basket', JSON.stringify(key));
+        localStorage.setItem('basket', JSON.stringify(products));
         window.location.href = 'cart.html';
-         
-        //alert('Votre article a été supprimé du panier !');
+        console.log(products)
+        
         });
     }
 }
@@ -185,8 +186,8 @@ let  removeBtnEmptyCart = document.getElementsByClassName('btn__emptyCart');
         let button = removeBtnEmptyCart[l];
         button.addEventListener('click' ,(e) => {
         e.preventDefault();
-
-            localStorage.removeItem('basket');
+        store.reset()
+           
             localStorage.removeItem('totalOrder');
             window.location.href = "index.html";
        });

@@ -31,7 +31,7 @@ class Store{
         }else{
             document.getElementById('hide-page').style.display = 'block';
         } 
-    }  
+    } 
     nombreIndexPanier() {
         let key = JSON.parse(localStorage.getItem(this.key));
         let indexPanier = document.getElementById("indexPanier");
@@ -40,5 +40,11 @@ class Store{
             document.getElementById("btn__cart").style.display = 'none';
         }
     } 
-}
+    reset(){
+        localStorage.setItem(this.key,'[]');
+    }
+}    
+   
+    
+const store = new Store ('basket')
 

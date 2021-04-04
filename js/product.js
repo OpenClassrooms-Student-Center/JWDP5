@@ -6,11 +6,7 @@ class MyProduct {
         this.selectedQ = selectedQ;
     }   
 }
-//----------------------
-// CONST TO ADD IN THE LOCALSTORE
-const store = new Store('basket');
-
-//----------------------------
+//---------------------
 
 //RECUPERATION ID ONE CAMERA IN URL
 

@@ -157,6 +157,17 @@ a {
     height: 160px;
     width: 100%;
     background: #F3E9F1;
+    & .fas{
+      position:absolute;
+      top:30px;
+      left:50px;
+      font-size:25px;
+      border: solid 2px $color-primary;
+      border-radius: 50px;
+      padding: 3px;
+      color: $color-secondary;
+      cursor: pointer;
+    }
   }
 }
 .navbar{
@@ -166,21 +177,9 @@ a {
     margin: auto;
   }
 }
-.fas{
-  position:absolute;
-  top:30px;
-  left:50px;
-  font-size:25px;
-  border: solid 2px $color-primary;
-  border-radius: 50px;
-  padding: 3px;
-  color: $color-secondary;
-  cursor: pointer;
-  
-}
+
 .navbar{
   &__logo{
-    
     animation: logo 4000ms linear  infinite;
   }
 }

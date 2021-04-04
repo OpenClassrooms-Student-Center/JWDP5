@@ -142,14 +142,7 @@ a {
   width: 100%;
   background: #F3E9F1;
 }
-
-.navbar__logo {
-  display: flex;
-  width: 200px;
-  margin: auto;
-}
-
-.fas {
+.navbar__header .fas {
   position: absolute;
   top: 30px;
   left: 50px;
@@ -159,6 +152,12 @@ a {
   padding: 3px;
   color: #eeaf3b;
   cursor: pointer;
+}
+
+.navbar__logo {
+  display: flex;
+  width: 200px;
+  margin: auto;
 }
 
 .navbar__logo {
