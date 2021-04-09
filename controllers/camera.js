@@ -1,14 +1,14 @@
 const uuid = require('uuid/v1');
-const Teddy = require('../models/Teddy');
+const Camera = require('../models/Camera');
 
-exports.getAllTeddies = (req, res, next) => {
-  Teddy.find().then(
-    (teddies) => {
-      const mappedTeddies = teddies.map((teddy) => {
-        teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
-        return teddy;
+exports.getAllCameras = (req, res, next) => {
+  Camera.find().then(
+    (cameras) => {
+      const mappedCameras = cameras.map((camera) => {
+        camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
+        return camera;
       });
-      res.status(200).json(mappedTeddies);
+      res.status(200).json(mappedCameras);
     }
   ).catch(
     () => {
@@ -17,14 +17,14 @@ exports.getAllTeddies = (req, res, next) => {
   );
 };
 
-exports.getOneTeddy = (req, res, next) => {
-  Teddy.findById(req.params.id).then(
-    (teddy) => {
-      if (!teddy) {
-        return res.status(404).send(new Error('Teddy not found!'));
+exports.getOneCamera = (req, res, next) => {
+  Camera.findById(req.params.id).then(
+    (camera) => {
+      if (!camera) {
+        return res.status(404).send(new Error('Camera not found!'));
       }
-      teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
-      res.status(200).json(teddy);
+      camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
+      res.status(200).json(camera);
     }
   ).catch(
     () => {
@@ -46,26 +46,26 @@ exports.getOneTeddy = (req, res, next) => {
  * products: [string] <-- array of product _id
  *
  */
-exports.orderTeddies = (req, res, next) => {
+exports.orderCameras = (req, res, next) => {
   if (!req.body.contact ||
-    !req.body.contact.firstName ||
-    !req.body.contact.lastName ||
-    !req.body.contact.address ||
-    !req.body.contact.city ||
-    !req.body.contact.email ||
-    !req.body.products) {
+      !req.body.contact.firstName ||
+      !req.body.contact.lastName ||
+      !req.body.contact.address ||
+      !req.body.contact.city ||
+      !req.body.contact.email ||
+      !req.body.products) {
     return res.status(400).send(new Error('Bad request!'));
   }
   let queries = [];
   for (let productId of req.body.products) {
     const queryPromise = new Promise((resolve, reject) => {
-      Teddy.findById(productId).then(
-        (teddy) => {
-          if (!teddy) {
+      Camera.findById(productId).then(
+        (camera) => {
+          if (!camera) {
             reject('Camera not found: ' + productId);
           }
-          teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
-          resolve(teddy);
+          camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
+          resolve(camera);
         }
       ).catch(
         () => {
@@ -76,11 +76,11 @@ exports.orderTeddies = (req, res, next) => {
     queries.push(queryPromise);
   }
   Promise.all(queries).then(
-    (teddies) => {
+    (cameras) => {
       const orderId = uuid();
       return res.status(201).json({
         contact: req.body.contact,
-        products: teddies,
+        products: cameras,
         orderId: orderId
       })
     }
