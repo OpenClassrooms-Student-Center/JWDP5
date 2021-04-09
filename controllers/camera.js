@@ -1,36 +1,27 @@
 const uuid = require('uuid/v1');
-const Camera = require('../models/Camera');
+const allCameras = require('../json/cameras');
 
 exports.getAllCameras = (req, res, next) => {
-  Camera.find().then(
-    (cameras) => {
-      const mappedCameras = cameras.map((camera) => {
-        camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
-        return camera;
-      });
-      res.status(200).json(mappedCameras);
+  res.status(200).json(allCameras.map((camera) => {
+    if (!camera.imageUrl.startsWith('http')) {
+      camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
     }
-  ).catch(
-    () => {
-      res.status(500).send(new Error('Database error!'));
-    }
-  );
+
+    return camera;
+  }));
 };
 
 exports.getOneCamera = (req, res, next) => {
-  Camera.findById(req.params.id).then(
-    (camera) => {
-      if (!camera) {
-        return res.status(404).send(new Error('Camera not found!'));
-      }
-      camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
-      res.status(200).json(camera);
-    }
-  ).catch(
-    () => {
-      res.status(500).send(new Error('Database error!'));
-    }
-  )
+  const camera = allCameras.find(camera => camera._id === req.params.id);
+  if (!camera) {
+    return res.status(404).send(new Error('Camera not found!'));
+  }
+
+  if (!camera.imageUrl.startsWith('http')) {
+    camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
+  }
+
+  return res.status(200).json(camera);
 };
 
 /**
@@ -56,37 +47,23 @@ exports.orderCameras = (req, res, next) => {
       !req.body.products) {
     return res.status(400).send(new Error('Bad request!'));
   }
-  let queries = [];
+
+  const cameras = [];
   for (let productId of req.body.products) {
-    const queryPromise = new Promise((resolve, reject) => {
-      Camera.findById(productId).then(
-        (camera) => {
-          if (!camera) {
-            reject('Camera not found: ' + productId);
-          }
-          camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
-          resolve(camera);
-        }
-      ).catch(
-        () => {
-          reject('Database error!');
-        }
-      )
-    });
-    queries.push(queryPromise);
+    const camerasFiltered = allCameras.filter(camera => camera._id === productId);
+    if (camerasFiltered.length === 0) {
+      return res.status(500).json(new Error('Camera not found: ' + productId));
+    }
+
+    if (!camerasFiltered[0].imageUrl.startsWith('http')) {
+      camerasFiltered[0].imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camerasFiltered[0].imageUrl;
+    }
+    cameras.push(camerasFiltered[0]);
   }
-  Promise.all(queries).then(
-    (cameras) => {
-      const orderId = uuid();
-      return res.status(201).json({
-        contact: req.body.contact,
-        products: cameras,
-        orderId: orderId
-      })
-    }
-  ).catch(
-    (error) => {
-      return res.status(500).json(new Error(error));
-    }
-  );
+
+  return res.status(201).json({
+    contact: req.body.contact,
+    products: cameras,
+    orderId: uuid()
+  });
 };
