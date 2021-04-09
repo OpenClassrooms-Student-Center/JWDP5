@@ -1,27 +1,36 @@
 const uuid = require('uuid/v1');
-const allTeddies = require('../json/teddies');
+const Teddy = require('../models/Teddy');
 
 exports.getAllTeddies = (req, res, next) => {
-  res.status(200).json(allTeddies.map((teddy) => {
-    if (!teddy.imageUrl.startsWith('http')) {
-      teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
+  Teddy.find().then(
+    (teddies) => {
+      const mappedTeddies = teddies.map((teddy) => {
+        teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
+        return teddy;
+      });
+      res.status(200).json(mappedTeddies);
     }
-
-    return teddy;
-  }));
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Database error!'));
+    }
+  );
 };
 
 exports.getOneTeddy = (req, res, next) => {
-  const teddy = allTeddies.find(teddy => teddy._id === req.params.id);
-  if (!teddy) {
-    return res.status(404).send(new Error('Teddy not found!'));
-  }
-
-  if (!teddy.imageUrl.startsWith('http')) {
-    teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
-  }
-
-  return res.status(200).json(teddy);
+  Teddy.findById(req.params.id).then(
+    (teddy) => {
+      if (!teddy) {
+        return res.status(404).send(new Error('Teddy not found!'));
+      }
+      teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
+      res.status(200).json(teddy);
+    }
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Database error!'));
+    }
+  )
 };
 
 /**
@@ -45,25 +54,39 @@ exports.orderTeddies = (req, res, next) => {
     !req.body.contact.city ||
     !req.body.contact.email ||
     !req.body.products) {
-  return res.status(400).send(new Error('Bad request!'));
+    return res.status(400).send(new Error('Bad request!'));
   }
-
-  const teddies = [];
+  let queries = [];
   for (let productId of req.body.products) {
-    const teddy = allTeddies.find(teddy => teddy._id === productId);
-    if (teddy === 'undefined') {
-      return res.status(500).json(new Error('Teddy not found: ' + productId));
-    }
-
-    if (!teddy.imageUrl.startsWith('http')) {
-      teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
-    }
-    teddies.push(teddy);
+    const queryPromise = new Promise((resolve, reject) => {
+      Teddy.findById(productId).then(
+        (teddy) => {
+          if (!teddy) {
+            reject('Camera not found: ' + productId);
+          }
+          teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
+          resolve(teddy);
+        }
+      ).catch(
+        () => {
+          reject('Database error!');
+        }
+      )
+    });
+    queries.push(queryPromise);
   }
-
-  return res.status(201).json({
-    contact: req.body.contact,
-    products: teddies,
-    orderId: uuid()
-  });
+  Promise.all(queries).then(
+    (teddies) => {
+      const orderId = uuid();
+      return res.status(201).json({
+        contact: req.body.contact,
+        products: teddies,
+        orderId: orderId
+      })
+    }
+  ).catch(
+    (error) => {
+      return res.status(500).json(new Error(error));
+    }
+  );
 };
