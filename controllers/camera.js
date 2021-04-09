@@ -1,27 +1,36 @@
 const uuid = require('uuid/v1');
-const allCameras = require('../json/cameras');
+const Teddy = require('../models/Teddy');
 
-exports.getAllCameras = (req, res, next) => {
-  res.status(200).json(allCameras.map((camera) => {
-    if (!camera.imageUrl.startsWith('http')) {
-      camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
+exports.getAllTeddies = (req, res, next) => {
+  Teddy.find().then(
+    (teddies) => {
+      const mappedTeddies = teddies.map((teddy) => {
+        teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
+        return teddy;
+      });
+      res.status(200).json(mappedTeddies);
     }
-
-    return camera;
-  }));
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Database error!'));
+    }
+  );
 };
 
-exports.getOneCamera = (req, res, next) => {
-  const camera = allCameras.find(camera => camera._id === req.params.id);
-  if (!camera) {
-    return res.status(404).send(new Error('Camera not found!'));
-  }
-
-  if (!camera.imageUrl.startsWith('http')) {
-    camera.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camera.imageUrl;
-  }
-
-  return res.status(200).json(camera);
+exports.getOneTeddy = (req, res, next) => {
+  Teddy.findById(req.params.id).then(
+    (teddy) => {
+      if (!teddy) {
+        return res.status(404).send(new Error('Teddy not found!'));
+      }
+      teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
+      res.status(200).json(teddy);
+    }
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Database error!'));
+    }
+  )
 };
 
 /**
@@ -37,33 +46,47 @@ exports.getOneCamera = (req, res, next) => {
  * products: [string] <-- array of product _id
  *
  */
-exports.orderCameras = (req, res, next) => {
+exports.orderTeddies = (req, res, next) => {
   if (!req.body.contact ||
-      !req.body.contact.firstName ||
-      !req.body.contact.lastName ||
-      !req.body.contact.address ||
-      !req.body.contact.city ||
-      !req.body.contact.email ||
-      !req.body.products) {
+    !req.body.contact.firstName ||
+    !req.body.contact.lastName ||
+    !req.body.contact.address ||
+    !req.body.contact.city ||
+    !req.body.contact.email ||
+    !req.body.products) {
     return res.status(400).send(new Error('Bad request!'));
   }
-
-  const cameras = [];
+  let queries = [];
   for (let productId of req.body.products) {
-    const camerasFiltered = allCameras.filter(camera => camera._id === productId);
-    if (camerasFiltered.length === 0) {
-      return res.status(500).json(new Error('Camera not found: ' + productId));
-    }
-
-    if (!camerasFiltered[0].imageUrl.startsWith('http')) {
-      camerasFiltered[0].imageUrl = req.protocol + '://' + req.get('host') + '/images/' + camerasFiltered[0].imageUrl;
-    }
-    cameras.push(camerasFiltered[0]);
+    const queryPromise = new Promise((resolve, reject) => {
+      Teddy.findById(productId).then(
+        (teddy) => {
+          if (!teddy) {
+            reject('Camera not found: ' + productId);
+          }
+          teddy.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + teddy.imageUrl;
+          resolve(teddy);
+        }
+      ).catch(
+        () => {
+          reject('Database error!');
+        }
+      )
+    });
+    queries.push(queryPromise);
   }
-
-  return res.status(201).json({
-    contact: req.body.contact,
-    products: cameras,
-    orderId: uuid()
-  });
+  Promise.all(queries).then(
+    (teddies) => {
+      const orderId = uuid();
+      return res.status(201).json({
+        contact: req.body.contact,
+        products: teddies,
+        orderId: orderId
+      })
+    }
+  ).catch(
+    (error) => {
+      return res.status(500).json(new Error(error));
+    }
+  );
 };
