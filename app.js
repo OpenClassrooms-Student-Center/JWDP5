@@ -1,3 +1,4 @@
+const {expressSharp,FsAdapter} = require('express-sharp')
 const express = require('express');
 const path = require('path');
 
@@ -14,8 +15,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use(express.static('images'));
+app.use(
+  '/images',
+expressSharp({
+  imageAdapter: new FsAdapter(path.join(__dirname, 'images')),
+  })
+)
+
+/* app.use(express.static('images')); */
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
