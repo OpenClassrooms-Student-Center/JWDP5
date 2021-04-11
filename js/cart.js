@@ -1,4 +1,3 @@
-
 //CART TITLE
 function titleCart(){
     const title__cart = document.createElement('h2');
@@ -65,14 +64,6 @@ function createCart(itemCamera, key) {
     quantity.setAttribute("class", 'quantity');
     quantity.textContent = 'Quantité : ' + key[i].selectedQ ;
 
-    let divCancelArticle = document.createElement('div');
-    divCancelArticle.setAttribute("id", 'btn-cancelArticle');
-    divCancelArticle.setAttribute("class", 'btn-cancelArticle');
-    let cancelArticle = document.createElement('button');
-    cancelArticle.setAttribute("id", 'btn__cancelArticle');
-    cancelArticle.setAttribute("class", 'btn__cancelArticle');
-    cancelArticle.textContent = `Supprimer l'article`;
-
     cart__items.appendChild(containerRecap);
     containerRecap.append(imageProduct);
     containerRecap.append(idProducts);
@@ -83,10 +74,7 @@ function createCart(itemCamera, key) {
     containerRecap.append(priceProducts);
     priceProducts.append(priceProduct);
     priceProduct.appendChild(quantity);
-    containerRecap.append(divCancelArticle);
-    divCancelArticle.appendChild(cancelArticle);
-    
-    deleteOneArticle(i);
+   
 }  
 console.log(cart__items);
     
@@ -136,7 +124,7 @@ async function getCart() {
         let key = JSON.parse(localStorage.getItem("basket"))|| {};
 
         for (i = 0 ; i < key.length; i++) {
-            let itemCamera = cameras.find(cameras => cameras['_id'] ==(key[i].idCamera));
+            let itemCamera = cameras.find(cameras => cameras['_id'] == key[i].idCamera);
             console.log(itemCamera);
             createCart(itemCamera, key);
             store.addItemPrice(itemCamera, key);
@@ -149,33 +137,7 @@ async function getCart() {
 } 
 
 //---------------------------------
-//DELETE ONE ARTICLE
 
-function deleteOneArticle(i) {
-    const RemoveBtnCancelArticle = document.getElementsByClassName('btn__cancelArticle');
-     
-        for( let h = 0; h < RemoveBtnCancelArticle.length; h++){ 
-        
-        RemoveBtnCancelArticle[h].addEventListener('click', (e) => {
-        e.preventDefault();
-     
-      
-        let products = store.getProducts();
-
-      
-        products.splice(i,1);
-            
-        
-          
-         // SEND VARIABLE TO LOCALSTORAGE TO BE DELETED
-        
-        localStorage.setItem('basket', JSON.stringify(products));
-        window.location.href = 'cart.html';
-        console.log(products)
-        
-        });
-    }
-}
 
 //--------------------------
 //DELETE ALL ARTICLE

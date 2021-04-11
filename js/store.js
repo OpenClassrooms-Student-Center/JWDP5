@@ -31,7 +31,7 @@ class Store{
         }else{
             document.getElementById('hide-page').style.display = 'block';
         } 
-    } 
+    }
     nombreIndexPanier() {
         let key = JSON.parse(localStorage.getItem(this.key));
         let indexPanier = document.getElementById("indexPanier");
@@ -46,5 +46,5 @@ class Store{
 }    
    
     
-const store = new Store ('basket')
+const store = new Store ('basket');
 

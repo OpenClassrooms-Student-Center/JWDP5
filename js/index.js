@@ -6,10 +6,11 @@ async function getAllCameras(){
     if(response.ok){
     let cameras = response.json();
     return cameras;//PROMESSE
+    
     }else{
         console.error('retour du server :' , response.status);
         alert('Le serveur ne répond pas!');
-    }
+    }console.log(cameras)
 }
  //------------------------------------
 getAllCameras().then(function(cameras){
@@ -50,11 +51,9 @@ getAllCameras().then(function(cameras){
 });
 //-----------------------------------
 
-
 function loadSpinner(){
     document.querySelector('#cont__spinner').classList.add('hidden');
 }
-
 
 //------------------------
 // CLICK TO CART PAGE FROM PANIER HEADER
@@ -63,7 +62,6 @@ const pageCart = document.getElementById('btn__cart');
 pageCart.addEventListener('click', () =>{
 
     window.location.href = "cart.html";
-   
     });
 }
  //---------------------------------------------   

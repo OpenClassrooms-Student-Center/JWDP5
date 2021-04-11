@@ -16,10 +16,9 @@ function resetPageConf() {
     let btnCancel = document.getElementById('returnAccueil');
     btnCancel.addEventListener('click', () => {
         
-        localStorage.removeItem("orderConfId");
-        localStorage.removeItem("totalOrder");
+        localStorage.clear();
         window.location.href = 'index.html';
-    })
+    });
 }
 //----------------------------
 

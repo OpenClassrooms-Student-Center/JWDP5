@@ -493,20 +493,6 @@ a {
   }
 }
 .btn{
-  &__cancelArticle{
-    cursor: pointer;
-    font-family: "belligerent_madnessregular";
-    font-size: 20px;
-    width:200px;
-    height:50px;
-    margin: 2rem auto 2rem auto;
-    border: solid 3px black;
-    border-radius: 50px;
-    background: linear-gradient(to right, #d1841f 10%, #c568f3);
-  }
-}
-
-.btn{
   &__emptyCart{
     cursor: pointer;
     border: solid 3px black;
@@ -810,7 +796,7 @@ body{
    &__products {
     height:90px;
     width:260px;
-    margin: auto 0 auto 0;
+    margin: 0 0 auto 0;
   
   }
 }
@@ -818,19 +804,18 @@ body{
   &__products{
     height:110px;
     width:125px;
-    margin: auto 0 auto 0;
+    margin: 0 0 auto 0;
     
   }
 }
 .lenseS{
- 
   margin:0;
 }
 
 .container{
   &__recap{
     width:90%;
-    height:15%;
+    height:200px;
     border-radius: 10px;
     border:solid 2px #eeaf3b;
     display:flex;
@@ -856,6 +841,7 @@ body{
 .prix{
   &__products{
     width: 100px;
+    height:25%;
   }
 }
 
@@ -868,14 +854,6 @@ body{
     margin: auto  auto 1rem auto;
 
   }
-}
-
-#btn-cancelArticle{
-  display: flex;
-  align-items: flex-start;
-  height:90px;
-  width:250px;
-  margin:0 300px 2rem 0;
 }
 
 .sum, .container{
