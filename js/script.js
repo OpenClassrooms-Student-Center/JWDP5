@@ -81,13 +81,7 @@ const textProduct = document.getElementById("textProduct");
 const priceProduct = document.getElementById("priceProduct");
 const lensesChoices = document.getElementsByClassName("lensesChoice");
 
-let optionProduct = {
-    pictureProductCart : pictureProduct.src,
-    nameProductCart : nameProduct.innerHTML,
-    priceProductCart : priceProduct.innerHTML,
-    lensesChoiceCart : lensesChoices.innerHTML
-    };
-console.log(optionProduct)
+
 
 // Création de l'URL
 
@@ -168,6 +162,14 @@ function addToLocalStorage(event){
     let productToStorage = JSON.parse(localStorage.getItem("LocalStorageCartProducts"));
     console.log(productToStorage)
 
+    let optionProduct = {
+        pictureProductCart : pictureProduct.src,
+        nameProductCart : nameProduct.innerHTML,
+        priceProductCart : priceProduct.innerHTML,
+        lensesChoiceCart : lensesChoices.innerHTML
+        };
+    console.log(optionProduct)
+
     if(localStorage.getItem("LocalStorageCartProducts")){
 
     } else {
@@ -178,13 +180,13 @@ function addToLocalStorage(event){
 }
 
 function addToCartItem() {
-    let rowCart = document.createElement("div")
+    let rowCart = document.createElement("div");
     rowCart.classList.add("rowCart")
     let productCart = document.getElementsByClassName("rowCartItem")[0]
     let rowCartContents = `
         <div class="row rowCartItem">
             <div class="col-2 border-bottom border-secondary border-2 pb-3 pictureProduct">
-                <img class="img-fluid" src="" alt="Image caméra" />
+                <img class="img-fluid" src="${optionProduct.nameProductCart}" alt="Image caméra" />
             </div>
             <div class="col-3 border-bottom border-secondary border-2 pb-3">
                 <h3 class="titleProduct"></h3>
