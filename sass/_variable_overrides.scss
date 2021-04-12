@@ -1,0 +1,11 @@
+$primary: #f3e9f1;
+$secondary: #9b62dc;
+$indigo:  #6610f2;
+$navbar-light-color:                rgba($secondary, 1) !default;
+$navbar-light-hover-color:          rgba($indigo, .8) !default;
+$navbar-light-active-color:         rgba($indigo, 1) !default;
+$navbar-light-disabled-color:       rgba($indigo, .3) !default;
+$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-light-toggler-border-color: rgba($indigo, .1) !default;
+
+$link-color: #6610f2;
