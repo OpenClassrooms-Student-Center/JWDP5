@@ -10,23 +10,21 @@ class MyProduct {
 
 //RECUPERATION ID ONE CAMERA IN URL
 
-function getCamera(cameras){
+function getIdCamera(camera){
     let urlSearch =  new URLSearchParams(window.location.search);
     console.log(urlSearch);
     let idCamera = urlSearch.get('id');
     console.log(idCamera);
-    getCameraItem(cameras, idCamera);
+    getCameraItem(camera, idCamera);
 }
 //------------------------                                                                                 
 function getCameraItem(cameras, idCamera){
 
-    let cameraChoice = cameras.find(cameras => cameras['_id'] == idCamera);
+    let cameraChoice = cameras.find(camera => camera['_id'] == idCamera);
     console.log(cameraChoice);
     createLayoutCamera(cameraChoice, idCamera);
 
 } 
-
-
 //---------------------------
 
 // CREATION HTML PRODUCT
@@ -125,20 +123,20 @@ function getCameraSelected(buttonAddToCart, idCamera){
         let selectedQ = document.getElementById('selectQ').value;
         let product = new MyProduct(idCamera, selectedLenses, selectedQ);
         store.addProduct(product);
+        
 
         alert (`Votre article a été ajouté au panier!`); 
         window.location = 'index.html';
-        
     });
 }
 //---------------------------------------------
 async function getCameras() {
   
-        let response = await fetch("http://localhost:3000/api/cameras");
+        let response = await fetch("http://localhost:3000/api/cameras/");
         if(response.ok){
-            let cameras = await response.json();
-            console.log(cameras);
-            getCamera(cameras);
+            let camera = await response.json();
+            console.log(camera);
+            getIdCamera(camera);
         }else{
             console.log('retour du server :' , response.status);
         }

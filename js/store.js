@@ -14,9 +14,6 @@ class Store{
     getProducts(){
        return JSON.parse(localStorage.getItem(this.key));
     }
-    addIdProduct(key) {
-        products.push(key[i].idCamera);
-    }
     addItemPrice(itemCamera,key){ 
         let itemPrice = itemCamera.price*key[i].selectedQ;
         arrayPrice.push(itemPrice);

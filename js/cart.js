@@ -1,3 +1,5 @@
+
+
 //CART TITLE
 function titleCart(){
     const title__cart = document.createElement('h2');
@@ -50,7 +52,7 @@ function createCart(itemCamera, key) {
     nomProduct.textContent = `Article : ` + itemCamera.name; 
         
     let lenseCamera = document.createElement('p');
-    lenseCamera.setAttribute("class", 'lenseS')
+    lenseCamera.setAttribute("class", 'lenseS');
     nomProduct.appendChild(lenseCamera);
     lenseCamera.textContent = `Optiques : ` + key[i].selectedLenses;
 
@@ -128,16 +130,12 @@ async function getCart() {
             console.log(itemCamera);
             createCart(itemCamera, key);
             store.addItemPrice(itemCamera, key);
-            store.addIdProduct(key); 
         }
         totalOrder(arrayPrice);   
         }else{
         console.error('retour du server', response.status);
     }    
 } 
-
-//---------------------------------
-
 
 //--------------------------
 //DELETE ALL ARTICLE
@@ -171,7 +169,8 @@ function getForm(){
     let city= document.getElementById('city').value;
     let email = document.getElementById('email').value;
      return {lastName, firstName, address, city, email};
-}
+     
+}   
 //-----------------------------------
 //POST REQUESTED TO SEND TO API
 async function sendForm(dataToSend) {
@@ -189,9 +188,9 @@ async function sendForm(dataToSend) {
             window.location = 'confirmation.html'
         }else{
         console.error('retour du server : ', response.status);
-        }
+    }
 }
-//-----------------------------
+//-----------------------------201
 //VALIDATE ORDER OBJ CONTACT AND ARRAY TO API
 function confirmOrder() {
     let contact = getForm();
@@ -206,13 +205,13 @@ function validateForm(){
     let btnValidate = document.getElementById('check-cart');
     btnValidate.addEventListener('click', (e) => {
         e.preventDefault();
-        
+
         let lastName = document.getElementById('lastName').value;
         let firstName = document.getElementById('firstName').value;
         let address = document.getElementById('address').value;
         let city = document.getElementById('city').value;
         let email = document.getElementById('email').value;
-
+        
         if (/^[a-zA-Z-]*$/.test(lastName)){
             console.log("nom accepté");
             document.getElementById('lastName').style.borderColor = 'black';
@@ -255,7 +254,7 @@ function validateForm(){
         }
             confirmOrder();
             localStorage.removeItem('basket')
-             return true;
+            return true;
     });
 }
 //CALLING FUNCTION

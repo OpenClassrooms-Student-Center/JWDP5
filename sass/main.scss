@@ -166,7 +166,6 @@ a {
       border-radius: 50px;
       padding: 3px;
       color: $color-secondary;
-      cursor: pointer;
     }
   }
 }
@@ -177,7 +176,6 @@ a {
     margin: auto;
   }
 }
-
 .navbar{
   &__logo{
     animation: logo 4000ms linear  infinite;
@@ -188,10 +186,9 @@ a {
     cursor : pointer;
     display: flex;
     flex-flow: column;
-    margin: auto;
+    margin:auto .5rem auto auto;
     width:150px;
     height:70px;
-   
   }
 }
 #btn{
@@ -599,6 +596,7 @@ body{
   width: 200px;
 }
 .btn-returnAccueil{
+  cursor:pointer;
   color: black;
   font-family: "belligerent_madnessregular";
   font-size: 20px;
@@ -902,7 +900,7 @@ body{
   &__products {
    height:90px;
    width:260px;
-   margin: auto 0 auto 0;
+   margin: 2rem 0 auto 0;
  
  }
 }
@@ -915,7 +913,7 @@ body{
  &__products{
    height:90px;
    width:120px;
-   margin: auto 0 auto 0;
+   margin: 2rem 0 auto 0;
  }
 }
 }
