@@ -1,0 +1,231 @@
+/*************************************************/
+/**** GLOBAL RULES ****/
+*,
+*::before,
+*::after {
+margin: 0;
+padding: 0;
+-webkit-box-sizing: border-box;
+        box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;  /* 1rem = 16px */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Indie Flower", cursive;
+    color: #020A1F;
+}
+
+@media only screen and (min-width:12em) {
+    h1 {
+        font-size: 4rem;
+    }
+} 
+
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+
+.white-background {
+    background: rgba(255,255,255,.5);
+}
+
+.background-grey {
+    background: rgba(240,240,240,.9);
+}
+
+.background-dark {
+    background-image: linear-gradient(to bottom, rgba(2, 10, 31), rgba(2, 10, 31, .7));
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.mt-6 {
+    margin-top: 12rem;
+}
+
+/*************************************************/
+/**** NAVBAR ****/
+
+#navbarNav {
+    justify-content: space-between;
+}
+
+.navbar-toggler {
+    border-color: #CFAB64!important;
+}
+
+.navbar-toggler:focus {
+    border: 1px solid #CFAB64!important;
+    color: rgba(207, 171, 100,.55);
+}
+
+@media only screen and (min-width:62em) {
+    .nav-link {
+        position: relative;
+    }
+    
+    .nav-link::after {
+        position: absolute;
+        left: 6px;
+        top: -4px;
+        content: '';
+        height: auto;
+        width: 6rem;
+        border-bottom: solid 2px #CFAB64;
+        transition: left 250ms ease-in-out, right 250ms ease-in-out;
+        opacity: 0;
+    }
+    
+    .nav-link:hover::after {
+        opacity: 1;
+      }
+}
+
+
+
+/**************/
+/** BUTTONS **/
+.btn-blue {
+    color: #020A1F;
+    border-color: rgba(2, 10, 31, .8);
+    transition: all 150ms linear;
+    border-radius: 2.5rem;
+    padding: 1rem;
+    transform: scale(1);
+}
+
+.btn-blue:hover {
+    color: #CFAB64;
+    border-color: #CFAB64;
+    background-color: #020A1F;
+}
+
+.btn-blue:focus {
+    box-shadow: 0 0 0 0.25rem rgb(229 139 4 / 25%);
+}
+
+.btn-blue:active {
+    box-shadow: none;
+    background-color: #513600;
+    transform: scale(.95);
+}
+
+
+/** ICONS **/
+.shopping-cart-icon,
+.orinoco-icon {
+    color: #CFAB64;
+    font-size: 2.2rem;
+    vertical-align: middle;
+    line-height: 2;
+    transform: scale(1);
+
+    transition: all 300ms linear;
+}
+
+.shopping-cart-icon::before,
+.orinoco-icon::before {
+    background: -webkit-gradient(linear, left top, right bottom, from(#CFAB64), to(#513600));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.shopping-cart-icon:hover,
+.orinoco-icon:hover {
+    transform: scale(1.1);
+}
+
+.shopping-cart-icon:focus,
+.shopping-cart-icon:active {
+    transform: scale(.9);
+}
+
+
+/*************************************************/
+/**** JUMBOTRON ****/
+#hero {
+    background-image: url("../images/hero-background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    min-height: max-content;
+    transition: height 1000ms linear;
+}
+
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 3000ms ease-in;
+}
+
+.slide-in {
+    transition: transform 2000ms ease-in-out;
+    transform: translateX(-50rem);
+}
+
+/*************************************************/
+/**** PRODUCT LIST ****/
+#camerasList {
+    justify-content: stretch;
+    align-items: center;
+}
+
+.camera-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    padding: .5rem;
+}
+
+.card {
+    cursor: pointer;
+    text-align: center;
+    filter: grayscale(100%);
+    transform: scale(1);
+    transition: all 300ms linear;
+    flex-basis: 25%;
+}
+
+.card:hover {
+    transform: scale(1.025);
+    filter: none;
+}
+
+.card h3 {
+    color: #020A1F;
+    line-height: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
